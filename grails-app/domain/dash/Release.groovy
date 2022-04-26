@@ -4,26 +4,28 @@ class Release {
 
     BigInteger id
     String releaseName
-    String module
     String releaseVersion
     String environment
 
     Date startDate
     Date endDate
 
-    static hasMany = [modules: Module]
+    static hasMany = [module: Module,events:Events]
+    static hasOne = [releaseNotes:ReleaseNotes]
 
     static constraints = {
+        id nullable: false, blank:false
         releaseName nullable: false
-        module inList: ['User', 'Organization','CAS', 'Admin', 'Kernel', 'Merchant','Miscellaneous Feature','Merchant Integration','Money Transfer','Notification Server','Reporting','Settlement Switch']
+        releaseVersion nullable: false
         environment inList: ['Dev', 'QADev','RC','CodeFreeze', 'IR','Prod']
+        startDate nullable: false, blank: false
+        endDate nullable: false,blank: false
     }
 
     static mapping = {
-        table 'release'
-        version true
+        table 'Release'
+        version false
         releaseName column: 'releaseName'
-        module column: 'module'
         releaseVersion column: 'releaseVersion'
         environment column: 'environment'
         id column: 'id',insertable: false, updateable: false
