@@ -1,18 +1,17 @@
 package dash
 
-class Events {
+class EsewaEvents {
 
-    Integer id
     String eventName
 
-    static hasMany = [release:Release]
-    static  belongsTo = Release
+    static hasMany = [esewaRelease:EsewaRelease]
+    static  belongsTo = EsewaRelease
 
     static constraints = {
         eventName inList: ['Story Grooming', 'CodeFreeze','RC Deployment','IR Deployment','Production','RollBack','Retrospective']
     }
     static mapping = {
-        table 'Events'
+        //table 'esewaEvents'
         version false
         eventName column: 'eventName'
         id column: 'id',insertable: false, updateable: false

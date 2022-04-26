@@ -1,8 +1,8 @@
 package dash
 
-class Release {
+class EsewaRelease {
 
-    BigInteger id
+//    BigInteger id
     String releaseName
     String releaseVersion
     String environment
@@ -10,11 +10,11 @@ class Release {
     Date startDate
     Date endDate
 
-    static hasMany = [module: Module,events:Events]
+    static hasMany = [esewaModule: EsewaModule, esewaEvents:EsewaEvents]
     static hasOne = [releaseNotes:ReleaseNotes]
 
     static constraints = {
-        id nullable: false, blank:false
+//        id nullable: false, blank:false
         releaseName nullable: false
         releaseVersion nullable: false
         environment inList: ['Dev', 'QADev','RC','CodeFreeze', 'IR','Prod']
@@ -23,11 +23,11 @@ class Release {
     }
 
     static mapping = {
-        table 'Release'
+       // table 'esewaRelease'
         version false
         releaseName column: 'releaseName'
         releaseVersion column: 'releaseVersion'
         environment column: 'environment'
-        id column: 'id',insertable: false, updateable: false
+//        id column: 'id',insertable: false, updateable: false
     }
 }

@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Release)
-class ReleaseSpec extends Specification {
+@TestFor(EsewaRelease)
+class EsewaReleaseSpec extends Specification {
 
     def setup() {
     }

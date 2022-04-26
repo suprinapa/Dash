@@ -6,14 +6,14 @@ class ReleaseNotes {
     String ticketDescription
     String ticketType
 
-    static belongsTo = [release: Release]
+    static belongsTo = [esewaRelease: EsewaRelease]
 
     static constraints = {
         ticketType inList: ['Bug','Feature','Enhancement']
     }
 
     static mapping = {
-        table 'ReleaseNotes'
+        //table 'ReleaseNotes'
         version false
         ticketNumber column: 'ticketNumber'
         ticketDescription column: 'ticketDescription'

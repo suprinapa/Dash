@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Events)
-class EventsSpec extends Specification {
+@TestFor(EsewaEvents)
+class EsewaEventsSpec extends Specification {
 
     def setup() {
     }
