@@ -24,7 +24,7 @@ class EsewaRelease {
 
     static mapping = {
         table 'EsewaRelease'
-        version false
+        version true
         releaseName column: 'releaseName'
         releaseVersion column: 'releaseVersion'
         environment column: 'environment'
