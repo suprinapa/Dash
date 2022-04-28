@@ -10,6 +10,11 @@ class EsewaRelease {
     Date startDate
     Date endDate
 
+    Set<EsewaModule>esewaModule
+    Set<EsewaEvents>esewaEvents
+    Set<ReleaseNotes>releaseNotes
+
+
     static hasMany = [esewaModule: EsewaModule, esewaEvents:EsewaEvents,releaseNotes:ReleaseNotes]
 //    static hasOne = [releaseNotes:ReleaseNotes]
 
@@ -31,5 +36,6 @@ class EsewaRelease {
         startDate column: 'startDate'
         endDate column: 'endDate'
         id column: 'id',insertable: false, updateable: false
+        releaseNotes(cascade:'all-delete-orphan')
     }
 }

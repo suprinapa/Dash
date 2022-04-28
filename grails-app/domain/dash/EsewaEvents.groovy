@@ -9,7 +9,7 @@ class EsewaEvents {
     static  belongsTo = EsewaRelease
 
     static constraints = {
-        eventName inList: ['Story Grooming', 'CodeFreeze','RC Deployment','IR Deployment','Production','RollBack','Retrospective']
+        eventName inList: ['StoryGrooming', 'CodeFreeze','RC Deployment','IRDeployment','Production','RollBack','Retrospective']
     }
     static mapping = {
         table 'EsewaEvents'

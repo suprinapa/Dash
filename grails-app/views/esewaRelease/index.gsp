@@ -11,5 +11,6 @@
     <title>Read</title>
 </head>
 <body>
+${list}
 </body>
 </html>
