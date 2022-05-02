@@ -9,6 +9,9 @@ class EsewaRelease {
 
     Date startDate
     Date endDate
+ /*   def dateFormat = { attrs, body ->
+        out << new java.text.SimpleDateFormat(attrs.format).format(attrs.date)
+    }*/
 
     Set<EsewaModule>esewaModule
     Set<EsewaEvents>esewaEvents

@@ -5,6 +5,7 @@ dataSource {
     dbCreate: update
     username: root
     password: root
+    logSql = true
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -24,7 +25,7 @@ environments {
             url = "jdbc:mysql://localhost:3306/demo?useUnicode=yes&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
             username = "root"
             password = "root"
-            logSql = false
+            logSql = true
         }
     }
     test {

@@ -12,14 +12,8 @@ class EsewaReleaseService {
         return list
     }
 
-    def saveData(/*GrailsParameterMap params*/) {
-        EsewaRelease esewaRelease = new EsewaRelease()
-        esewaRelease.id = 1
-        esewaRelease.releaseName = "Task1"
-        esewaRelease.releaseVersion = "2.3.1"
-        esewaRelease.environment = "RC"
-        esewaRelease.startDate = new Date()
-        esewaRelease.endDate = new Date() + 7
+    def saveData(GrailsParameterMap params) {
+        EsewaRelease esewaRelease = new EsewaRelease(params)
         if (esewaRelease.validate()) {
             esewaRelease.save(flush: true)
         }
@@ -27,10 +21,6 @@ class EsewaReleaseService {
 
     def getById(Serializable id) {
         return EsewaRelease.get(id)
-    }
-
-    def create(){
-
     }
 
     def update(){
@@ -56,3 +46,9 @@ class EsewaReleaseService {
         return true
     }
 }
+/*        esewaRelease.id = 1
+        esewaRelease.releaseName = "Task1"
+        esewaRelease.releaseVersion = "2.3.1"
+        esewaRelease.environment = "RC"
+        esewaRelease.startDate = new Date()
+        esewaRelease.endDate = new Date() + 7*/

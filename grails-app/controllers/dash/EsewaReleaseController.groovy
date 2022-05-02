@@ -10,8 +10,12 @@ EsewaReleaseService esewaReleaseService
     }
 
     def saveData(){
-        def response = esewaReleaseService.saveData()
-        [response:response]
+        def response = esewaReleaseService.saveData(params)
+        render response
+    }
+
+    def create() {
+        [esewaRelease: flash.redirectParams]
     }
 
     def update(){
