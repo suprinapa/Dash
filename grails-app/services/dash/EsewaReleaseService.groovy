@@ -14,9 +14,9 @@ class EsewaReleaseService {
 
     def saveData(GrailsParameterMap params) {
         EsewaRelease esewaRelease = new EsewaRelease(params)
-        if (esewaRelease.validate()) {
-            esewaRelease.save(flush: true)
-        }
+//        if (esewaRelease.validate()) {
+            return esewaRelease.save(flush: true, failOnError: true)
+//        }
     }
 
     def getById(Serializable id) {

@@ -2,43 +2,35 @@ package dash
 
 class EsewaRelease {
 
-    Integer id
     String releaseName
-    String releaseVersion
-    String environment
-
+    String releaseVersion_code
+    String releaseStatus
+    String parentRelease
+    Date createdDate
     Date startDate
     Date endDate
- /*   def dateFormat = { attrs, body ->
-        out << new java.text.SimpleDateFormat(attrs.format).format(attrs.date)
-    }*/
 
-    Set<EsewaModule>esewaModule
-    Set<EsewaEvents>esewaEvents
-    Set<ReleaseNotes>releaseNotes
-
-
-    static hasMany = [esewaModule: EsewaModule, esewaEvents:EsewaEvents,releaseNotes:ReleaseNotes]
-//    static hasOne = [releaseNotes:ReleaseNotes]
+    static hasMany = [esewaComponents: EsewaComponents, esewaEvents:EsewaEvents, releaseNotes:ReleaseNotes, releaseEnvironment:ReleaseEnvironment,
+    releaseChecklist: ReleaseChecklist]
 
     static constraints = {
-        id nullable: false, blank:false
         releaseName nullable: false
-        releaseVersion nullable: false
-        environment inList: ['Dev', 'QADev','RC','CodeFreeze', 'IR','Prod']
-        startDate nullable: false, blank: false
-        endDate nullable: false,blank: false
+        releaseVersion_code nullable: false
+        releaseStatus inList: ['In_Progress', 'Resolved']
+        parentRelease nullable: true
     }
 
     static mapping = {
+
         table 'EsewaRelease'
         version true
         releaseName column: 'releaseName'
-        releaseVersion column: 'releaseVersion'
-        environment column: 'environment'
+        releaseVersion_code column: 'releaseVersion_code'
+        releaseStatus column: 'releaseStatus'
+        parentRelease column: 'parentRelease'
         startDate column: 'startDate'
         endDate column: 'endDate'
-        id column: 'id',insertable: false, updateable: false
+        createdDate column: 'createdDate'
         releaseNotes(cascade:'all-delete-orphan')
     }
 }

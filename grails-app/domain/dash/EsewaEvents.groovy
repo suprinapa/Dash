@@ -2,7 +2,6 @@ package dash
 
 class EsewaEvents {
 
-    Integer id
     String eventName
 
     static hasMany = [esewaRelease:EsewaRelease]
@@ -15,7 +14,6 @@ class EsewaEvents {
         table 'EsewaEvents'
         version false
         eventName column: 'eventName'
-        id column: 'id',insertable: false, updateable: false
     }
 
 }

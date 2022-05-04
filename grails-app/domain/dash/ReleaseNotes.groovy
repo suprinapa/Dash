@@ -2,23 +2,20 @@ package dash
 
 class ReleaseNotes {
 
-    Integer id
-    Integer ticketNumber
-    String ticketDescription
     String ticketType
+    String ticketPriority
 
-    static belongsTo = [EsewaRelease: EsewaRelease]
+    static belongsTo = [esewaRelease: EsewaRelease]
 
     static constraints = {
-        ticketType inList: ['Bug','Feature','Enhancement']
+        ticketType inList: ['Bug','Feature','Enhancement','Security']
+        ticketPriority inList: ['Urgent','Normal','High','Low']
     }
 
     static mapping = {
         table 'ReleaseNotes'
         version false
-        ticketNumber column: 'ticketNumber'
-        ticketDescription column: 'ticketDescription'
         ticketType column: 'ticketType'
-        id column: 'id',insertable: false, updateable: false
+        ticketPriority column: 'ticketPriority'
     }
 }

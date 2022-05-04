@@ -48,8 +48,11 @@
                 <td>${release.startDate}</td>
                 <td>${release.endDate}</td>
                 <td>
-                    <a href="/EsewaRelease/edit/${release.id}"><i class="fa fa-edit"></i></a>&NonBreakingSpace;
-                    <a href="/EsewaRelease/delete/${release.id}"><i class="fa fa-trash" onclick="return confirm('Are you sure?');"></i></a>
+              %{--      <a href="/EsewaRelease/edit/${release.id}"><i class="fa fa-edit"></i></a>&NonBreakingSpace;
+                    <a href="/EsewaRelease/delete/${release.id}"><i class="fa fa-trash" onclick="return confirm('Are you sure?');"></i></a>--}%
+                    <g:link controller="esewaRelease" action="edit" class="btn btn-secondary" id="${release.id}"><i class="fas fa-edit"></i></g:link>
+                    <g:link controller="esewaRelease" action="delete" id="${release.id}" class="btn btn-secondary delete-confirmation"><i class="fas fa-trash"></i></g:link>
+
                 </td>
             </tr>
         </g:each>

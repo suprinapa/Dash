@@ -204,7 +204,9 @@
           <root url="jar://$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.11.4/protobuf-java-3.11.4.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.ideaLibSources/grails-datastore-gorm-hibernate-core-3.1.5.RELEASE-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>

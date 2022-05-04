@@ -1,6 +1,6 @@
 <div class="form-group">
-    <label><g:message code="id"/> *</label>
-    <g:textField name="id" class="form-control" value="${esewaRelease?.id}" placeholder="Please Enter ID"/>
+    <label><g:message code="releaseName"/></label>
+    <g:textField name="releaseName" class="form-control" value="${esewaRelease?.releaseName}" placeholder="Please Enter the Release Name"/>
 </div>
 
 <div class="form-group">
@@ -10,7 +10,7 @@
 
 <div class="form-group">
     <label><g:message code="environment"/></label>
-    <g:field type="environment" name="environment" class="form-control" value="${esewaRelease?.email}" placeholder="Please Enter the Enviromnent" >
+    <g:field type="environment" name="environment" class="form-control" value="${esewaRelease?.environment}" placeholder="Please Enter the Enviromnent" >
     <option value="dev">Dev</option>
     <option value="qaDev">QADev</option>
     <option value="rc">RC</option>
