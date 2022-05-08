@@ -5,13 +5,13 @@ class EsewaReleaseController {
 EsewaReleaseService esewaReleaseService
 
     def index(){
-        def list = esewaReleaseService.list()
-        [list:list]
+        def esewaReleaseList = esewaReleaseService.list()
+        [esewaReleaseList:esewaReleaseList]
     }
 
     def saveData(){
-        def response = esewaReleaseService.saveData(params)
-        render response
+        esewaReleaseService.saveData(params)
+        redirect(controller: "esewaRelease", action: "index")
     }
 
     def create() {
@@ -19,12 +19,31 @@ EsewaReleaseService esewaReleaseService
     }
 
     def update(){
-        def response = esewaReleaseService.update()
-        render response
+        def response = esewaReleaseService.getById(params.id)
+        if (!response){
+            redirect(controller: "esewaRelease", action: "index")
+        }else{
+            esewaReleaseService.update(response, params)
+            redirect(controller: "esewaRelease", action: "index")
+        }
+
     }
 
-    def delete() {
-      def response = esewaReleaseService.getById(1)
+    def edit(Integer id) {
+        if (flash.redirectParams) {
+            [esewaRelease: flash.redirectParams]
+        } else {
+            def response = esewaReleaseService.getById(id)
+            if (!response) {
+                redirect(controller: "esewaRelease", action: "index")
+            } else {
+                [esewaRelease: response]
+            }
+        }
+    }
+
+    def delete(Integer id) {
+      def response = esewaReleaseService.getById(id)
         if (!response){
             redirect(controller: "esewaRelease", action: "index")
         }else{
@@ -32,9 +51,8 @@ EsewaReleaseService esewaReleaseService
             if (!response){
                 render "unable.to.delete"
             }else{
-             render "deleted"
+                redirect(controller: "esewaRelease", action: "index")
             }
-            redirect(controller: "esewaRelease", action: "index")
         }
     }
 }

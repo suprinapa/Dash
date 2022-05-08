@@ -6,13 +6,13 @@
         <g:message code="default.button.create.label" args="['EsewaRelease']"/>
     </div>
     <div class="card-body">
-        <g:form controller="esewaRelease" action="saveData">
+        <g:form controller="esewaEvents" action="saveData">
 
             %{--Partial Templating--}%
             <g:render template="form"/>
             <div class="form-action-panel">
                 <g:submitButton class="btn btn-primary" name="save" value="${g.message(code: "save")}"/>
-                <g:link controller="esewaRelease" action="index" class="btn btn-primary"><g:message code="cancel"/></g:link>
+                <g:link controller="esewaEvents" action="index" class="btn btn-primary"><g:message code="cancel"/></g:link>
             </div>
         </g:form>
     </div>

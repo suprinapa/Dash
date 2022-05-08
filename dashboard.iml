@@ -244,6 +244,7 @@
           <root url="jar://C:/grails-2.5.4/dist/grails-docs-2.5.4-sources.jar!/" />
           <root url="jar://C:/grails-2.5.4/dist/grails-scripts-2.5.4-sources.jar!/" />
           <root url="jar://$USER_HOME$/.ideaLibSources/grails-datastore-gorm-hibernate-core-3.1.5.RELEASE-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.ideaLibSources/grails-datastore-gorm-hibernate4-3.1.5.RELEASE-sources.jar!/" />
         </SOURCES>
         <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
       </library>

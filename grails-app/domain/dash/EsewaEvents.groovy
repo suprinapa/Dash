@@ -4,11 +4,11 @@ class EsewaEvents {
 
     String eventName
 
-    static hasMany = [esewaRelease:EsewaRelease]
-    static  belongsTo = EsewaRelease
+    static hasMany = [esewaReleaseEvents: EsewaReleaseEvents]
+//    static  belongsTo = EsewaRelease
 
     static constraints = {
-        eventName inList: ['StoryGrooming', 'CodeFreeze','RC Deployment','IRDeployment','Production','RollBack','Retrospective']
+        eventName inList: ['Story Grooming', 'Code Freeze','RC Deployment','IRDeployment','Production','RollBack','Retrospective']
     }
     static mapping = {
         table 'EsewaEvents'

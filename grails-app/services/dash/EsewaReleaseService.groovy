@@ -12,28 +12,36 @@ class EsewaReleaseService {
         return list
     }
 
+    def search(){
+
+
+    }
+
+/*    def saveList(GrailsParameterMap params) {
+        params.max = params.max ?: 10
+        List<EsewaRelease> rList = EsewaRelease.createCriteria().list(params) {
+            if (params?.colName && params?.colValue) {
+                like(params.colName, "%" + params.colValue + "%")
+            }
+        } as List<EsewaRelease>
+        return rList
+    }*/
+
+
     def saveData(GrailsParameterMap params) {
         EsewaRelease esewaRelease = new EsewaRelease(params)
-//        if (esewaRelease.validate()) {
+    if (esewaRelease.validate()) {
             return esewaRelease.save(flush: true, failOnError: true)
-//        }
+      }
     }
 
     def getById(Serializable id) {
         return EsewaRelease.get(id)
     }
 
-    def update(){
-        // retrieve the members from the database
-        def esewaRelease = getById(15)
-        // update properties in the employee
-        esewaRelease.environment = "Prod"
-        // update the database
+    def update(EsewaRelease esewaRelease, GrailsParameterMap params){
+        esewaRelease.properties = params
         esewaRelease.save(flush: true, failOnError: true)
-    }
-    def edit(){
-
-
     }
 
     Boolean delete(EsewaRelease esewaRelease) {
@@ -46,9 +54,3 @@ class EsewaReleaseService {
         return true
     }
 }
-/*        esewaRelease.id = 1
-        esewaRelease.releaseName = "Task1"
-        esewaRelease.releaseVersion = "2.3.1"
-        esewaRelease.environment = "RC"
-        esewaRelease.startDate = new Date()
-        esewaRelease.endDate = new Date() + 7*/

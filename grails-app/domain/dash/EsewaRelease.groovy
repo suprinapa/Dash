@@ -10,13 +10,13 @@ class EsewaRelease {
     Date startDate
     Date endDate
 
-    static hasMany = [esewaComponents: EsewaComponents, esewaEvents:EsewaEvents, releaseNotes:ReleaseNotes, releaseEnvironment:ReleaseEnvironment,
-    releaseChecklist: ReleaseChecklist]
+    static hasMany = [esewaComponents: EsewaComponents,releaseNotes:ReleaseNotes, releaseEnvironment:ReleaseEnvironment,
+    releaseChecklist: ReleaseChecklist, esewaReleaseEvents: EsewaReleaseEvents]
 
     static constraints = {
         releaseName nullable: false
         releaseVersion_code nullable: false
-        releaseStatus inList: ['In_Progress', 'Resolved']
+        releaseStatus inList: ['In_Progress', 'Released']
         parentRelease nullable: true
     }
 
