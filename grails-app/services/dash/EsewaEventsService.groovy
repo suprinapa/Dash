@@ -6,17 +6,19 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 @Transactional
 class EsewaEventsService {
 
-    def eventsList()
-    {
-        List<EsewaEvents> eventsList = EsewaEvents.list(sort:"id", order:"asc")
-        return eventsList
+    def saveList(GrailsParameterMap params) {
+        params.max = params.max ?: 10
+        List<EsewaEvents> rList = EsewaEvents.createCriteria().list(params) {
+            if (params?.colName && params?.colValue) {
+                like(params.colName, "%" + params.colValue + "%")
+            }
+        } as List<EsewaEvents>
+        return rList
     }
 
     def saveData(GrailsParameterMap params) {
         EsewaEvents esewaEvents = new EsewaEvents(params)
-        if (esewaEvents.validate()) {
-            return esewaEvents.save(flush: true, failOnError: true)
-        }
+        return esewaEvents.save(flush: true, failOnError: true)
     }
 
     def getById(Serializable id) {
@@ -36,6 +38,4 @@ class EsewaEventsService {
         }
         return true
     }
-
-
 }

@@ -5,7 +5,7 @@ class EsewaEventsController {
     EsewaEventsService esewaEventsService
 
     def index() {
-        def esewaEventsList = esewaEventsService.eventsList()
+        def esewaEventsList = esewaEventsService.saveList(params)
         [esewaEventsList: esewaEventsList]
     }
 

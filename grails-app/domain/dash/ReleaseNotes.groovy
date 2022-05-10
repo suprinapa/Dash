@@ -2,14 +2,13 @@ package dash
 
 class ReleaseNotes {
 
-    String ticketType
-    String ticketPriority
+    TicketType ticketType
+    TicketPriority ticketPriority
 
     static belongsTo = [esewaRelease: EsewaRelease]
 
     static constraints = {
-        ticketType inList: ['Bug','Feature','Enhancement','Security']
-        ticketPriority inList: ['Urgent','Normal','High','Low']
+
     }
 
     static mapping = {

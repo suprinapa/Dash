@@ -2,9 +2,8 @@ package dash
 
 class ReleaseEnvironment {
 
+    Long esewa_release_id
     EsewaEnvironment esewaEnvironment
-
-    static belongsTo = [esewaRelease: EsewaRelease]
 
     static constraints = {
     }

@@ -5463,3 +5463,14 @@ n:9236:org/springframework/http/HttpStatus
 n:2379:org/springframework/http/HttpStatus$Series
 n:603:grails/validation/Validateable
 n:566:org/codehaus/groovy/grails/validation/Validateable
+n:918:org/codehaus/groovy/grails/exceptions/GrailsConfigurationException
+n:742:groovy/transform/Immutable
+n:1006:groovy/lang/ReadOnlyPropertyException
+y:1364:org/codehaus/groovy/runtime/ReflectionMethodInvoker
+n:2068:org/codehaus/groovy/transform/ImmutableASTTransformation$checkPropNames
+n:1106:org/grails/datastore/mapping/reflect/ClassPropertyFetcher$1
+y:1967:org/grails/datastore/mapping/reflect/ClassPropertyFetcher$GetterPropertyFetcher
+y:5602:org/grails/datastore/mapping/reflect/ReflectionUtils
+n:2375:org/codehaus/groovy/control/messages/LocatedMessage
+n:1584:org/codehaus/groovy/control/messages/SimpleMessage
+n:1262:groovyjarjarantlr/NoViableAltForCharException

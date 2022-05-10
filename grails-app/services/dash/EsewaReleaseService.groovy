@@ -6,18 +6,11 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 @Transactional
 class EsewaReleaseService {
 
-    def list()
-    {
-        List<EsewaRelease> list = EsewaRelease.list(sort:"id", order:"asc")
-        return list
+    def search(Date createdDate) {
+        return EsewaRelease.findAllByCreatedDate(createdDate)
     }
 
-    def search(){
-
-
-    }
-
-/*    def saveList(GrailsParameterMap params) {
+   def saveList(GrailsParameterMap params) {
         params.max = params.max ?: 10
         List<EsewaRelease> rList = EsewaRelease.createCriteria().list(params) {
             if (params?.colName && params?.colValue) {
@@ -25,15 +18,17 @@ class EsewaReleaseService {
             }
         } as List<EsewaRelease>
         return rList
-    }*/
+   }
 
 
     def saveData(GrailsParameterMap params) {
         EsewaRelease esewaRelease = new EsewaRelease(params)
-    if (esewaRelease.validate()) {
             return esewaRelease.save(flush: true, failOnError: true)
-      }
     }
+
+  /*  def getByParentId(Serializable id) {
+        return EsewaRelease.get(parentRelease)
+    }*/
 
     def getById(Serializable id) {
         return EsewaRelease.get(id)
@@ -53,4 +48,5 @@ class EsewaReleaseService {
         }
         return true
     }
+
 }

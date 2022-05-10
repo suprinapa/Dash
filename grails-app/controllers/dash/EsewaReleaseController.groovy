@@ -2,27 +2,32 @@ package dash
 
 class EsewaReleaseController {
 
-EsewaReleaseService esewaReleaseService
+    EsewaReleaseService esewaReleaseService
 
-    def index(){
-        def esewaReleaseList = esewaReleaseService.list()
-        [esewaReleaseList:esewaReleaseList]
+    def index() {
+        def esewaReleaseList = esewaReleaseService.saveList(params)
+        [esewaReleaseList: esewaReleaseList]
     }
 
-    def saveData(){
+    def saveData() {
         esewaReleaseService.saveData(params)
         redirect(controller: "esewaRelease", action: "index")
+    }
+
+    def search() {
+        def response = esewaReleaseService.search()
+        render response
     }
 
     def create() {
         [esewaRelease: flash.redirectParams]
     }
 
-    def update(){
+    def update() {
         def response = esewaReleaseService.getById(params.id)
-        if (!response){
+        if (!response) {
             redirect(controller: "esewaRelease", action: "index")
-        }else{
+        } else {
             esewaReleaseService.update(response, params)
             redirect(controller: "esewaRelease", action: "index")
         }
@@ -43,14 +48,14 @@ EsewaReleaseService esewaReleaseService
     }
 
     def delete(Integer id) {
-      def response = esewaReleaseService.getById(id)
-        if (!response){
+        def response = esewaReleaseService.getById(id)
+        if (!response) {
             redirect(controller: "esewaRelease", action: "index")
-        }else{
+        } else {
             response = esewaReleaseService.delete(response)
-            if (!response){
+            if (!response) {
                 render "unable.to.delete"
-            }else{
+            } else {
                 redirect(controller: "esewaRelease", action: "index")
             }
         }

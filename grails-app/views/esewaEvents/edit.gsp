@@ -10,7 +10,7 @@
 
 <div class="card">
     <div class="card-header">
-        <g:message code="default.button.update.label" args="['EsewaEvents']"/>
+        <g:message code="esewa.Events" args="['Edit']"/>
     </div>
     <div class="card-body">
         <g:form controller="esewaEvents" action="update">

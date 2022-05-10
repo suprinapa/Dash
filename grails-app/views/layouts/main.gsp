@@ -21,11 +21,27 @@
 	<a class="navbar-brand custom_header" href="/Dash"> ESEWA DASHBOARD</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
 	</button>
-
 	<div class="collapse navbar-collapse" aria-expanded="false" style="height: 0.8px;" id="navbarContent">
+		<ul class="navbar-nav ml-auto">
+			<UIHelper:memberActionMenu/>
+		</ul>
+	</div>
+</nav>
+</header>
+
+
+<div class="container-fluid">
+	<div class="row">
+
+		<nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+			<ul class="list-group">
+				<UIHelper:leftNavigation/>
+			</ul>
+		</nav>
+
 	</div>
 
-</nav>
+</div>
 
 <g:layoutBody/>
 

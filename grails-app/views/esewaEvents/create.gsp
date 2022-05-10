@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        <g:message code="default.button.create.label" args="['EsewaRelease']"/>
+        <g:message code="esewa.Events" args="['Create']"/>
     </div>
     <div class="card-body">
         <g:form controller="esewaEvents" action="saveData">

@@ -16,7 +16,6 @@ class EsewaRelease {
     static constraints = {
         releaseName nullable: false
         releaseVersion_code nullable: false
-        releaseStatus inList: ['In_Progress', 'Released']
         parentRelease nullable: true
     }
 
@@ -26,11 +25,11 @@ class EsewaRelease {
         version true
         releaseName column: 'releaseName'
         releaseVersion_code column: 'releaseVersion_code'
-        releaseStatus column: 'releaseStatus'
         parentRelease column: 'parentRelease'
         startDate column: 'startDate'
         endDate column: 'endDate'
         createdDate column: 'createdDate'
         releaseNotes(cascade:'all-delete-orphan')
+        releaseStatus column: 'releaseStatus'
     }
 }

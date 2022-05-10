@@ -1,18 +1,19 @@
+<%@ page import="dash.Events" %>
+
 <div class="form-group">
-    <label><g:message code="eventName"/></label>
-    <g:textField name="eventName" class="form-control" value="${esewaEvents?.eventName}" placeholder="Please Enter the Event Name">
-        <label for="eventName-select"></label><select name="events" id="eventName-select">
-        <option value="">--Please choose an option--</option>
-        <option value="dog">Dog</option>
-        <option value="cat">Cat</option>
-        <option value="hamster">Hamster</option>
-        <option value="parrot">Parrot</option>
-        <option value="spider">Spider</option>
-        <option value="goldfish">Goldfish</option>
-    </select>
-    </g:textField>
+    <label><g:message code="id"/></label>
+    <g:textField name="id" class="form-control" value="${esweaEvents?.id}" placeholder="Please Enter the Release ID"/>
 </div>
 
+%{--<div class="form-group">
+    <label><g:message code="esewa_release_id"/></label>
+    <g:textField name="esewa_release_id" class="form-control" value="${esweaEvents?.esewa_release_id}" placeholder="Please Enter the Release ID"/>
+</div>--}%
 
+<div class="form-group">
+    <label><g:message code="eventName"/></label>
+    <g:select name="eventName"
+              from="${Events?.values()}"/>
+</div>
 
 

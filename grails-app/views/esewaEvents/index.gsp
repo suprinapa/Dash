@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <g:set var="entityName" value="${message(code: 'events.label', default: 'ESewa')}" />
+    <g:set var="entityName" value="${message(code: 'esewa.Events', default: 'List-Of')}" />
     <title><g:message code="default.list.label" args="[entityName]" /></title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -20,12 +20,12 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="create" action="create"><g:message code="Create" args="[entityName]" /></g:link></li>
-        <li><a class="list" href="${createLink(uri: '/esewaevents/index')}"><g:message code="reload"/></a></li>
+        <li><a class="list" href="${createLink(uri: '/esewaEvents/index')}"><g:message code="reload"/></a></li>
     </ul>
-%{--    <div class="btn-group">
-        <g:form controller="esewaevents" action="index">
+    <div class="btn-group">
+        <g:form controller="esewaEvents" action="index">
             <div class="input-group" id="search-area">
-                <g:select name="colName" class="form-control" from="[eventsName: 'events Name', eventsVersion_code: 'events Version', eventsStatus: 'events Status', parentevents: 'Previous Version', createdDate: 'Date of Creation', startDate: 'Start Date', endDate: 'End Date']"
+                <g:select name="colName" class="form-control" from="[eventsName: 'events Name']"
                           value="${params?.colName}" optionKey="key" optionValue="value"/>
                 <g:textField name="colValue" class="form-control" value="${params?.colValue}"/>
                 <span class="input-group-btn">
@@ -33,7 +33,7 @@
                 </span>
             </div>
         </g:form>
-    </div>--}%
+    </div>
 </div>
 <div id="list-Esewaevents" role="main">
     <h1><g:message code="default.list.label" args="[entityName]"  /></h1>
