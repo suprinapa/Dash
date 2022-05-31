@@ -4,8 +4,8 @@ class EsewaRelease {
 
     String releaseName
     String releaseVersion_code
-    String releaseStatus
-    String parentRelease
+    ReleaseStatus releaseStatus
+    EsewaRelease parentRelease
     Date createdDate
     Date startDate
     Date endDate

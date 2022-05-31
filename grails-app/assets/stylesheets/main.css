@@ -488,7 +488,7 @@ th:hover, tr:hover {
 	padding: 0.3em 0.2em;
 	text-align: center;
 	   -moz-box-shadow: 0 0 3px 1px #AAAAAA;
-	-webkit-box-shadow: 0 0 3px 1px #AAAAAA;
+	-webkit-box-shadow: 0 0 3px 1px #8e2c2c;
 	        box-shadow: 0 0 3px 1px #AAAAAA;
 	background-color: #EFEFEF;
 }
@@ -522,7 +522,8 @@ th:hover, tr:hover {
 
 /* ACTION BUTTONS */
 
-.buttons {
+.
+ buttons {
 	background-color: #efefef;
 	overflow: hidden;
 	padding: 0.3em;

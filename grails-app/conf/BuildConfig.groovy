@@ -47,6 +47,9 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
+        // https://mvnrepository.com/artifact/jfree/jcommon
+        // https://mvnrepository.com/artifact/jfree/jfreechart
+        compile 'jfree:jfreechart:1.0.13'
         runtime 'mysql:mysql-connector-java:8.0.13'
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.29'
@@ -57,7 +60,6 @@ grails.project.dependency.resolution = {
     plugins {
         // plugins for the build system only
         build ":tomcat:7.0.55.3" // or ":tomcat:8.0.22"
-
         // plugins for the compile step
         compile ":scaffolding:2.1.2"
         compile ':cache:1.1.8'

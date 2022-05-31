@@ -8,6 +8,8 @@
 //= require jquery
 //= require_tree .
 //= require_self
+//= require_test
+//= require_pagination
 
 if (typeof jQuery !== 'undefined') {
 	(function($) {

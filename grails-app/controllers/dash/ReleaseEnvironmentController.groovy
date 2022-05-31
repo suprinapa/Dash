@@ -9,7 +9,6 @@ class ReleaseEnvironmentController {
         [releaseEnvironmentList:releaseEnvironmentList]
     }
 
-
     def saveData(){
         releaseEnvironmentService.saveData(params)
         redirect(controller: "releaseEnvironment", action: "index")
