@@ -9,22 +9,22 @@ class EsewaReleaseController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
-    params.max = Math.min(params.max ? params.int('max') : 5, 100)
-        def response =
+    params.max = params.max ? params.int('max') : 10
     [esewaReleaseInstanceList: EsewaRelease.list(max:params.int('max'),offset: 0), esewaReleaseInstanceCount: EsewaRelease.count()]
 /*    def model = [esewaReleaseInstanceList: EsewaRelease.list(params) ,esewaReleaseInstanceCount: EsewaRelease.count()]
     render(view: 'index', model: model)*/
     }
 
     def grid ={
-        params.max = Math.min(params.max ? params.int('max') : 5, 100)
+        params.max = params.max ? params.int('max') : 10
         render(template: 'grid', model: [esewaReleaseInstanceList: EsewaRelease.list(params), esewaReleaseInstanceCount: EsewaRelease.count()])
     }
 
     def search() {
         List<EsewaRelease> releasesList = EsewaRelease.createCriteria().list(params) {
             if (params?.colName == "releaseName" && params?.colValue) {
-                EsewaRelease.findAllByReleaseName(params.colValue)
+              def searchResult = EsewaRelease.findAllByReleaseName(params.colValue)
+              render(view: 'index',model: [esewaReleaseInstanceList: searchResult , esewaReleaseInstanceCount: searchResult.size()])
             }
             else if (params?.colName == "releaseVersion_code" && params?.colValue){
                 render EsewaRelease.findAllByReleaseVersion_code(params.colValue)
