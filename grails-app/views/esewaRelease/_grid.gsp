@@ -1,4 +1,5 @@
 <div class="list">
+    <span>${searchQuery}</span>
 <table>
     <thead>
     <tr>
@@ -49,5 +50,5 @@
  --}%
 <div class="pagination">
     <util:remotePaginate  action="grid" total="${esewaReleaseInstanceCount}"
-                          update="gridList"/>
+                          update="gridList" params="[colValue: searchQuery]"/>
 </div>

@@ -17,29 +17,28 @@ class EsewaReleaseController {
 
     def grid ={
         params.max = params.max ? params.int('max') : 10
+        if(params.colValue != null){
+            List<EsewaRelease> releaseList = privateSearchMethod(params.max, params.offset)
+            render(template: 'grid', model: [esewaReleaseInstanceList: releaseList, esewaReleaseInstanceCount: releaseList.size()])
+        }
         render(template: 'grid', model: [esewaReleaseInstanceList: EsewaRelease.list(params), esewaReleaseInstanceCount: EsewaRelease.count()])
     }
 
     def search() {
-        List<EsewaRelease> releasesList = EsewaRelease.createCriteria().list(params) {
-            if (params?.colName == "releaseName" && params?.colValue) {
-              def searchResult = EsewaRelease.findAllByReleaseName(params.colValue)
-              render(view: 'index',model: [esewaReleaseInstanceList: searchResult , esewaReleaseInstanceCount: searchResult.size()])
-            }
-            else if (params?.colName == "releaseVersion_code" && params?.colValue){
-                render EsewaRelease.findAllByReleaseVersion_code(params.colValue)
-            }
-            else if (params?.colName == "releaseStatus" && params?.colValue){
-                render EsewaRelease.findAllByReleaseStatus(params.colValue)
-            }
+        List<EsewaRelease> releasesList = privateSearchMethod(10,0)
+        render(view: 'index',model: [esewaReleaseInstanceList: releasesList , esewaReleaseInstanceCount: releasesList.size(), searchQuery: params?.colValue])
+    }
+
+         def searchByDate() {
+    }
+
+    private def privateSearchMethod(max, offset){
+        def rel = EsewaRelease.createCriteria()
+        List<EsewaRelease> releasesList = rel.list(max: max, offset: offset) {
+            eq('releaseName', params?.colValue)
         } as List<EsewaRelease>
-        return [list: releasesList, count: releasesList.count]
+        return releasesList;
     }
-
-    def searchByDate() {
-
-    }
-
 
     def show(EsewaRelease esewaReleaseInstance) {
         respond esewaReleaseInstance
