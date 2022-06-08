@@ -1,5 +1,4 @@
 <div class="list">
-    <span>${searchQuery}</span>
 <table>
     <thead>
     <tr>
@@ -48,7 +47,10 @@
  total (required) - The total number of results to paginate
  action (required) - The name of the action to use in the link
  --}%
-<div class="pagination">
-    <util:remotePaginate  action="grid" total="${esewaReleaseInstanceCount}"
-                          update="gridList" params="[colValue: searchQuery]"/>
-</div>
+<ul class="pagination">
+    <li>
+        <util:remotePaginate  action="ajaxSearchEsewaRelease" total="${esewaReleaseInstanceCount}"
+                              update="gridList, searchField"
+                              params="${params}"/>
+    </li>
+</ul>

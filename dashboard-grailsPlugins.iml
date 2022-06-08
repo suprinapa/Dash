@@ -212,7 +212,6 @@
         <SOURCES>
           <root url="jar://$USER_HOME$/.ideaLibSources/grails-datastore-gorm-hibernate-core-3.1.5.RELEASE-sources.jar!/" />
           <root url="jar://$USER_HOME$/.ideaLibSources/grails-datastore-gorm-hibernate4-3.1.5.RELEASE-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.ideaLibSources/groovy-all-2.4.4-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
