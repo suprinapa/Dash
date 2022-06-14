@@ -161,7 +161,7 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #0d0e0d;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -1710,8 +1710,8 @@ pre code {
 }
 
 .table .thead-dark th {
-  color: #fff;
-  background-color: #212529;
+  color: #ffffff;
+  background-color: #59c920;
   border-color: #32383e;
 }
 
@@ -2402,14 +2402,14 @@ fieldset:disabled a.btn {
 
 .btn-success {
   color: #fff;
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: #59c920 ;
+  border-color: #59c920 ;
 }
 
 .btn-success:hover {
   color: #fff;
-  background-color: #218838;
-  border-color: #1e7e34;
+  background-color: #59c920 ;
+  border-color: #59c920 ;
 }
 
 .btn-success:focus, .btn-success.focus {
@@ -6143,7 +6143,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: #59c920 !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,

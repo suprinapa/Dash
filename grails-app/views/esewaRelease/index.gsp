@@ -9,35 +9,38 @@
 	<body>
 
 		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+			<g:link controller="esewaRelease" action="create" class="btn btn-success"><g:message code="default.create.label" args="[entityName]"/></g:link>
 		</div>
+	<br>
 	%{--Search Panel --}%
 	<div class="btn-group">
-%{--		<g:form controller="esewaRelease" action="search" method="GET">--}%
-%{--			<div class="input-group" id="search-area">--}%
-%{--				<g:select name="colName" class="form-control" from="[releaseName: 'Release Name',releaseVersion_code :'Release Version',releaseStatus : 'ReleaseStatus', createdDate: 'CreatedDate']" value="${params?.colName}" optionKey="key" optionValue="value"/>--}%
-%{--				<g:textField name="colValue" class="form-control" value="${params?.colValue}"/>--}%
-%{--				<span class="input-group-btn">--}%
-%{--					<button class="btn btn-default" type="submit">Search</button>--}%
-%{--				</span>--}%
-%{--			</div>--}%
-%{--		</g:form>--}%
-		<g:formRemote name="searchForm" url="[controller: 'esewaRelease', action: 'ajaxSearchEsewaRelease']"
-					  update="gridList" style="margin-bottom:5px;">
-			<g:textField id="searchField" name="searchText" placeholder="Search by Release task."
-						 style="height:30px; width: 300px;"></g:textField>
-		</g:formRemote>
+		<g:form url="[controller: 'esewaRelease', action: 'index']"  update="gridList" method="GET">
+			<div class="input-group" id="search-area">
+				<g:select name="colName" class="form-control" from="[releaseName: 'Release Name',releaseVersion :'Release Version',releaseStatus : 'ReleaseStatus', createdDate: 'CreatedDate']" value="${params?.colName}" optionKey="key" optionValue="value"/>
+				<g:textField class ="form-control" id="searchField" name="searchText" placeholder="Search"></g:textField>
+				<span class="input-group-btn">
+					<button class="btn btn-success" type="submit">Search</button>
+				</span>
+			</div>
+		</g:form>
+%{--		<g:formRemote name="searchForm" url="[controller: 'esewaRelease', action: 'index']"
+					  update="gridList">
+			<g:select name="colName" class="form-control" update ="gridList"  from="[releaseName: 'Release Name',releaseVersion :'Release Version',releaseStatus : 'ReleaseStatus']" value="${params?.colName}" optionKey="key" optionValue="value"/>
+			<g:textField id="searchField" name="searchText" placeholder="Search"></g:textField>
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="submit">Search</button>
+			</span>
+		</g:formRemote>--}%
 	</div>
 
 		<div id="list-esewaRelease" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<h2><g:message code="default.list.label" args="[entityName]" /></h2>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
 		</div>
+
+
 	<div id="gridList">
 		<g:render template="grid"/>
 	</div>

@@ -1,20 +1,20 @@
-<div class="list">
-<table>
-    <thead>
+<div class="card-body ">
+<table class="table table-bordered ">
+    <thead class="thead-dark ">
     <tr>
-        <util:remoteSortableColumn property="releaseName" action="grid" update="gridList" title="${message(code: 'esewaRelease.releaseName.label', default: 'Release Name')}" />
+        <util:remoteSortableColumn property="releaseName" action="index" update="gridList" title="${message(code: 'esewaRelease.releaseName.label', default: 'Release Name')}" />
 
-        <util:remoteSortableColumn property="releaseVersion_code" update="gridList" action="grid" title="${message(code: 'esewaRelease.releaseVersion_code.label', default: 'Release Versioncode')}" />
+        <util:remoteSortableColumn property="releaseVersion" update="gridList" action="index" title="${message(code: 'esewaRelease.releaseVersion.label', default: 'Release Version')}" />
 
         <th><g:message code="esewaRelease.parentRelease.label" default="Parent Release" /></th>
 
-        <util:remoteSortableColumn property="createdDate" update="gridList" action="grid" title="${message(code: 'esewaRelease.createdDate.label', default: 'Created Date')}" />
+        <util:remoteSortableColumn property="createdDate" update="gridList" action="index" title="${message(code: 'esewaRelease.createdDate.label', default: 'Created Date')}" />
 
-        <util:remoteSortableColumn property="startDate" update="gridList" action="grid" title="${message(code: 'esewaRelease.startDate.label', default: 'Start Date')}" />
+        <util:remoteSortableColumn property="startDate" update="gridList" action="index" title="${message(code: 'esewaRelease.startDate.label', default: 'Start Date')}" />
 
-        <util:remoteSortableColumn property="endDate" update="gridList" action="grid" title="${message(code: 'esewaRelease.endDate.label', default: 'End Date')}" />
+        <util:remoteSortableColumn property="endDate" update="gridList" action="index" title="${message(code: 'esewaRelease.endDate.label', default: 'End Date')}" />
 
-        <util:remoteSortableColumn property="releaseStatus" update="gridList"  action="grid" title="${message(code: 'esewaRelease.releaseStatus.label', default: 'Release Status')}" />
+        <util:remoteSortableColumn property="releaseStatus" update="gridList"  action="index" title="${message(code: 'esewaRelease.releaseStatus.label', default: 'Release Status')}" />
 
     </tr>
     </thead>
@@ -26,15 +26,15 @@
 
                 ${fieldValue(bean: esewaReleaseInstance, field: "releaseName")}</g:link></td>
 
-            <td>${fieldValue(bean: esewaReleaseInstance, field: "releaseVersion_code")}</td>
+            <td>${fieldValue(bean: esewaReleaseInstance, field: "releaseVersion")}</td>
 
-            <td>${fieldValue(bean: esewaReleaseInstance, field: "parentRelease")}</td>
+            <td>${fieldValue(bean: esewaReleaseInstance, field: "parentRelease.releaseName")}</td>
 
-            <td><g:formatDate date="${esewaReleaseInstance.createdDate}" /></td>
+            <td><g:formatDate  date="${esewaReleaseInstance.createdDate}" format="yyyy-MM-dd" /></td>
 
-            <td><g:formatDate date="${esewaReleaseInstance.startDate}" /></td>
+            <td><g:formatDate date="${esewaReleaseInstance.startDate}" format="yyyy-MM-dd" /></td>
 
-            <td><g:formatDate date="${esewaReleaseInstance.endDate}" /></td>
+            <td><g:formatDate date="${esewaReleaseInstance.endDate}" format="yyyy-MM-dd" /></td>
 
             <td>${fieldValue(bean: esewaReleaseInstance, field: "releaseStatus")}</td>
 
@@ -49,8 +49,7 @@
  --}%
 <ul class="pagination">
     <li>
-        <util:remotePaginate  action="ajaxSearchEsewaRelease" total="${esewaReleaseInstanceCount}"
+        <util:remotePaginate  action="index" total="${esewaReleaseInstanceCount}"
                               update="gridList, searchField"
                               params="${params}"/>
-    </li>
 </ul>

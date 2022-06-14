@@ -12,15 +12,15 @@ class UIHelperTagLib {
         out << "</div></li>"
     }*/
 
-    def leftNavigation = { attrs, body ->
+    /*def leftNavigation = { attrs, body ->
         List navigations = [
                 [controller: "esewaRelease", action: "index", name: "esewa.Release"],
-                /*[controller: "esewaEvents", action: "index", name: "eesewaEvents.label"],
+                *//*[controller: "esewaEvents", action: "index", name: "eesewaEvents.label"],
                 [controller: "releaseEnvironment", action: "index", name: "release.Environment"],
                 [controller: "esewaComponents", action: "index", name: "esewa.Components"],
                 [controller: "releaseChecklist", action: "index", name: "releaseChecklist.label"],
                 [controller: "releaseNotes", action: "index", name: "releaseNotes.label"],
-                [controller: "esewaReleaseEvents", action: "index", name: "esewaReleaseEvents.label"],*/
+                [controller: "esewaReleaseEvents", action: "index", name: "esewaReleaseEvents.label"],*//*
         ]
 
         navigations.each { menu ->
@@ -28,5 +28,5 @@ class UIHelperTagLib {
             out << g.link(controller: menu.controller, action: menu.action) { g.message(code: menu.name, args: ['']) }
             out << '</li>'
         }
-    }
+    }*/
 }

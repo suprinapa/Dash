@@ -1,4 +1,3 @@
-
 <%@ page import="dash.EsewaRelease" %>
 <!DOCTYPE html>
 <html>
@@ -32,11 +31,11 @@
 				</li>
 				</g:if>--}%
 			
-				<g:if test="${esewaReleaseInstance?.releaseVersion_code}">
+				<g:if test="${esewaReleaseInstance?.releaseVersion}">
 				<li class="fieldcontain">
-					<span id="releaseVersion_code-label" class="property-label"><g:message code="esewaRelease.releaseVersion_code.label" default="Release Versioncode" /></span>
+					<span id="releaseVersion-label" class="property-label"><g:message code="esewaRelease.releaseVersion.label" default="Release Version" /></span>
 					
-						<span class="property-value" aria-labelledby="releaseVersion_code-label"><g:fieldValue bean="${esewaReleaseInstance}" field="releaseVersion_code"/></span>
+						<span class="property-value" aria-labelledby="releaseVersion-label"><g:fieldValue bean="${esewaReleaseInstance}" field="releaseVersion"/></span>
 					
 				</li>
 				</g:if>

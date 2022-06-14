@@ -11,12 +11,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'releaseVersion_code', 'error')} required">
-	<label for="releaseVersion_code">
-		<g:message code="esewaRelease.releaseVersion_code.label" default="Release Versioncode" />
+<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'releaseVersion', 'error')} required">
+	<label for="releaseVersion">
+		<g:message code="esewaRelease.releaseVersion.label" default="Release Versioncode" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="releaseVersion_code" required="" value="${esewaReleaseInstance?.releaseVersion_code}"/>
+	<g:textField name="releaseVersion" required="" value="${esewaReleaseInstance?.releaseVersion}"/>
 
 </div>
 

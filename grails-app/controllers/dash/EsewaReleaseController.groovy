@@ -1,5 +1,6 @@
 package dash
 
+import grails.gorm.PagedResultList
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -10,27 +11,75 @@ class EsewaReleaseController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
-    params.max = params.max ? params.int('max') : 10
-        if(params.offset == null){
-            params << [offset: 0]
+        def searchText = params.searchText
+        def colName = params.colName
+        def esewaReleaseList
+        def esewaReleaseCount
+        params.max = params.max ? params.int('max') : 10
+        if (searchText) {
+            def rel = EsewaRelease.createCriteria()
+            List<EsewaRelease> releasesList = rel.list(max: params.max, offset: params.offset) {
+                eq(colName, searchText)
+            } as List<EsewaRelease>
+            esewaReleaseList = releasesList
+
+            PagedResultList releases = EsewaRelease.where { releaseName == searchText }.list(max: params.max)
+            esewaReleaseCount= releases.totalCount
+            render(view: 'index', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount], searchText: searchText)
         }
-    [esewaReleaseInstanceList: EsewaRelease.list(max:params.int('max'),offset: params.offset), esewaReleaseInstanceCount: EsewaRelease.count(), params:params]
+        else {
+            if (params.offset == null) {
+                params << [offset: 0]
+            }
+            [esewaReleaseInstanceList: EsewaRelease.list(max: params.int('max'), offset: params.offset), esewaReleaseInstanceCount: EsewaRelease.count()]
+        }
     }
 
-    def fetchRelease ={
+/*    def getById(Integer id) {
+        return EsewaRelease.get(id)
+    }
+*//*    def fetchRelease ={
         params.max = params.max ? params.int('max') : 10
         render(template: 'grid', model: [esewaReleaseInstanceList: EsewaRelease.list(params), esewaReleaseInstanceCount: EsewaRelease.count()])
-    }
+    }*/
+
 
     def search() {
-        def rel = EsewaRelease.createCriteria()
-        List<EsewaRelease> releasesList = rel.list() {
-            eq('releaseName', params?.colValue)
-        } as List<EsewaRelease>
-        render (view:'index',model: [esewaReleaseInstanceList: releasesList , esewaReleaseInstanceCount: releasesList.size()])
+
     }
 
-     def ajaxSearchEsewaRelease(Integer max, Integer offset) {
+/*
+    def search() {
+        def searchText = params.searchText
+        def colName = params.colName
+        def esewaReleaseList
+        def esewaReleaseCount
+        params.max = params.max ? params.int('max') : 10
+        if (searchText) {
+            def rel = EsewaRelease.createCriteria()
+            List<EsewaRelease> releasesList = rel.list(max: params.max, offset: params.offset) {
+                eq(colName, searchText)
+            } as List<EsewaRelease>
+
+            esewaReleaseList = releasesList
+            if(searchText) {
+                PagedResultList releases = EsewaRelease.where { colName == searchText }.list(max: 10)
+                int totalCount = releases.totalCount
+            }
+        *//*    else if(colName == "releaseVersion") {
+                esewaReleaseCount = EsewaRelease.where {
+                    releaseVersion == searchText
+                }.count()
+            }*//*
+
+        } else {
+            esewaReleaseList = EsewaRelease.list(params)
+            esewaReleaseCount = EsewaRelease.count()
+        }
+        render(template: 'grid', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount], searchText: searchText)
+    }*/
+
+/*     def ajaxSearchEsewaRelease(Integer max, Integer offset) {
          def searchText = params.searchText
          def esewaReleaseList
          def esewaReleaseCount
@@ -42,17 +91,16 @@ class EsewaReleaseController {
              } as List<EsewaRelease>
              esewaReleaseList = releasesList
 
-             esewaReleaseCount = EsewaRelease.where {releaseName == searchText}.count()
+             esewaReleaseCount = EsewaRelease.where {
+                 releaseName == searchText
+             }.count()
          }else {
              esewaReleaseList = EsewaRelease.list(params)
              esewaReleaseCount = EsewaRelease.count()
          }
 
          render (template:'grid',model: [esewaReleaseInstanceList: esewaReleaseList , esewaReleaseInstanceCount: esewaReleaseCount], searchText: searchText)
-//         def chList = g.render(template: 'grid', model: [esewaReleaseInstanceList: releasesList, esewaReleaseInstanceCount: releasesList.size()], searchText: searchText)
-//         def esewaReleaseList = StringEscapeUtils.escapeJavaScript(chList.toString())
-//         render template: 'searchSuccess', model: [esewaReleaseList: esewaReleaseList, params: params]
-     }
+     }*/
 
 
     def show(EsewaRelease esewaReleaseInstance) {

@@ -3,7 +3,7 @@ package dash
 class EsewaRelease {
 
     String releaseName
-    String releaseVersion_code
+    String releaseVersion
     ReleaseStatus releaseStatus
     EsewaRelease parentRelease
     Date createdDate
@@ -15,7 +15,7 @@ class EsewaRelease {
 
     static constraints = {
         releaseName nullable: false
-        releaseVersion_code nullable: false
+        releaseVersion nullable: false
         parentRelease nullable: true
     }
 
@@ -24,7 +24,7 @@ class EsewaRelease {
         table 'EsewaRelease'
         version true
         releaseName column: 'releaseName'
-        releaseVersion_code column: 'releaseVersion_code'
+        releaseVersion column: 'releaseVersion'
         parentRelease column: 'parentRelease'
         startDate column: 'startDate'
         endDate column: 'endDate'
