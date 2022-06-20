@@ -63,7 +63,7 @@ class EsewaReleaseController {
             if(colName == "releaseName") {
                 esewaReleaseCount = EsewaRelease.where {
                     releaseName == searchText
-                }.list(max: 10)
+                }.count()
             }
             else if(colName == "releaseVersion") {
                 esewaReleaseCount = EsewaRelease.where {
@@ -72,10 +72,11 @@ class EsewaReleaseController {
             }
 
         } else {
+//            params << [sort: 'colName']
             esewaReleaseList = EsewaRelease.list(params)
             esewaReleaseCount = EsewaRelease.count()
         }
-        render(template: 'grid', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount], searchText: searchText)
+        render(view: 'index', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount, searchText: searchText])
     }
 
 /*     def ajaxSearchEsewaRelease(Integer max, Integer offset) {
