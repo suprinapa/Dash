@@ -13,7 +13,7 @@
 	<br>
 	%{--Search Panel --}%
 	<div class="btn-group">
-		<g:form url="[controller: 'esewaRelease', action: 'index']" method="GET">
+		<g:form url="[controller: 'esewaRelease', action: 'search']" method="GET">
 			<div class="input-group" id="search-area">
 				<g:select name="colName" class="form-control" from="[releaseName: 'Release Name',releaseVersion :'Release Version',releaseStatus : 'ReleaseStatus', createdDate: 'CreatedDate']" value="${params?.colName}" optionKey="key" optionValue="value"/>
 				<g:textField class ="form-control" id="searchField" name="searchText" placeholder="Search"></g:textField>
