@@ -8,7 +8,6 @@ jQuery(document).ready(function () {
                 $.alert('Confirmed!');
             },
             cancel: function () {
-                $.alert('Canceled!');
             }
         }
     });

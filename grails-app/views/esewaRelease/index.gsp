@@ -1,4 +1,3 @@
-<%@ page import="dash.EsewaRelease" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,14 +6,14 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-
+	<a href="#list-esewaRelease" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<g:link controller="esewaRelease" action="create" class="btn btn-success"><g:message code="default.create.label" args="[entityName]"/></g:link>
 		</div>
 	<br>
 	%{--Search Panel --}%
 	<div class="btn-group">
-		<g:form url="[controller: 'esewaRelease', action: 'index']"  update="gridList" method="GET">
+		<g:form url="[controller: 'esewaRelease', action: 'index']" method="GET">
 			<div class="input-group" id="search-area">
 				<g:select name="colName" class="form-control" from="[releaseName: 'Release Name',releaseVersion :'Release Version',releaseStatus : 'ReleaseStatus', createdDate: 'CreatedDate']" value="${params?.colName}" optionKey="key" optionValue="value"/>
 				<g:textField class ="form-control" id="searchField" name="searchText" placeholder="Search"></g:textField>

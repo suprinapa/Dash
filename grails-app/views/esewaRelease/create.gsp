@@ -8,7 +8,8 @@
 	</head>
 	<body>
 		<a href="#create-esewaRelease" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="create-esewaRelease" class="content scaffold-create" role="main">
+	<div id="create-esewaRelease" class="card" role="main">
+		<div class="card-body">
 			<h2><g:message code="default.create.label" args="[entityName]" /></h2>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
@@ -25,9 +26,11 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:link controller="esewaRelease" action="index" class="btn btn-secondary"><g:message code="cancel"/></g:link>
 				</fieldset>
 			</g:form>
 		</div>
+	</div>
 	</body>
 </html>

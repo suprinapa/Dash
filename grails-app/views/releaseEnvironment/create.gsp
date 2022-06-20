@@ -1,19 +1,32 @@
 %{--Include Main Layout--}%
-<meta name="layout" content="main"/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main">
+    <g:set var="entityName" value="${message(code: 'releaseEnvironment.label', default: 'Create')}" />
+    <title><g:message code="default.create.label" args="[entityName]" /></title>
+</head>
+<body>
+<a href="#create-releaseEnvironment" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-<div class="card">
-    <div class="card-header">
-        <g:message code="release.Environment" args="['Create']"/>
-    </div>
-    <div class="card-body">
-        <g:form controller="releaseEnvironment" action="saveData">
+<h2><g:message code="default.create.label" args="[entityName]" /></h2>
 
-            %{--Partial Templating--}%
+<div id="create-releaseEnvironment" class="card" role="main">
+<div class="card-body">
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
+    <g:form controller="releaseEnvironment" action="saveData" >
+        <fieldset class="form">
             <g:render template="form"/>
-            <div class="form-action-panel">
-                <g:submitButton class="btn btn-primary" name="save" value="${g.message(code: "save")}"/>
-                <g:link controller="releaseEnvironment" action="index" class="btn btn-primary"><g:message code="cancel"/></g:link>
-            </div>
-        </g:form>
-    </div>
+        </fieldset>
+        <fieldset class="buttons">
+            <g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+            <g:link controller="releaseEnvironment" action="index" class="btn btn-secondary"><g:message code="cancel"/></g:link>
+        </fieldset>
+    </g:form>
 </div>
+</div>
+</body>
+</html>
+

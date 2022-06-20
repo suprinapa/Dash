@@ -1,7 +1,4 @@
 package dash
-
-import grails.gorm.PagedResultList
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -11,6 +8,23 @@ class EsewaReleaseController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
+    params.max = params.max ? params.int('max') : 10
+        if(params.offset == null){
+            params << [offset: 0]
+        }
+        [esewaReleaseInstanceList: EsewaRelease.list(max: params.int('max'), offset: params.offset), esewaReleaseInstanceCount: EsewaRelease.count()]
+    }
+
+/*    def getById(Integer id) {
+        return EsewaRelease.get(id)
+    }
+*//*    def fetchRelease ={
+        params.max = params.max ? params.int('max') : 10
+        render(template: 'grid', model: [esewaReleaseInstanceList: EsewaRelease.list(params), esewaReleaseInstanceCount: EsewaRelease.count()])
+    }*/
+
+
+/*    def search() {
         def searchText = params.searchText
         def colName = params.colName
         def esewaReleaseList
@@ -24,32 +38,15 @@ class EsewaReleaseController {
             esewaReleaseList = releasesList
 
             PagedResultList releases = EsewaRelease.where { releaseName == searchText }.list(max: params.max)
-            esewaReleaseCount= releases.totalCount
+            esewaReleaseCount = releases.totalCount
             render(view: 'index', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount], searchText: searchText)
-        }
-        else {
-            if (params.offset == null) {
-                params << [offset: 0]
-            }
-            [esewaReleaseInstanceList: EsewaRelease.list(max: params.int('max'), offset: params.offset), esewaReleaseInstanceCount: EsewaRelease.count()]
-        }
-    }
+        } else{
 
-/*    def getById(Integer id) {
-        return EsewaRelease.get(id)
-    }
-*//*    def fetchRelease ={
-        params.max = params.max ? params.int('max') : 10
-        render(template: 'grid', model: [esewaReleaseInstanceList: EsewaRelease.list(params), esewaReleaseInstanceCount: EsewaRelease.count()])
+        }
     }*/
 
 
-    def search() {
-
-    }
-
-/*
-    def search() {
+    def search(Integer max, Integer offset) {
         def searchText = params.searchText
         def colName = params.colName
         def esewaReleaseList
@@ -62,22 +59,24 @@ class EsewaReleaseController {
             } as List<EsewaRelease>
 
             esewaReleaseList = releasesList
-            if(searchText) {
-                PagedResultList releases = EsewaRelease.where { colName == searchText }.list(max: 10)
-                int totalCount = releases.totalCount
+
+            if(colName == "releaseName") {
+                esewaReleaseCount = EsewaRelease.where {
+                    releaseName == searchText
+                }.list(max: 10)
             }
-        *//*    else if(colName == "releaseVersion") {
+            else if(colName == "releaseVersion") {
                 esewaReleaseCount = EsewaRelease.where {
                     releaseVersion == searchText
                 }.count()
-            }*//*
+            }
 
         } else {
             esewaReleaseList = EsewaRelease.list(params)
             esewaReleaseCount = EsewaRelease.count()
         }
         render(template: 'grid', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount], searchText: searchText)
-    }*/
+    }
 
 /*     def ajaxSearchEsewaRelease(Integer max, Integer offset) {
          def searchText = params.searchText

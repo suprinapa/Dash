@@ -1,18 +1,17 @@
 <%@ page import="dash.ReleaseStatus; dash.ReleaseEnvironment; dash.EsewaComponents; dash.EsewaRelease" %>
 
 
-
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'releaseName', 'error')} required">
-	<label for="releaseName">
-		<g:message code="esewaRelease.releaseName.label" default="Release Name" />
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'releaseName', 'error')} required">
+	<label for="releaseName"  class="col-sm-2 col-form-label">
+		<g:message code="esewaRelease.releaseName.label" class="form-label" default="Release Name" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="releaseName" required="" value="${esewaReleaseInstance?.releaseName}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'releaseVersion', 'error')} required">
-	<label for="releaseVersion">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'releaseVersion', 'error')} required">
+	<label for="releaseVersion"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.releaseVersion.label" default="Release Versioncode" />
 		<span class="required-indicator">*</span>
 	</label>
@@ -20,8 +19,8 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'parentRelease', 'error')} ">
-	<label for="parentRelease">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'parentRelease', 'error')} ">
+	<label for="parentRelease"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.parentRelease.label" default="Parent Release" />
 		
 	</label>
@@ -29,8 +28,8 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'createdDate', 'error')} required">
-	<label for="createdDate">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'createdDate', 'error')} required">
+	<label for="createdDate"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.createdDate.label" default="Created Date" />
 		<span class="required-indicator">*</span>
 	</label>
@@ -38,8 +37,8 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'startDate', 'error')} required">
-	<label for="startDate">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'startDate', 'error')} required">
+	<label for="startDate"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.startDate.label" default="Start Date" />
 		<span class="required-indicator">*</span>
 	</label>
@@ -47,8 +46,8 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'endDate', 'error')} required">
-	<label for="endDate">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'endDate', 'error')} required">
+	<label for="endDate"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.endDate.label" default="End Date" />
 		<span class="required-indicator">*</span>
 	</label>
@@ -56,17 +55,17 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'esewaComponents', 'error')} ">
-	<label for="esewaComponents">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'esewaComponents', 'error')} ">
+	<label for="esewaComponents"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.esewaComponents.label" default="Esewa Components" />
 		
 	</label>
-	<g:select name="esewaComponents" from="${EsewaComponents.list()}" multiple="multiple" optionKey="id" size="5" value="${esewaReleaseInstance?.esewaComponents*.id}" class="many-to-many"/>
+	<g:select name="esewaComponents" from="${EsewaComponents.list()}" multiple="multiple" optionKey="id" size="2" value="${esewaReleaseInstance?.releaseName?.esewaComponents*.id}" class="many-to-many"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'esewaReleaseEvents', 'error')} ">
-	<label for="esewaReleaseEvents">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'esewaReleaseEvents', 'error')} ">
+	<label for="esewaReleaseEvents"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.esewaReleaseEvents.label" default="Esewa Release Events" />
 		
 	</label>
@@ -83,8 +82,8 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'releaseChecklist', 'error')} ">
-	<label for="releaseChecklist">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'releaseChecklist', 'error')} ">
+	<label for="releaseChecklist"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.releaseChecklist.label" default="Release Checklist" />
 		
 	</label>
@@ -101,17 +100,17 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'releaseEnvironment', 'error')} ">
-	<label for="releaseEnvironment">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'releaseEnvironment', 'error')} ">
+	<label for="releaseEnvironment"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.releaseEnvironment.label" default="Release Environment" />
 		
 	</label>
-	<g:select name="releaseEnvironment" from="${ReleaseEnvironment.list()}" multiple="multiple" optionKey="id" size="5" value="${esewaReleaseInstance?.releaseEnvironment*.id}" class="many-to-many"/>
+	<g:select name="releaseEnvironment" from="${ReleaseEnvironment.list()}" multiple="multiple" optionKey="id" size="5" value="${esewaReleaseInstance?.releaseEnvironment?.esewaEnvironment*.id}" class="many-to-many"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'releaseNotes', 'error')} ">
-	<label for="releaseNotes">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'releaseNotes', 'error')} ">
+	<label for="releaseNotes"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.releaseNotes.label" default="Release Notes" />
 		
 	</label>
@@ -128,8 +127,8 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: esewaReleaseInstance, field: 'releaseStatus', 'error')} required">
-	<label for="releaseStatus">
+<div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'releaseStatus', 'error')} required">
+	<label for="releaseStatus" class="col-sm-2 col-form-label" >
 		<g:message code="esewaRelease.releaseStatus.label" default="Release Status" />
 		<span class="required-indicator">*</span>
 	</label>

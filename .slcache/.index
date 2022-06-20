@@ -5641,3 +5641,7 @@ n:686:com/intellij/rt/execution/application/AppMainV2$Agent
 y:5137:com/intellij/rt/execution/application/AppMainV2
 n:1700:com/intellij/rt/execution/application/AppMainV2$1
 n:4547:groovy/json/StringEscapeUtils
+n:269:groovyjarjarantlr/CharStreamException
+n:2691:grails/gorm/PagedResultList
+n:22220:org/grails/datastore/mapping/query/Query
+n:1781:org/codehaus/groovy/control/messages/ExceptionMessage
