@@ -44,6 +44,14 @@ class EsewaReleaseController {
 
         }
     }*/
+    def searchByDate(){
+        def criteria = EsewaRelease.createCriteria()
+        //fetching data based on the criteria
+        List<EsewaRelease> dateList = criteria.list {
+            ge("startDate", 2022-06-16)
+        } as List<EsewaRelease>
+        [dateList:dateList]
+    }
 
 
     def search(Integer max, Integer offset) {
@@ -76,7 +84,7 @@ class EsewaReleaseController {
             esewaReleaseList = EsewaRelease.list(params)
             esewaReleaseCount = EsewaRelease.count()
         }
-        render(view: 'index', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount, searchText: searchText])
+        render(template: 'grid', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount, searchText: searchText])
     }
 
 /*     def ajaxSearchEsewaRelease(Integer max, Integer offset) {

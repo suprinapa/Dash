@@ -1,10 +1,9 @@
-<%@ page import="dash.EsewaRelease" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'esewaRelease.label', default: 'EsewaRelease')}"/>
-    <title><g:message code="default.show.label" args="[entityName]"/></title>
+    <title><g:message code="default.show.label" args=[entityName]"/></title>
 </head>
 
 <body>
@@ -125,7 +124,7 @@
 
                 <g:each in="${esewaReleaseInstance.esewaComponents}" var="e">
                     <span class="property-value" aria-labelledby="esewaComponents-label"><g:link
-                            controller="esewaComponents" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+                            controller="esewaComponents" action="show" id="${e.componentName}">${e?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
             </li>

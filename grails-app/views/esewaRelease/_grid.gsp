@@ -49,7 +49,7 @@
  --}%
 <div class="pagination__custom">
     <util:remotePaginate  action="search" total="${esewaReleaseInstanceCount}"
-                          update="gridList,searchField"
+                          update="gridList"
                           params="${params}"/>
 </div>
 
