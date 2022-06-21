@@ -2,7 +2,7 @@
 <table class="table table-bordered ">
     <thead class="thead-dark ">
     <tr>
-        <util:remoteSortableColumn property="releaseName" action="search" update="gridList" title="${message(code: 'esewaRelease.releaseName.label', default: 'Release Name')}" />
+        <g:sortableColumn property="releaseName" action="search" update="gridList" title="${message(code: 'esewaRelease.releaseName.label', default: 'Release Name')}" />
 
         <util:remoteSortableColumn property="releaseVersion" update="gridList" action="search" title="${message(code: 'esewaRelease.releaseVersion.label', default: 'Release Version')}" />
 
