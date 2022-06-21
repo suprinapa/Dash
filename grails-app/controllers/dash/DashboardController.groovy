@@ -1,7 +1,7 @@
 package dash
 
 class DashboardController {
-    def index(EsewaRelease esewaRelease) {
+    def index() {
         def CountOfInProgress = EsewaRelease.countByReleaseStatus("In_Progress" as ReleaseStatus)
         println(CountOfInProgress)
         def CountOfUnReleased = EsewaRelease.countByReleaseStatus("UnReleased" as ReleaseStatus)
