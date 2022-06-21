@@ -15,35 +15,6 @@ class EsewaReleaseController {
         [esewaReleaseInstanceList: EsewaRelease.list(max: params.int('max'), offset: params.offset), esewaReleaseInstanceCount: EsewaRelease.count()]
     }
 
-/*    def getById(Integer id) {
-        return EsewaRelease.get(id)
-    }
-*//*    def fetchRelease ={
-        params.max = params.max ? params.int('max') : 10
-        render(template: 'grid', model: [esewaReleaseInstanceList: EsewaRelease.list(params), esewaReleaseInstanceCount: EsewaRelease.count()])
-    }*/
-
-
-/*    def search() {
-        def searchText = params.searchText
-        def colName = params.colName
-        def esewaReleaseList
-        def esewaReleaseCount
-        params.max = params.max ? params.int('max') : 10
-        if (searchText) {
-            def rel = EsewaRelease.createCriteria()
-            List<EsewaRelease> releasesList = rel.list(max: params.max, offset: params.offset) {
-                eq(colName, searchText)
-            } as List<EsewaRelease>
-            esewaReleaseList = releasesList
-
-            PagedResultList releases = EsewaRelease.where { releaseName == searchText }.list(max: params.max)
-            esewaReleaseCount = releases.totalCount
-            render(view: 'index', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount], searchText: searchText)
-        } else{
-
-        }
-    }*/
     def searchByDate(){
         def criteria = EsewaRelease.createCriteria()
         //fetching data based on the criteria
@@ -53,8 +24,7 @@ class EsewaReleaseController {
         [dateList:dateList]
     }
 
-
-    def search(Integer max, Integer offset) {
+    def search() {
         def searchText = params.searchText
         def colName = params.colName
         def esewaReleaseList
@@ -78,7 +48,6 @@ class EsewaReleaseController {
                     releaseVersion == searchText
                 }.count()
             }
-
         } else {
 //            params << [sort: 'colName']
             esewaReleaseList = EsewaRelease.list(params)
@@ -86,30 +55,6 @@ class EsewaReleaseController {
         }
         render(template: 'grid', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount, searchText: searchText])
     }
-
-/*     def ajaxSearchEsewaRelease(Integer max, Integer offset) {
-         def searchText = params.searchText
-         def esewaReleaseList
-         def esewaReleaseCount
-         params.max = params.max ? params.int('max') : 10
-         if(searchText){
-             def rel = EsewaRelease.createCriteria()
-             List<EsewaRelease> releasesList = rel.list(max: params.max, offset:offset) {
-                 eq('releaseName', params.searchText)
-             } as List<EsewaRelease>
-             esewaReleaseList = releasesList
-
-             esewaReleaseCount = EsewaRelease.where {
-                 releaseName == searchText
-             }.count()
-         }else {
-             esewaReleaseList = EsewaRelease.list(params)
-             esewaReleaseCount = EsewaRelease.count()
-         }
-
-         render (template:'grid',model: [esewaReleaseInstanceList: esewaReleaseList , esewaReleaseInstanceCount: esewaReleaseCount], searchText: searchText)
-     }*/
-
 
     def show(EsewaRelease esewaReleaseInstance) {
         respond esewaReleaseInstance

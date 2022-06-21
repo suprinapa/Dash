@@ -54,7 +54,7 @@
 				<li class="fieldcontain">
 					<span id="esewaEvents-label" class="property-label"><g:message code="esewaReleaseEvents.esewaEvents.label" default="Esewa Events" /></span>
 					
-						<span class="property-value" aria-labelledby="esewaEvents-label"><g:link controller="esewaEvents" action="show" id="${esewaReleaseEventsInstance?.esewaEvents?.id}">${esewaReleaseEventsInstance?.esewaEvents?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="esewaEvents-label"><g:link controller="esewaEvents" action="show" id="${esewaReleaseEventsInstance?.esewaEvents?.id}">${esewaReleaseEventsInstance?.esewaEvents?.eventName?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -63,7 +63,7 @@
 				<li class="fieldcontain">
 					<span id="esewaRelease-label" class="property-label"><g:message code="esewaReleaseEvents.esewaRelease.label" default="Esewa Release" /></span>
 					
-						<span class="property-value" aria-labelledby="esewaRelease-label"><g:link controller="esewaRelease" action="show" id="${esewaReleaseEventsInstance?.esewaRelease?.id}">${esewaReleaseEventsInstance?.esewaRelease?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="esewaRelease-label"><g:link controller="esewaRelease" action="show" id="${esewaReleaseEventsInstance?.esewaRelease?.id}">${esewaReleaseEventsInstance?.esewaRelease?.releaseName?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

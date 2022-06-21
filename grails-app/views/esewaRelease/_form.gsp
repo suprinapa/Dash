@@ -1,4 +1,4 @@
-<%@ page import="dash.ReleaseStatus; dash.ReleaseEnvironment; dash.EsewaComponents; dash.EsewaRelease" %>
+<%@ page import="dash.EsewaEvents; dash.ReleaseStatus; dash.ReleaseEnvironment; dash.EsewaComponents; dash.EsewaRelease" %>
 
 
 <div class="form-group row ${hasErrors(bean: esewaReleaseInstance, field: 'releaseName', 'error')} required">
@@ -24,7 +24,7 @@
 		<g:message code="esewaRelease.parentRelease.label" default="Parent Release" />
 		
 	</label>
-	<g:select id="parentRelease" name="parentRelease.id" from="${EsewaRelease.list()}" optionKey="id" value="${esewaReleaseInstance?.parentRelease?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="parentRelease" name="parentRelease.id" from="${EsewaRelease.list().releaseName}" value="${esewaReleaseInstance?.parentRelease?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
@@ -60,7 +60,7 @@
 		<g:message code="esewaRelease.esewaComponents.label" default="Esewa Components" />
 		
 	</label>
-	<g:select name="esewaComponents" from="${EsewaComponents.list()}" multiple="multiple" optionKey="id" size="2" value="${esewaReleaseInstance?.releaseName?.esewaComponents*.id}" class="many-to-many"/>
+	<g:select name="esewaComponents" from="${EsewaComponents.list().componentName}"  size="5" value="${esewaReleaseInstance?.esewaComponents*.id}" class="many-to-many"/>
 
 </div>
 
@@ -105,7 +105,7 @@
 		<g:message code="esewaRelease.releaseEnvironment.label" default="Release Environment" />
 		
 	</label>
-	<g:select name="releaseEnvironment" from="${ReleaseEnvironment.list()}" multiple="multiple" optionKey="id" size="5" value="${esewaReleaseInstance?.releaseEnvironment?.esewaEnvironment*.id}" class="many-to-many"/>
+	<g:select name="releaseEnvironment" from="${ReleaseEnvironment.list()}" multiple="multiple" optionKey="id" size="5" value="${esewaReleaseInstance?.releaseEnvironment?.esewaEnvironment*.id}" class="one-to-many"/>
 
 </div>
 

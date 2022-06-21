@@ -4,7 +4,7 @@
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'esewaRelease.label', default: 'EsewaRelease')}"/>
-    <title><g:message code="default.show.label" args=[entityName]"/></title>
+    <title><g:message code="default.show.label" args="[entityName]"/></title>
 </head>
 
 <body>
@@ -80,7 +80,7 @@
 
                 <span class="property-value" aria-labelledby="parentRelease-label"><g:link controller="esewaRelease"
                                                                                            action="show"
-                                                                                           id="${esewaReleaseInstance?.parentRelease?.id}">${esewaReleaseInstance?.parentRelease?.releaseName.encodeAsHTML()}</g:link></span>
+                                                                                           id="${esewaReleaseInstance?.parentRelease?.id}">${esewaReleaseInstance?.parentRelease?.releaseName?.encodeAsHTML()}</g:link></span>
 
             </li>
         </g:if>
@@ -125,7 +125,7 @@
 
                 <g:each in="${esewaReleaseInstance.esewaComponents}" var="e">
                     <span class="property-value" aria-labelledby="esewaComponents-label"><g:link
-                            controller="esewaComponents" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+                            controller="esewaComponents" action="show" id="${e.id}">${e?.componentName?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
             </li>
@@ -139,7 +139,7 @@
                 <g:each in="${esewaReleaseInstance.esewaReleaseEvents}" var="e">
                     <span class="property-value" aria-labelledby="esewaReleaseEvents-label"><g:link
                             controller="esewaReleaseEvents" action="show"
-                            id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+                            id="${e.id}">${e?.esewaEvents?.eventName?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
             </li>
@@ -153,7 +153,7 @@
                 <g:each in="${esewaReleaseInstance.releaseChecklist}" var="r">
                     <span class="property-value" aria-labelledby="releaseChecklist-label"><g:link
                             controller="releaseChecklist" action="show"
-                            id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+                            id="${r.id}">${r?.description?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
             </li>
@@ -167,7 +167,7 @@
                 <g:each in="${esewaReleaseInstance.releaseEnvironment}" var="r">
                     <span class="property-value" aria-labelledby="releaseEnvironment-label"><g:link
                             controller="releaseEnvironment" action="show"
-                            id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+                            id="${r.id}">${r?.esewaEnvironment?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
             </li>
@@ -181,7 +181,7 @@
                 <g:each in="${esewaReleaseInstance.releaseNotes}" var="r">
                     <span class="property-value" aria-labelledby="releaseNotes-label"><g:link controller="releaseNotes"
                                                                                               action="show"
-                                                                                              id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+                                                                                              id="${r.id}">${r?.id?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
             </li>

@@ -22,17 +22,9 @@
 				</span>
 			</div>
 		</g:form>--}%
-		%{--<g:formRemote name="searchForm" url="[controller: 'esewaRelease', action: 'search']"
-					  update="gridList">
-			<g:select name="colName" class="form-control" update ="gridList"  from="[releaseName: 'Release Name',releaseVersion :'Release Version',releaseStatus : 'ReleaseStatus']" value="${params?.colName}" optionKey="key" optionValue="value"/>
-			<g:textField id="searchField" name="searchText" placeholder="Search"></g:textField>
-			<span class="input-group-btn">
-				<button class="btn btn-default" type="submit">Search</button>
-			</span>
-		</g:formRemote>--}%
 		<g:formRemote url="[controller: 'esewaRelease', action: 'search']" method="GET" name="myform" update="gridList">
 			<div class="input-group" id="search-area">
-				<g:select name="colName" class="form-control" from="[releaseName: 'Release Name',releaseVersion :'Release Version',releaseStatus : 'ReleaseStatus']" value="${params?.colName}" optionKey="key" optionValue="value"/>
+				<g:select name="colName" class="form-control" from="[releaseName: 'Release Name',releaseVersion :'Release Version']" value="${params?.colName}" optionKey="key" optionValue="value"/>
 				<g:textField class ="form-control" id="searchField" name="searchText" placeholder="Search"></g:textField>
 				<span class="input-group-btn">
 					<button class="btn btn-success" type="submit">Search</button>

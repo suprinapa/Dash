@@ -18,8 +18,13 @@ class EsewaEventsController {
         [esewaEvents: flash.redirectParams]
     }
 
-    def show(EsewaEvents esewaEvents) {
-        respond esewaEvents
+    def show(Integer id) {
+        def response = esewaEventsService.getById(id)
+        if (!response){
+            redirect(controller: "esewaEvents", action: "index")
+        }else{
+            [esewaEvents: response]
+        }
     }
 
     def update() {

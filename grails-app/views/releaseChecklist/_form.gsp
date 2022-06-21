@@ -1,4 +1,4 @@
-<%@ page import="dash.ReleaseChecklist" %>
+<%@ page import="dash.EsewaRelease; dash.ReleaseChecklist" %>
 
 
 
@@ -34,8 +34,7 @@
 		<g:message code="releaseChecklist.esewaRelease.label" default="Esewa Release" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="esewaRelease" name="esewaRelease.id" from="${dash.EsewaRelease.list()}" optionKey="id" required="" value="${releaseChecklistInstance?.esewaRelease?.id}" class="many-to-one"/>
-
+	<g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionKey="id" required="" value="${releaseChecklistInstance?.esewaRelease?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'type', 'error')} required">
