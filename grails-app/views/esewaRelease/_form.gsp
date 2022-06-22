@@ -56,7 +56,7 @@
 	<label for="esewaComponents"  class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.esewaComponents.label" default="Esewa Components" />
 	</label>
-	<g:select name="esewaComponents" from="${EsewaComponents.list()}" value="esewaComponents"/>
+	<g:select name="esewaComponents" from="${EsewaComponents.list()}" value="esewaComponents" optionKey="id"/>
 
 </div>
 
