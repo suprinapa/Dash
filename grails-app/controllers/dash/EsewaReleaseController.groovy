@@ -1,4 +1,8 @@
 package dash
+
+import javax.persistence.CascadeType
+import javax.persistence.ManyToOne
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -65,18 +69,20 @@ class EsewaReleaseController {
     }
 
     @Transactional
+//    @ManyToOne(cascade = CascadeType.ALL)
     def save(EsewaRelease esewaReleaseInstance) {
         if (esewaReleaseInstance == null) {
             notFound()
             return
         }
 
-        if (esewaReleaseInstance.hasErrors()) {
+            if (esewaReleaseInstance.hasErrors()) {
             respond esewaReleaseInstance.errors, view:'create'
             return
         }
-
-        esewaReleaseInstance.save flush:true
+  /*      def component = EsewaComponents.get(esewaReleaseInstance.esewaComponents.id);
+        esewaReleaseInstance.setEsewaComponents(component);*/
+        esewaReleaseInstance.save()
 
         request.withFormat {
             form multipartForm {

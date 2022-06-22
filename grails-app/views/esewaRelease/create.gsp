@@ -7,7 +7,7 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#create-esewaRelease" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+	<a href="#create-esewaRelease" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 	<div id="create-esewaRelease" class="card" role="main">
 		<div class="card-body">
 			<h2><g:message code="default.create.label" args="[entityName]" /></h2>

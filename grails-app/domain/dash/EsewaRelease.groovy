@@ -2,7 +2,7 @@ package dash
 
 class EsewaRelease {
 
-    String releaseName
+    ReleaseName releaseName
     String releaseVersion
     ReleaseStatus releaseStatus
     EsewaRelease parentRelease

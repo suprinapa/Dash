@@ -1,15 +1,17 @@
 package dash
 
 class DashboardController {
-    def index() {
-        def CountOfInProgress = EsewaRelease.countByReleaseStatus("In_Progress" as ReleaseStatus)
-        println(CountOfInProgress)
-        def CountOfUnReleased = EsewaRelease.countByReleaseStatus("UnReleased" as ReleaseStatus)
-        println(CountOfUnReleased)
-        def CountOfReleased = EsewaRelease.countByReleaseStatus("Released" as ReleaseStatus)
-        println(CountOfReleased)
+    def index(EsewaRelease esewaRelease) {
+        def countOfInProgress = EsewaRelease.countByReleaseStatus("In_Progress" as ReleaseStatus)
+        render(view: 'index', model: [countOfInProgress: countOfInProgress])
+        def countOfUnReleased = EsewaRelease.countByReleaseStatus("UnReleased" as ReleaseStatus)
+        render(view: 'index', model: [countOfUnReleased: countOfUnReleased])
+        def countOfReleased = EsewaRelease.countByReleaseStatus("Released" as ReleaseStatus)
+        render(view: 'index', model: [countOfReleased: countOfReleased])
 
-       def a =EsewaRelease.list()
-       print(a.releaseStatus.size())
+        /*   def a =EsewaRelease.list()
+       def response = a.releaseStatus.size()
+        render (view: 'index', model:[response:response])*/
+
     }
 }

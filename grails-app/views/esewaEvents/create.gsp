@@ -8,13 +8,13 @@
 </head>
 <body>
 <div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-    </ul>
+
+    <g:link controller="esewaEvents" action="create" class="btn btn-success"><g:message code="default.create.label" args="[entityName]"/></g:link>
+
 </div>
 <div id="create-esewaEvents" class="content scaffold-create" role="main">
-    <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+    <div class="card-body">
+    <h2><g:message code="default.create.label" args="[entityName]" /></h2>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -30,10 +30,12 @@
             <g:render template="form"/>
         </fieldset>
         <fieldset class="buttons">
-            <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+            <g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+            <g:link controller="esewaEvents" action="index" class="btn btn-secondary"><g:message code="cancel"/></g:link>
         </fieldset>
     </g:form>
 </div>
 
+</div>
 </body>
 </html>
