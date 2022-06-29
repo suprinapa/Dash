@@ -70,7 +70,7 @@ EsewaReleaseService esewaReleaseService
        new EsewaRelease(params)
                .addToEsewaComponents(EsewaComponents.findById(params.esewaComponents as Long))
                 .addToReleaseEnvironment(ReleaseEnvironment.findById(params.releaseEnvironment as Long))
-               .addToEsewaReleaseEvents(EsewaReleaseEvents.findById(params.esewaEvents as Long))
+               .addToEsewaReleaseEvents(EsewaReleaseEvents.findById(params.esewaReleaseEvents as Long))
                .save(flush: true, failOnError: true)
  }
 

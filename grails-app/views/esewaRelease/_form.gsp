@@ -60,19 +60,16 @@
 		<g:message code="esewaRelease.releaseEnvironment.label" default="Esewa releaseEnvironment" />
 	</label>
 	<g:select name="releaseEnvironment" from="${ReleaseEnvironment.list()}" optionKey="id"
-			  optionValue="esewaEnvironment" value="${esewaRelease?.releaseEnvironment } " noSelection="['':'-Choose Environment-']"/>
+			  optionValue="esewaEnvironment" value="${esewaRelease?.releaseEnvironment } " noSelection="['':'-Choose Enviroment-']"/>
 </div>
 
 <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'esewaReleaseEvents', 'error')} ">
 	<label for="esewaReleaseEvents" class="col-sm-2 col-form-label">
 		<g:message code="esewaRelease.esewaReleaseEvents.label" default="Esewa esewaReleaseEvents" />
 	</label>
-%{--	<g:set var="listOfEsewaReleaseEventsRelease" value="${EsewaReleaseEvents.list().esewaEvents}" />
-	<g:select name="esewaReleaseEvents" from="${listOfEsewaReleaseEventsRelease}" optionKey="id" optionValue="eventName"
-			  value="${esewaRelease?.esewaReleaseEvents}" noSelection="['':'-Choose Event-']"/>--}%
-<g:select name="esewaEvents" from="${EsewaEvents.list()}" optionKey="id"
-		  optionValue="eventName" value="${esewaRelease?.esewaEvents} " noSelection="['':'-Choose Environment-']"/>
-
+%{--	<g:set var="listOfEsewaReleaseEventsRelease" value="${EsewaReleaseEvents.list().esewaEvents}" />--}%
+	<g:select name="esewaReleaseEvents" from="${EsewaReleaseEvents.list()}" optionKey="id" optionValue="esewaEvents"
+			  value="${esewaRelease?.esewaReleaseEvents}" noSelection="['':'-Choose Events-']"/>
 </div>
 
 <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'releaseStatus', 'error')} required">

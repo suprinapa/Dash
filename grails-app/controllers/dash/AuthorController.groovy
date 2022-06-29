@@ -16,7 +16,7 @@ class AuthorController {
         // find book by book id
 //        Book b =Book.findById(params.books)
         new Author(name: params.name)
-                .addToBooks(Book.findById(params.book))
+                .addToAuthorBooks(AuthorBooks.findById(params.authorBooks as Long))
                 .save()
     }
 }

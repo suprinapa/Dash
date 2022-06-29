@@ -6,8 +6,11 @@
 
 <div class="form-group">
 	<label><g:message code="book"/> *</label>
-	<g:select name="book" from="${Book.list()}" value="${authors?.book}" optionKey="id" optionValue="title"
-			  noSelection="['':'-Choose your Book-']" />
+%{--		<g:set var="listOfEsewaReleaseEventsRelease" value="${EsewaReleaseEvents.list().esewaEvents}" />--}%
+	<g:select name="authorBooks" from="${Book.list()}" optionKey="id" optionValue="title"
+			  value="${authors?.authorBooks}" noSelection="['':'-Choose Book-']"/>
+%{--	<g:select name="book" from="${Book.list()}" value="${authorbooks?.book}" optionKey="id" optionValue="title"--}%
+%{--			  noSelection="['':'-Choose your Book-']" />--}%
 %{--	<g:select name="books" optionValue="title" optionKey="id"
 			  from="${Book.list()}"
 			 value="${authors?.books}" />--}%
