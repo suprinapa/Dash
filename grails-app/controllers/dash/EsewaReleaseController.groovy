@@ -1,18 +1,15 @@
 package dash
 
-import javax.persistence.CascadeType
-import javax.persistence.ManyToOne
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional
 class EsewaReleaseController {
-
+EsewaReleaseService esewaReleaseService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
-    params.max = params.max ? params.int('max') : 10
+        params.max = params.max ? params.int('max') : 10
         if(params.offset == null){
             params << [offset: 0]
         }
@@ -65,33 +62,17 @@ class EsewaReleaseController {
     }
 
     def create() {
-        respond new EsewaRelease(params)
+        [esewaRelease: flash.redirectParams]
     }
 
     @Transactional
-//    @ManyToOne(cascade = CascadeType.ALL)
-    def save(EsewaRelease esewaReleaseInstance) {
-        if (esewaReleaseInstance == null) {
-            notFound()
-            return
-        }
-
-            if (esewaReleaseInstance.hasErrors()) {
-            respond esewaReleaseInstance.errors, view:'create'
-            return
-        }
-  /*      def component = EsewaComponents.get(esewaReleaseInstance.esewaComponents.id);
-        esewaReleaseInstance.setEsewaComponents(component);*/
-        esewaReleaseInstance.save()
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'esewaRelease.label', default: 'EsewaRelease'), esewaReleaseInstance.id])
-                redirect esewaReleaseInstance
-            }
-            '*' { respond esewaReleaseInstance, [status: CREATED] }
-        }
-    }
+    def save() {
+       new EsewaRelease(params)
+               .addToEsewaComponents(EsewaComponents.findById(params.esewaComponents as Long))
+                .addToReleaseEnvironment(ReleaseEnvironment.findById(params.releaseEnvironment as Long))
+               .addToEsewaReleaseEvents(EsewaReleaseEvents.findById(params.esewaEvents as Long))
+               .save(flush: true, failOnError: true)
+ }
 
     def edit(EsewaRelease esewaReleaseInstance) {
         respond esewaReleaseInstance

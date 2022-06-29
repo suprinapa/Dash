@@ -4,13 +4,14 @@ class EsewaComponents {
 
     Components componentName
 
-     static  belongsTo = EsewaRelease
+    static hasMany = [esewaRelease:EsewaRelease]
+    static  belongsTo = [EsewaRelease]
 
     static constraints = {
     }
     static mapping = {
         table 'EsewaComponents'
-        version false
+        version true
         componentName column: 'componentName'
     }
 }

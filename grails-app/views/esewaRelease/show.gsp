@@ -157,10 +157,10 @@
                 <span id="releaseEnvironment-label" class="badge"><g:message
                         code="esewaRelease.releaseEnvironment.label" default="Release Environment"/></span>
 
-                <g:each in="${esewaReleaseInstance.releaseEnvironment}" var="r">
+                <g:each in="${esewaReleaseInstance.releaseEnvironment}" var="s">
                     <span class="property-value" aria-labelledby="releaseEnvironment-label"><g:link
                             controller="releaseEnvironment" action="show"
-                            id="${r.id}">${r?.esewaEnvironment?.encodeAsHTML()}</g:link></span>
+                            id="${s.id}">${s?.esewaEnvironment?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
             </li>

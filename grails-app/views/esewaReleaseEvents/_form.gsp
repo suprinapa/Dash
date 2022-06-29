@@ -1,7 +1,6 @@
 <%@ page import="dash.EsewaRelease; dash.EsewaEvents; dash.EsewaReleaseEvents" %>
 
 
-
 <div class="form-group ${hasErrors(bean: esewaReleaseEventsInstance, field: 'approvedDate', 'error')} required">
 	<label for="approvedDate" class="col-sm-2 col-form-label">
 		<g:message code="esewaReleaseEvents.approvedDate.label" default="Approved Date" />
