@@ -33,7 +33,8 @@
 		<g:message code="esewaReleaseEvents.esewaEvents.label" default="Esewa Events" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="esewaEvents" name="esewaEvents.id" from="${EsewaEvents.list()}" optionKey="id" required="" value="${esewaReleaseEventsInstance?.esewaEvents?.id}" class="many-to-one"/>
+	<g:select id="esewaEvents" name="esewaEvents.id" from="${EsewaEvents.list()}" optionKey="id" optionValue="eventName" required=""
+			  value="${esewaReleaseEventsInstance?.esewaEvents?.id}" noSelection="['':'-Choose EventName-']"/>
 
 </div>
 
@@ -42,7 +43,9 @@
 		<g:message code="esewaReleaseEvents.esewaRelease.label" default="Esewa Release" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionKey="id" required="" value="${esewaReleaseEventsInstance?.esewaRelease?.id}" class="many-to-one"/>
+	<g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionKey="id"
+			  optionValue="releaseVersion" required=""
+			  value="${esewaReleaseEventsInstance?.esewaRelease?.id}" noSelection="['':'-Choose Release Version-']"/>
 
 </div>
 

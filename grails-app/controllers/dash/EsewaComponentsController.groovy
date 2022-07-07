@@ -5,8 +5,11 @@ class EsewaComponentsController {
     EsewaComponentsService esewaComponentsService
 
     def index() {
-        def esewaComponentsList = esewaComponentsService.saveList(params)
-        [esewaComponentsList: esewaComponentsList]
+        params.max = params.max ? params.int('max') : 10
+        if (params.offset == null) {
+            params << [offset: 0]
+        }
+        [esewaComponentsInstanceList: EsewaComponents.list(max: params.int('max'), offset: params.offset), esewaComponentsInstanceCount: EsewaComponents.count()]
     }
 
     def saveData() {

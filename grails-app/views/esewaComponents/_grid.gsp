@@ -7,7 +7,7 @@
     </tr>
     </thead>
     <tbody>
-    <g:each in="${esewaComponentsList}" status="i" var="esewaComponents">
+    <g:each in="${esewaComponentsInstanceList}" status="i" var="esewaComponents">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
             <td><g:link action="show" id="${esewaComponents.id}">

@@ -18,16 +18,16 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<g:hasErrors bean="${esewaReleaseInstance}">
+			<g:hasErrors bean="${esewaRelease}">
 			<ul class="errors" role="alert">
-				<g:eachError bean="${esewaReleaseInstance}" var="error">
+				<g:eachError bean="${esewaRelease}" var="error">
 				<li <g:if test="${error in FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:esewaReleaseInstance, action:'update']" method="PUT" >
+			<g:form url="[resource:esewaRelease, action:'update']" method="PUT" >
 			%{-- action will check version before we update the instance to avoid conflicts with changes by another user--}%
-				<g:hiddenField name="version" value="${esewaReleaseInstance?.version}" />
+				<g:hiddenField name="version" value="${esewaRelease?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

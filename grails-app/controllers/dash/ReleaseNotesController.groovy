@@ -1,99 +1,73 @@
 package dash
 
-import static org.springframework.http.HttpStatus.CREATED
-import static org.springframework.http.HttpStatus.NOT_FOUND
-import static org.springframework.http.HttpStatus.NO_CONTENT
-import static org.springframework.http.HttpStatus.OK
+import grails.transaction.Transactional
 
 class ReleaseNotesController {
 
     ReleaseNotesService releaseNotesService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond ReleaseNotes.list(params), model: [releaseNotesCount: ReleaseNotes.count()]
+     def index() {
+         params.max = params.max ? params.int('max') : 10
+         if (params.offset == null) {
+             params << [offset: 0]
+         }
+         [releaseNotesList: ReleaseNotes.list(max: params.int('max'), offset: params.offset), releaseNotesCount: EsewaComponents.count()]
     }
 
-    def show(ReleaseNotes ReleaseNotesInstance) {
-        respond ReleaseNotesInstance
+    def show(Integer id) {
+        def response = releaseNotesService.getById(id)
+        if (!response) {
+            redirect(controller: "releaseNotes", action: "index")
+        } else {
+            [releaseNotes: response]
+        }
     }
 
     def create() {
-        respond new ReleaseNotes(params)
+        [releaseNotes: flash.redirectParams]
     }
 
-    def save(ReleaseNotes releaseNotesInstance) {
-        releaseNotesService.saveData(releaseNotesInstance)
-        if (releaseNotesInstance == null) {
-            notFound()
-            return
-        }
+    @Transactional
+    def save() {
+        releaseNotesService.saveData(params)
+     }
 
-        if (releaseNotesInstance.hasErrors()) {
-            releaseNotesInstance.errors
-            return
-        }
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'releaseNotes.label', default: 'ReleaseNotes'), releaseNotesInstance.id])
-                redirect releaseNotesInstance
+    def edit(Integer id) {
+        if (flash.redirectParams) {
+            [releaseNotes: flash.redirectParams]
+        } else {
+            def response = releaseNotesService.getById(id)
+            if (!response) {
+                redirect(controller: "releaseNotes", action: "index")
+            } else {
+                [releaseNotes: response]
             }
-            '*' { respond releaseNotesInstance, [status: CREATED] }
         }
-
     }
 
-    def edit(ReleaseNotes releaseNotesInstance) {
-        respond releaseNotesInstance
+    @Transactional
+    def update() {
+        def response = releaseNotesService.getById(params.id)
+        if (!response) {
+            redirect(controller: "releaseNotes", action: "index")
+        } else {
+            releaseNotesService.update(response, params)
+            redirect(controller: "releaseNotes", action: "index")
+        }
     }
-
-    def update(ReleaseNotes releaseNotesInstance) {
-        releaseNotesService.update(releaseNotesInstance)
-        if (releaseNotesInstance == null) {
-            notFound()
-            return
-        }
-
-        if (releaseNotesInstance.hasErrors()) {
-            releaseNotesInstance.errors
-            return
-        }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'releaseNotes.label', default: 'ReleaseNotes'), releaseNotesInstance.id])
-                redirect releaseNotesInstance
+    @Transactional
+    def delete(Integer id) {
+        def response = releaseNotesService.getById(id)
+        if (!response) {
+            redirect(controller: "releaseNotes", action: "index")
+        } else {
+            response = releaseNotesService.delete(response)
+            if (!response) {
+                render "unable.to.delete"
+            } else {
+                redirect(controller: "releaseNotes", action: "index")
             }
-            '*' { respond releaseNotesInstance, [status: OK] }
         }
     }
 
-    def delete(ReleaseNotes releaseNotesInstance) {
-        releaseNotesService.delete(releaseNotesInstance)
-        if (releaseNotesInstance == null) {
-            notFound()
-            return
-        }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'releaseNotes.label', default: 'ReleaseNotes'), releaseNotesInstance.id])
-                redirect action: "index", method: "GET"
-            }
-            '*' { render status: NO_CONTENT }
-        }
-    }
-
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'releaseNotes.label', default: 'ReleaseNotes'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*' { render status: NOT_FOUND }
-        }
-    }
 }

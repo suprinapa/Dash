@@ -25,7 +25,7 @@
 					<tr>
 					
 						<g:sortableColumn property="description" title="${message(code: 'releaseChecklist.description.label', default: 'Description')}" />
-					
+					%{--
 						<g:sortableColumn property="remarks" title="${message(code: 'releaseChecklist.remarks.label', default: 'Remarks')}" />
 					
 						<g:sortableColumn property="ticketNumber" title="${message(code: 'releaseChecklist.ticketNumber.label', default: 'Ticket Number')}" />
@@ -33,22 +33,22 @@
 						<th><g:message code="releaseChecklist.esewaRelease.label" default="Esewa Release" /></th>
 					
 						<g:sortableColumn property="type" title="${message(code: 'releaseChecklist.type.label', default: 'Type')}" />
-					
+					--}%
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${releaseChecklistInstanceList}" status="i" var="releaseChecklistInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${releaseChecklistInstance.id}">${fieldValue(bean: releaseChecklistInstance, field: "description")}</g:link></td>
+						<td><g:link action="show" id="${releaseChecklistInstance.id}">${fieldValue(bean: releaseChecklistInstance, field: "releaseCheckListDescription")}</g:link></td>
 					
-						<td>${fieldValue(bean: releaseChecklistInstance, field: "remarks")}</td>
+%{--						<td>${fieldValue(bean: releaseChecklistInstance, field: "remarks")}</td>
 					
 						<td>${fieldValue(bean: releaseChecklistInstance, field: "ticketNumber")}</td>
 					
 						<td>${fieldValue(bean: releaseChecklistInstance, field: "esewaRelease")}</td>
 					
-						<td>${fieldValue(bean: releaseChecklistInstance, field: "type")}</td>
+						<td>${fieldValue(bean: releaseChecklistInstance, field: "type")}</td>--}%
 					
 					</tr>
 				</g:each>

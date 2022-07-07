@@ -2,13 +2,14 @@ package dash
 
 class EsewaRelease {
 
-    ReleaseName releaseName
+    String releaseName
     String releaseVersion
     ReleaseStatus releaseStatus
     EsewaRelease parentRelease
     Date createdDate
     Date startDate
     Date endDate
+    ReleaseType releaseType
 
     static hasMany = [esewaComponents: EsewaComponents,releaseNotes:ReleaseNotes, releaseEnvironment:ReleaseEnvironment,
     releaseChecklist: ReleaseChecklist, esewaReleaseEvents: EsewaReleaseEvents]

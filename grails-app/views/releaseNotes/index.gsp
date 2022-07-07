@@ -1,54 +1,30 @@
-
 <%@ page import="dash.ReleaseNotes" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'releaseNotes.label', default: 'ReleaseNotes')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#list-releaseNotes" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-releaseNotes" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-			<thead>
-					<tr>
-					
-						<th><g:message code="releaseNotes.esewaRelease.label" default="Esewa Release" /></th>
-					
-						<g:sortableColumn property="ticketPriority" title="${message(code: 'releaseNotes.ticketPriority.label', default: 'Ticket Priority')}" />
-					
-						<g:sortableColumn property="ticketType" title="${message(code: 'releaseNotes.ticketType.label', default: 'Ticket Type')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${releaseNotesInstanceList}" status="i" var="releaseNotesInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${releaseNotesInstance.id}">${fieldValue(bean: releaseNotesInstance, field: "esewaRelease")}</g:link></td>
-					
-						<td>${fieldValue(bean: releaseNotesInstance, field: "ticketPriority")}</td>
-					
-						<td>${fieldValue(bean: releaseNotesInstance, field: "ticketType")}</td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${releaseNotesInstanceCount ?: 0}" />
-			</div>
-		</div>
-	</body>
+<head>
+    <meta name="layout" content="main">
+    <g:set var="entityName" value="${message(code: 'releaseNotes.label', default: 'ReleaseNotes')}"/>
+    <title><g:message code="default.list.label" args="[entityName]"/></title>
+</head>
+
+<body>
+<div class="nav" role="navigation">
+    <ul>
+        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+        <li><g:link class="create" action="create"><g:message code="default.new.label"
+                                                              args="[entityName]"/></g:link></li>
+    </ul>
+</div>
+
+<div id="list-releaseNotes" class="content scaffold-list" role="main">
+    <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
+    <div id="gridList">
+        <g:render template="grid"/>
+    </div>
+
+</div>
+</body>
 </html>

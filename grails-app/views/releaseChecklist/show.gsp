@@ -23,16 +23,16 @@
 			</g:if>
 			<ol class="property-list releaseChecklist">
 			
-				<g:if test="${releaseChecklistInstance?.description}">
+				<g:if test="${releaseChecklistInstance?.releaseCheckListDescription}">
 				<li class="fieldcontain">
 					<span id="description-label" class="property-label"><g:message code="releaseChecklist.description.label" default="Description" /></span>
 					
-						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${releaseChecklistInstance}" field="description"/></span>
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${releaseChecklistInstance}" field="releaseCheckListDescription"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${releaseChecklistInstance?.remarks}">
+				%{--<g:if test="${releaseChecklistInstance?.remarks}">
 				<li class="fieldcontain">
 					<span id="remarks-label" class="property-label"><g:message code="releaseChecklist.remarks.label" default="Remarks" /></span>
 					
@@ -66,7 +66,7 @@
 						<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${releaseChecklistInstance}" field="type"/></span>
 					
 				</li>
-				</g:if>
+				</g:if>--}%
 
 			</ol>
 			%{-- resource Generates a link (URI) string--}%

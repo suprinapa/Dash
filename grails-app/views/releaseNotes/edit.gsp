@@ -1,4 +1,4 @@
-<%@ page import="dash.ReleaseNotes" %>
+<%@ page import="org.springframework.validation.FieldError; dash.ReleaseNotes" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -20,15 +20,15 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<g:hasErrors bean="${releaseNotesInstance}">
+			<g:hasErrors bean="${releaseNotes}">
 			<ul class="errors" role="alert">
-				<g:eachError bean="${releaseNotesInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+				<g:eachError bean="${releaseNotes}" var="error">
+				<li <g:if test="${error in FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:releaseNotesInstance, action:'update']" method="PUT" >
-				<g:hiddenField name="version" value="${releaseNotesInstance?.version}" />
+			<g:form url="[resource:releaseNotes, action:'update']" method="PUT" >
+				<g:hiddenField name="version" value="${releaseNotes?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

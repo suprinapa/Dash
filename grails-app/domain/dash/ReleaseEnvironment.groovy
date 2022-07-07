@@ -2,7 +2,7 @@ package dash
 
 class ReleaseEnvironment {
 
-    EsewaEnvironment esewaEnvironment
+    String esewaEnvironment
 
     static constraints = {
     }

@@ -2,7 +2,7 @@ package dash
 
 class EsewaEvents {
 
-    Events eventName
+    String eventName
 
     static hasMany = [esewaReleaseEvents: EsewaReleaseEvents]
 

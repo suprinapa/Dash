@@ -8,12 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title></title>
+    <meta name="layout" content="main">
 </head>
 
-<body>
+<div class="card">
+    <div class="card-header">
+            <div class="btn-group">
+                <g:link controller="author" action="delete" class="btn btn-success"><g:message code="default.button.delete.label"/></g:link>
+                <g:link controller="author" action="index" class="btn btn-primary"><g:message code="reload"/></g:link>
+            </div>
 <g:if test="${flash.message}">
     ${flash.message}
 </g:if>
-</body>
+    </div>
+</div>
 </html>

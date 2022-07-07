@@ -6,17 +6,6 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 @Transactional
 
 class EsewaComponentsService {
-
-    def saveList(GrailsParameterMap params) {
-        params.max = params.max ?: 10
-        List<EsewaComponents> rList = EsewaComponents.createCriteria().list(params) {
-            if (params?.colName && params?.colValue) {
-                like(params.colName, "%" + params.colValue + "%")
-            }
-        } as List<EsewaComponents>
-        return rList
-    }
-
     def saveData(GrailsParameterMap params) {
         EsewaComponents esewaComponents = new EsewaComponents(params)
         return esewaComponents.save(flush: true, failOnError: true)

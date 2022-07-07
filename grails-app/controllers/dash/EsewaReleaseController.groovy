@@ -1,28 +1,27 @@
 package dash
 
-import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional
 class EsewaReleaseController {
-EsewaReleaseService esewaReleaseService
+    EsewaReleaseService esewaReleaseService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
         params.max = params.max ? params.int('max') : 10
-        if(params.offset == null){
+        if (params.offset == null) {
             params << [offset: 0]
         }
         [esewaReleaseInstanceList: EsewaRelease.list(max: params.int('max'), offset: params.offset), esewaReleaseInstanceCount: EsewaRelease.count()]
     }
 
-    def searchByDate(){
+    def searchByDate() {
         def criteria = EsewaRelease.createCriteria()
         //fetching data based on the criteria
         List<EsewaRelease> dateList = criteria.list {
-            ge("startDate", 2022-06-16)
+            ge("startDate", 2022 - 06 - 16)
         } as List<EsewaRelease>
-        [dateList:dateList]
+        [dateList: dateList]
     }
 
     def search() {
@@ -39,12 +38,11 @@ EsewaReleaseService esewaReleaseService
 
             esewaReleaseList = releasesList
 
-            if(colName == "releaseName") {
+            if (colName == "releaseName") {
                 esewaReleaseCount = EsewaRelease.where {
                     releaseName == searchText
                 }.count()
-            }
-            else if(colName == "releaseVersion") {
+            } else if (colName == "releaseVersion") {
                 esewaReleaseCount = EsewaRelease.where {
                     releaseVersion == searchText
                 }.count()
@@ -57,8 +55,13 @@ EsewaReleaseService esewaReleaseService
         render(template: 'grid', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount, searchText: searchText])
     }
 
-    def show(EsewaRelease esewaReleaseInstance) {
-        respond esewaReleaseInstance
+    def show(Integer id) {
+        def response = esewaReleaseService.getById(id)
+        if (!response) {
+            redirect(controller: "esewaRelease", action: "index")
+        } else {
+            [esewaRelease: response]
+        }
     }
 
     def create() {
@@ -67,66 +70,46 @@ EsewaReleaseService esewaReleaseService
 
     @Transactional
     def save() {
-       new EsewaRelease(params)
-               .addToEsewaComponents(EsewaComponents.findById(params.esewaComponents as Long))
-                .addToReleaseEnvironment(ReleaseEnvironment.findById(params.releaseEnvironment as Long))
-               .addToEsewaReleaseEvents(EsewaReleaseEvents.findById(params.esewaReleaseEvents as Long))
-               .save(flush: true, failOnError: true)
- }
-
-    def edit(EsewaRelease esewaReleaseInstance) {
-        respond esewaReleaseInstance
+        esewaReleaseService.saveData(params)
+        redirect(controller: "esewaRelease", action: "index")
     }
 
-    @Transactional
-    def update(EsewaRelease esewaReleaseInstance) {
-        if (esewaReleaseInstance == null) {
-            notFound()
-            return
-        }
-
-        if (esewaReleaseInstance.hasErrors()) {
-            respond esewaReleaseInstance.errors, view:'edit'
-            return
-        }
-
-        esewaReleaseInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'EsewaRelease.label', default: 'EsewaRelease'), esewaReleaseInstance.id])
-                redirect esewaReleaseInstance
+    def edit(Integer id) {
+        if (flash.redirectParams) {
+            [esewaRelease: flash.redirectParams]
+        } else {
+            def response = esewaReleaseService.getById(id)
+            if (!response) {
+                redirect(controller: "esewaRelease", action: "index")
+            } else {
+                [esewaRelease: response]
             }
-            '*'{ respond esewaReleaseInstance, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(EsewaRelease esewaReleaseInstance) {
-
-        if (esewaReleaseInstance == null) {
-            notFound()
-            return
-        }
-
-        esewaReleaseInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'EsewaRelease.label', default: 'EsewaRelease'), esewaReleaseInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
+    def update() {
+        def response = esewaReleaseService.getById(params.id)
+        if (!response) {
+            redirect(controller: "esewaRelease", action: "index")
+        } else {
+            esewaReleaseService.update(response, params)
+            redirect(controller: "esewaRelease", action: "index")
         }
     }
 
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'esewaRelease.label', default: 'EsewaRelease'), params.id])
-                redirect action: "index", method: "GET"
+    @Transactional
+    def delete(Integer id) {
+        def response = esewaReleaseService.getById(id)
+        if (!response) {
+            redirect(controller: "esewaRelease", action: "index")
+        } else {
+            response = esewaReleaseService.delete(response)
+            if (!response) {
+                render "unable.to.delete"
+            } else {
+                redirect(controller: "esewaRelease", action: "index")
             }
-            '*'{ render status: NOT_FOUND }
         }
     }
 }

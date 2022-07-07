@@ -1,19 +1,10 @@
-<%@ page import="dash.EsewaRelease; dash.Components; dash.EsewaComponents" %>
-<div class="fieldcontain ${hasErrors(bean: esewaComponents, field: 'esewaRelease', 'error')} required">
-    <label for="esewaRelease">
-        <g:message code="esewaComponents.esewaRelease.label" default="Esewa Release" />
+<div class="form-group row ${hasErrors(bean: esewaComponents, field: 'componentName', 'error')} required">
+    <label for="componentName" class="col-sm-2 col-form-label">
+        <g:message code="esewaRelease.releaseVersion.label" default="Component Name"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="esewaRelease" name="esewaRelease" from="${EsewaRelease.list()}" optionKey="id" required="" value="${componentName?.esewaRelease?.id}"/>
+    <g:textField name="componentName" required="" value="${esewaComponents?.componentName}"/>
 </div>
-<div>
-    <label for="componentName">
-        <g:message code="componentName" default="Component Name"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select name="componentName" from="${Components?.values()}"
-              keys="${Components.values()*.name()}"/>
 
-</div>
 
 

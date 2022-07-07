@@ -2,8 +2,9 @@ package dash
 
 class ReleaseNotes {
 
-    TicketType ticketType
-    TicketPriority ticketPriority
+  /*  TicketType ticketType
+    TicketPriority ticketPriority*/
+    String releaseNotesDescription
 
     static belongsTo = [esewaRelease: EsewaRelease]
 
@@ -14,7 +15,8 @@ class ReleaseNotes {
     static mapping = {
         table 'ReleaseNotes'
         version false
-        ticketType column: 'ticketType'
-        ticketPriority column: 'ticketPriority'
+    /*    ticketType column: 'ticketType'
+        ticketPriority column: 'ticketPriority'*/
+        releaseNotesDescription column: 'releaseNotesDescription'
     }
 }

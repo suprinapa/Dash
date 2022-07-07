@@ -1,23 +1,36 @@
 package dash
 
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
 @Transactional
 class ReleaseNotesService {
 
-    def saveData(ReleaseNotes releaseNotesInstance) {
-        releaseNotesInstance.save flush: true
+     def saveData (GrailsParameterMap params) {
+        ReleaseNotes releaseNotes = new ReleaseNotes(params)
+        def response = AppUtil.saveResponse(false, releaseNotes)
+        if (releaseNotes.validate()) {
+            releaseNotes.save(flush: true)
+        }
+        return response
     }
 
-    def update(ReleaseNotes releaseNotesInstance) {
-        releaseNotesInstance.save flush: true
+    def update(ReleaseNotes releaseNotes, GrailsParameterMap params){
+        releaseNotes.properties = params
+        releaseNotes.save(flush: true, failOnError: true)
     }
 
     def getById(Serializable id) {
         return ReleaseNotes.get(id)
     }
-
-    def delete(ReleaseNotes releaseNotesInstance) {
-        releaseNotesInstance.delete flush: true
+    Boolean delete(ReleaseNotes releaseNotes) {
+        try {
+            releaseNotes.delete(flush: true)
+        } catch (Exception e) {
+            println(e.getMessage())
+            return false
+        }
+        return true
     }
+
 }
