@@ -1,3 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="layout" content="main">
+</head>
+<body>
+<div class="nav" role="navigation">
+	<g:set var="entityName" value="${message(code: 'esewaReleaseEvents.label', default: 'Esewa Release Events ')}"/>
+	<title><g:message code="default.list.label" args="[entityName]"/></title>
+	<g:link controller="esewaReleaseEvents" action="create" class="btn btn-success"><g:message code="default.create.label" args="[entityName]"/></g:link>
+</div>
+<br>
+<div class="card">
+	<div class="card-header">
+		<h4 style=font-family:aria-atomic,ui-serif><g:message code="default.edit.label" args="[entityName ]"/></h4>
+	</div>
+	<div class="card-body">
+		<g:form controller="esewaReleaseEvents" action="update">
+			<g:hiddenField name="id" value="${esewaReleaseEvents.id}"/>
+			<g:render template="form" model="[edit:'yes']"/>
+			<div class="form-action-panel">
+				<g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
+				<g:link  controller="esewaReleaseEvents" action="index" class="btn btn-secondary"><g:message code="cancel"/></g:link>
+			</div>
+		</g:form>
+	</div>
+</div>
+</body>
+</html>
+
+%{--
 <%@ page import="org.springframework.validation.FieldError; dash.EsewaReleaseEvents" %>
 <!DOCTYPE html>
 <html>
@@ -38,3 +69,4 @@
 		</div>
 	</body>
 </html>
+--}%

@@ -69,10 +69,10 @@
     <label for="esewaReleaseEvents" class="col-sm-2 col-form-label">
         <g:message code="esewaRelease.esewaReleaseEvents.label" default="Release Events : "/>
     </label>
-    	<g:set var="listOfEsewaReleaseEventsRelease" value="${EsewaReleaseEvents.list().esewaEvents}" />
-    <g:select name="esewaReleaseEvents" from="${listOfEsewaReleaseEventsRelease}" optionKey="id" optionValue="eventName"
+  %{--  	<g:set var="listOfEsewaReleaseEventsRelease" value="${EsewaReleaseEvents.list()}" />--}%
+    <g:select name="esewaReleaseEvents" from="${EsewaReleaseEvents.list()}" optionKey="id" optionValue="esewaEvents"
               multiple="true"
-              value="${esewaRelease?.esewaReleaseEvents?.esewaEvents}" noSelection="['': '-Choose Events-']"/>
+              value="${esewaRelease?.esewaReleaseEvents}" noSelection="['': '-Choose Events-']"/>
 </div>
 
 <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'releaseStatus', 'error')} required">
@@ -88,12 +88,12 @@
 <label for="Add Release Notes" class="col-sm-2 col-form-label">
     <g:message code="esewaRelease.releaseNotes.label" default="Release Notes : "/>
 </label>
-    <div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'releaseNotesDescription', 'error')} required">
+    <div class="fieldcontain ${hasErrors(bean: releaseNotes, field: 'releaseNotesDescription', 'error')} required">
         <label for="description" class="col-sm-2 col-form-label">
             <g:message code="releaseNotes.description.label" default="Description : " />
             <span class="required-indicator">*</span>
         </label>
-        <g:textArea  name="releaseNotesDescription" rows="5" cols="100" value="${releaseNotes?.releaseNotesDescription}"/>
+        <g:textArea name="releaseNotesDescription" rows="5" cols="100" value="${releaseNotes?.releaseNotesDescription}"/>
     </div>
 %{--    <div class="details-panel">
         <g:include controller="releaseNotes" action="create" id="${esewaRelease?.id}"/>

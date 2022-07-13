@@ -38,12 +38,15 @@
                       optionValue="releaseVersion" value="${releaseNotesDetails?.esewaRelease?.id}"/>
         </div>--}%
         <div class="fieldcontain ${hasErrors(bean: releaseNotesDetails, field: 'releaseNotesDescription', 'error')} required">
-            <label for="releaseNotesDescription">
-                <g:message code="releaseChecklist.releaseNotesDescription.label" default="releaseNotesDescription" />
+            <label for="releaseNotesDescription" class="col-sm-2 col-form-label">
+                <g:message code="releaseChecklist.releaseNotesDescription.label" default="Description : " />
                 <span class="required-indicator">*</span>
             </label>
-            <g:textArea  name="releaseNotesDescription" rows="5" cols="100" value="${releaseNotesDetails?.releaseNotesDescription}"/>
-        </div>
+
+        <g:textArea  wrap="hard" name="releaseNotesDescription" rows="5" cols="100" value="${releaseNotesDetails?.releaseNotesDescription}" />
+
+
+    </div>
 
 %{--        <div class="form-group mx-sm-3">
             <label for="ticketPriority" class="col-sm-2 col-form-label"

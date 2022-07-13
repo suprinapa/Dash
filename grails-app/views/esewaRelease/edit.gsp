@@ -1,3 +1,52 @@
+%{--Include Main Layout--}%
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main">
+</head>
+
+<body>
+<div class="nav" role="navigation">
+    <g:set var="entityName" value="${message(code: 'esewaRelease.label', default: 'EsewaRelease')}"/>
+    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <g:link controller="esewaRelease" action="create" class="btn btn-success"><g:message code="default.edit.label"
+                                                                                         args="[entityName]"/></g:link>
+</div>
+<br>
+
+<div class="card">
+    <div class="card-header">
+        <h4 style=font-family:aria-atomic,ui-serif><g:message code="default.edit.label" args="[entityName]"/></h4>
+    </div>
+
+    <div class="card-body">
+    %{--    <g:form controller="esewaRelease" action="update">
+            <g:hiddenField name="id" value="${esewaRelease.id}"/>
+            <g:render template="form"/>
+            <div class="form-action-panel">
+                <g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
+                <g:link  controller="esewaRelease" action="index" class="btn btn-secondary"><g:message code="cancel"/></g:link>
+            </div>
+        </g:form>--}%
+        <g:form url="[resource: esewaRelease, action: 'update']" method="PUT">
+        %{-- action will check version before we update the instance to avoid conflicts with changes by another user--}%
+            <g:hiddenField name="version" value="${esewaRelease?.version}"/>
+            <fieldset class="form">
+                <g:render template="form"/>
+            </fieldset>
+
+            <div class="form-action-panel">
+                <g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
+                <g:link controller="esewaRelease" action="index" class="btn btn-secondary"><g:message
+                        code="cancel"/></g:link>
+            </div>
+        </g:form>
+    </div>
+</div>
+</body>
+</html>
+
+%{--
 <%@ page import="org.springframework.validation.FieldError; dash.EsewaRelease" %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +75,9 @@
 			</ul>
 			</g:hasErrors>
 			<g:form url="[resource:esewaRelease, action:'update']" method="PUT" >
-			%{-- action will check version before we update the instance to avoid conflicts with changes by another user--}%
+			--}%
+%{-- action will check version before we update the instance to avoid conflicts with changes by another user--}%%{--
+
 				<g:hiddenField name="version" value="${esewaRelease?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
@@ -39,3 +90,4 @@
 		</div>
 	</body>
 </html>
+--}%

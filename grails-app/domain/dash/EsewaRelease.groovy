@@ -30,7 +30,7 @@ class EsewaRelease {
         startDate column: 'startDate'
         endDate column: 'endDate'
         createdDate column: 'createdDate'
-        releaseNotes(cascade:'all-delete-orphan')
+        releaseNotes column:'releaseNotes'
         releaseStatus column: 'releaseStatus'
     }
 }

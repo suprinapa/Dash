@@ -5,7 +5,7 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
 @Transactional/*(isolation = I)*/
 class EsewaReleaseService {
-    def saveData(GrailsParameterMap params){
+    def  saveData(GrailsParameterMap params){
         def esewaComponents = EsewaComponents.findAllByIdInList(params.esewaComponents*.toLong())
         def releaseEnvironments = ReleaseEnvironment.findAllByIdInList(params.releaseEnvironment*.toLong())
         def esewaReleaseEvents = EsewaReleaseEvents.findAllByIdInList(params.esewaReleaseEvents*.toLong())
@@ -31,9 +31,19 @@ class EsewaReleaseService {
         return EsewaRelease.get(id)
     }
    def update(EsewaRelease esewaRelease, GrailsParameterMap params){
-        esewaRelease.properties = params
-        esewaRelease.save(flush: true, failOnError: true)
+       def esewaComponents = EsewaComponents.findAllByIdInList(params.esewaComponents*.toLong())
+       def releaseEnvironments = ReleaseEnvironment.findAllByIdInList(params.releaseEnvironment*.toLong())
+       def esewaReleaseEvents = EsewaReleaseEvents.findAllByIdInList(params.esewaReleaseEvents*.toLong())
+        def releaseNotes = ReleaseNotes.findAllByIdInList(params.releaseNotes*.toLong())
+       //def releaseChecklist = ReleaseChecklist.findAllByIdInList(params.esewaReleaseEvents*.toLong())
+       esewaRelease.setEsewaComponents(esewaComponents as Set<EsewaComponents>)
+       esewaRelease.setReleaseEnvironment(releaseEnvironments as Set<ReleaseEnvironment>)
+       //esewaRelease.setReleaseNotes(releaseNotes as Set<ReleaseNotes>)
+       esewaRelease.setEsewaReleaseEvents(esewaReleaseEvents as Set<EsewaReleaseEvents>)
+       esewaRelease.properties = params
+       esewaRelease.save(flush: true, failOnError: true)
    }
+
     Boolean delete(EsewaRelease esewaRelease) {
         try {
             esewaRelease.delete(flush: true)

@@ -187,13 +187,22 @@
 
             </li>
         </g:if>
+
+       <g:if test="${esewaRelease?.releaseType}">
+        <li class="list-group-item">
+            <span class="badge"><g:message code="esewaRelease.releaseType.label"
+                                                                    default="Release Type"/></span>
+
+            <span ><g:fieldValue bean="${esewaRelease}" field="releaseType"/></span>
+        </li>
+        </g:if>
     </ol>
     <g:form url="[resource: esewaRelease, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
             <g:link class="btn btn-secondary" action="edit" id="${esewaRelease.id}"><g:message
-                    code="default.button.edit.label" default="Edit"/></g:link>
+                    code="default.button.edit.label" default="Edit"/><i class="fas fa-edit"></i></g:link>
             <g:actionSubmit class="btn btn-danger" action="delete" id="${esewaRelease.id}"
-                            value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>
+                            value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
             <g:link controller="esewaRelease" action="index" class="btn btn-success"><g:message code="Back"/></g:link>
         </fieldset>
     </g:form>

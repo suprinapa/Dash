@@ -1,102 +1,72 @@
 package dash
 
-import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional
 class EsewaReleaseEventsController {
-
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond EsewaReleaseEvents.list(params), model:[esewaReleaseEventsInstanceCount: EsewaReleaseEvents.count()]
+EsewaReleaseEventsService esewaReleaseEventsService
+      def index() {
+          params.max = params.max ? params.int('max') : 10
+          if (params.offset == null) {
+              params << [offset: 0]
+          }
+          [esewaReleaseEventsInstanceList: EsewaReleaseEvents.list(max: params.int('max'), offset: params.offset), esewaReleaseEventsInstanceCount: EsewaReleaseEvents.count()]
     }
 
-    def show(EsewaReleaseEvents esewaReleaseEventsInstance) {
-        respond esewaReleaseEventsInstance
+    def show(Integer id) {
+        def response = esewaReleaseEventsService.getById(id)
+        if (!response) {
+            redirect(controller: "esewaReleaseEvents", action: "index")
+        } else {
+            [esewaReleaseEvents: response]
+        }
     }
 
     def create() {
-        respond new EsewaReleaseEvents(params)
+        [esewaReleaseEvents: flash.redirectParams]
     }
-
     @Transactional
-    def save(EsewaReleaseEvents esewaReleaseEventsInstance) {
-        if (esewaReleaseEventsInstance == null) {
-            notFound()
-            return
-        }
-
-        if (esewaReleaseEventsInstance.hasErrors()) {
-            respond esewaReleaseEventsInstance.errors, view:'create'
-            return
-        }
-
-        esewaReleaseEventsInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'esewaReleaseEvents.label', default: 'EsewaReleaseEvents'), esewaReleaseEventsInstance.id])
-                redirect esewaReleaseEventsInstance
-            }
-            '*' { respond esewaReleaseEventsInstance, [status: CREATED] }
-        }
+    def save() {
+        esewaReleaseEventsService.saveData(params)
+        redirect(controller: "esewaReleaseEvents", action: "index")
     }
 
-    def edit(EsewaReleaseEvents esewaReleaseEventsInstance) {
-        respond esewaReleaseEventsInstance
-    }
-
-    @Transactional
-    def update(EsewaReleaseEvents esewaReleaseEventsInstance) {
-        if (esewaReleaseEventsInstance == null) {
-            notFound()
-            return
-        }
-
-        if (esewaReleaseEventsInstance.hasErrors()) {
-            respond esewaReleaseEventsInstance.errors, view:'edit'
-            return
-        }
-
-        esewaReleaseEventsInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'EsewaReleaseEvents.label', default: 'EsewaReleaseEvents'), esewaReleaseEventsInstance.id])
-                redirect esewaReleaseEventsInstance
+    def edit(Integer id) {
+        if (flash.redirectParams) {
+            [esewaReleaseEvents: flash.redirectParams]
+        } else {
+            def response = esewaReleaseEventsService.getById(id)
+            if (!response) {
+                redirect(controller: "esewaReleaseEvents", action: "index")
+            } else {
+                [esewaReleaseEvents: response]
             }
-            '*'{ respond esewaReleaseEventsInstance, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(EsewaReleaseEvents esewaReleaseEventsInstance) {
-
-        if (esewaReleaseEventsInstance == null) {
-            notFound()
-            return
-        }
-
-        esewaReleaseEventsInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'EsewaReleaseEvents.label', default: 'EsewaReleaseEvents'), esewaReleaseEventsInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
+    def update() {
+        def response = esewaReleaseEventsService.getById(params.id)
+        if (!response) {
+            redirect(controller: "esewaReleaseEvents", action: "index")
+        } else {
+            esewaReleaseEventsService.update(response, params)
+            redirect(controller: "esewaReleaseEvents", action: "index")
         }
     }
 
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'esewaReleaseEvents.label', default: 'EsewaReleaseEvents'), params.id])
-                redirect action: "index", method: "GET"
+    @Transactional
+    def delete(Integer id) {
+        def response = esewaReleaseEventsService.getById(id)
+        if (!response) {
+            redirect(controller: "esewaReleaseEvents", action: "index")
+        } else {
+            response = esewaReleaseEventsService.delete(response)
+            if (!response) {
+                render "unable.to.delete"
+            } else {
+                redirect(controller: "esewaReleaseEvents", action: "index")
             }
-            '*'{ render status: NOT_FOUND }
         }
     }
 

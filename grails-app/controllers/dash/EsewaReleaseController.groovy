@@ -90,8 +90,8 @@ class EsewaReleaseController {
     @Transactional
     def update() {
         def response = esewaReleaseService.getById(params.id)
-        if (!response) {
-            redirect(controller: "esewaRelease", action: "index")
+       if (!response) {
+           redirect(controller: "esewaRelease", action: "index")
         } else {
             esewaReleaseService.update(response, params)
             redirect(controller: "esewaRelease", action: "index")
