@@ -2,7 +2,7 @@
 <table class="table table-bordered ">
     <thead class="thead-dark ">
     <tr>
-        <th><g:message code="releaseNotes.description.label" default="Description" /></th>
+        <g:sortableColumn property="description" title="${message(code: 'releaseNotes.description.label', default: 'Description')}" />
     </tr>
     </thead>
     <tbody>

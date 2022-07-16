@@ -1,101 +1,71 @@
 package dash
-import static org.springframework.http.HttpStatus.*
+
 import grails.transaction.Transactional
-
-@Transactional(readOnly = true)
 class ReleaseChecklistController {
+    ReleaseChecklistService releaseChecklistService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond ReleaseChecklist.list(params), model: [releaseChecklistInstanceCount: ReleaseChecklist.count()]
+    def index() {
+        params.max = params.max ? params.int('max') : 10
+        if (params.offset == null) {
+            params << [offset: 0]
+        }
+        [releaseChecklistList: ReleaseChecklist.list(max: params.int('max'), offset: params.offset), releaseChecklistCount: ReleaseChecklist.count()]
     }
 
-    def show(ReleaseChecklist releaseChecklistInstance) {
-        respond releaseChecklistInstance
+    def show(Integer id) {
+        def response = releaseChecklistService.getById(id)
+        if (!response) {
+            redirect(controller: "releaseChecklist", action: "index")
+        } else {
+            [releaseChecklist: response]
+        }
     }
 
     def create() {
-        respond new ReleaseChecklist(params)
+        [releaseChecklist: flash.redirectParams]
     }
 
     @Transactional
-    def save(ReleaseChecklist releaseChecklistInstance) {
-        if (releaseChecklistInstance == null) {
-            notFound()
-            return
-        }
-
-        if (releaseChecklistInstance.hasErrors()) {
-            respond releaseChecklistInstance.errors, view:'create'
-            return
-        }
-
-        releaseChecklistInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm{
-                flash.message = message(code: 'default.created.message', args: [message(code: 'releaseChecklist.label', default: 'ReleaseChecklist'), releaseChecklistInstance.id])
-                redirect releaseChecklistInstance
-            }
-            '*' { respond releaseChecklistInstance, [status: CREATED] }
-        }
+    def save() {
+        releaseChecklistService.saveData(params)
     }
 
-    def edit(ReleaseChecklist releaseChecklistInstance) {
-        respond releaseChecklistInstance
-    }
-
-    @Transactional
-    def update(ReleaseChecklist releaseChecklistInstance) {
-        if (releaseChecklistInstance == null) {
-            notFound()
-            return
-        }
-
-        if (releaseChecklistInstance.hasErrors()) {
-            respond releaseChecklistInstance.errors, view:'edit'
-            return
-        }
-
-        releaseChecklistInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'ReleaseChecklist.label', default: 'ReleaseChecklist'), releaseChecklistInstance.id])
-                redirect releaseChecklistInstance
+    def edit(Integer id) {
+        if (flash.redirectParams) {
+            [releaseChecklist: flash.redirectParams]
+        } else {
+            def response = releaseChecklistService.getById(id)
+            if (!response) {
+                redirect(controller: "releaseChecklist", action: "index")
+            } else {
+                [releaseChecklist: response]
             }
-            '*'{ respond releaseChecklistInstance, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(ReleaseChecklist releaseChecklistInstance) {
-
-        if (releaseChecklistInstance == null) {
-            notFound()
-            return
-        }
-
-        releaseChecklistInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'ReleaseChecklist.label', default: 'ReleaseChecklist'), releaseChecklistInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
+    def update() {
+        def response = releaseChecklistService.getById(params.id)
+        if (!response) {
+            redirect(controller: "releaseChecklist", action: "index")
+        } else {
+            releaseChecklistService.update(response, params)
+            redirect(controller: "releaseChecklist", action: "index")
         }
     }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'releaseChecklist.label', default: 'ReleaseChecklist'), params.id])
-                redirect action: "index", method: "GET"
+    
+    @Transactional
+    def delete(Integer id) {
+        def response = releaseChecklistService.getById(id)
+        if (!response) {
+            redirect(controller: "releaseChecklist", action: "index")
+        } else {
+            response = releaseChecklistService.delete(response)
+            if (!response) {
+                render "unable.to.delete"
+            } else {
+                redirect(controller: "releaseChecklist", action: "index")
             }
-            '*'{ render status: NOT_FOUND }
         }
     }
 }

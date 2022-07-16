@@ -16,7 +16,6 @@ class ReleaseNotesService {
     }
 
     def update(ReleaseNotes releaseNotes, GrailsParameterMap params){
-        releaseNotes.setReleaseNotesDescription(params.releaseNotesDescription)
         releaseNotes.properties = params
         releaseNotes.save(flush: true, failOnError: true)
     }

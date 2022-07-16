@@ -8,17 +8,23 @@ class EsewaReleaseService {
     def  saveData(GrailsParameterMap params){
         def esewaComponents = EsewaComponents.findAllByIdInList(params.esewaComponents*.toLong())
         def releaseEnvironments = ReleaseEnvironment.findAllByIdInList(params.releaseEnvironment*.toLong())
-        def esewaReleaseEvents = EsewaReleaseEvents.findAllByIdInList(params.esewaReleaseEvents*.toLong())
+        def esewaEvents = EsewaEvents.findAllByIdInList(params.esewaReleaseEvents*.toLong())
         def esewaRelease = new EsewaRelease(params)
         esewaComponents.forEach({e-> esewaRelease.addToEsewaComponents(e)})
         releaseEnvironments.forEach({f-> esewaRelease.addToReleaseEnvironment(f)})
-        esewaReleaseEvents.forEach({g-> esewaRelease.addToEsewaReleaseEvents(g)})
         def saveRelease = esewaRelease.save(flush: true, failOnError: true)
+        esewaEvents.forEach({ e ->
+            EsewaReleaseEvents esewaReleaseEvents = new EsewaReleaseEvents()
+            esewaReleaseEvents.setEsewaRelease(saveRelease);
+            esewaReleaseEvents.setCreatedDate(new Date())
+            esewaReleaseEvents.setApprovedBy("Suprina")
+            esewaReleaseEvents.setApprovedDate(new Date())
+            esewaReleaseEvents.setEsewaEvents(e)
+            esewaReleaseEvents.save(flush: true, failOnError: true)
+        })
 
         ReleaseNotes releaseNotes = new ReleaseNotes()
         releaseNotes.releaseNotesDescription = params.releaseNotesDescription
-     /*   releaseNotes.ticketPriority = TicketPriority.valueOf(params.ticketPriority)
-        releaseNotes.ticketType = TicketType.valueOf(params.ticketType)*/
         releaseNotes.setEsewaRelease(saveRelease)
         releaseNotes.save(flush: true, failOnError: true)
 
@@ -33,13 +39,19 @@ class EsewaReleaseService {
    def update(EsewaRelease esewaRelease, GrailsParameterMap params){
        def esewaComponents = EsewaComponents.findAllByIdInList(params.esewaComponents*.toLong())
        def releaseEnvironments = ReleaseEnvironment.findAllByIdInList(params.releaseEnvironment*.toLong())
-       def esewaReleaseEvents = EsewaReleaseEvents.findAllByIdInList(params.esewaReleaseEvents*.toLong())
-        def releaseNotes = ReleaseNotes.findAllByIdInList(params.releaseNotes*.toLong())
-       //def releaseChecklist = ReleaseChecklist.findAllByIdInList(params.esewaReleaseEvents*.toLong())
+       def esewaEvents = EsewaEvents.findAllByIdInList(params.esewaReleaseEvents*.toLong())
        esewaRelease.setEsewaComponents(esewaComponents as Set<EsewaComponents>)
        esewaRelease.setReleaseEnvironment(releaseEnvironments as Set<ReleaseEnvironment>)
-       //esewaRelease.setReleaseNotes(releaseNotes as Set<ReleaseNotes>)
-       esewaRelease.setEsewaReleaseEvents(esewaReleaseEvents as Set<EsewaReleaseEvents>)
+
+       esewaEvents.forEach({ e ->
+           EsewaReleaseEvents esewaReleaseEvents = new EsewaReleaseEvents()
+           esewaReleaseEvents.setEsewaRelease(esewaRelease);
+           esewaReleaseEvents.setCreatedDate(new Date())
+           esewaReleaseEvents.setApprovedBy("Suprina")
+           esewaReleaseEvents.setApprovedDate(new Date())
+           esewaReleaseEvents.setEsewaEvents(e)
+           esewaReleaseEvents.save(flush: true, failOnError: true)
+       })
        esewaRelease.properties = params
        esewaRelease.save(flush: true, failOnError: true)
    }

@@ -32,7 +32,7 @@
         %{-- action will check version before we update the instance to avoid conflicts with changes by another user--}%
             <g:hiddenField name="version" value="${esewaRelease?.version}"/>
             <fieldset class="form">
-                <g:render template="form"/>
+                <g:render template="updateForm"/>
             </fieldset>
 
             <div class="form-action-panel">

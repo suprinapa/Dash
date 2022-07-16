@@ -122,15 +122,15 @@
             </li>
         </g:if>
 
-        <g:if test="${esewaRelease?.esewaReleaseEvents}">
+        <g:if test="${esewaEvents}">
             <li class="list-group-item">
                 <span id="esewaReleaseEvents-label" class="badge"><g:message
-                        code="esewaRelease.esewaReleaseEvents.label" default="Esewa Release Events"/></span>
+                        code="esewaRelease.esewaReleaseEvents.label" default="Esewa Events : "/></span>
 
-                <g:each in="${esewaRelease.esewaReleaseEvents}" var="e">
+                <g:each in="${esewaEvents}" var="e">
                     <span class="property-value" aria-labelledby="esewaReleaseEvents-label"><g:link
-                            controller="esewaReleaseEvents" action="show"
-                            id="${e.id}">${e?.esewaEvents?.eventName?.encodeAsHTML()}</g:link></span>
+                            controller="esewaEvents" action="show"
+                            id="${e.id}">${e?.eventName?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
             </li>

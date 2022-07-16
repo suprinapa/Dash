@@ -12,7 +12,7 @@ class EsewaRelease {
     ReleaseType releaseType
 
     static hasMany = [esewaComponents: EsewaComponents,releaseNotes:ReleaseNotes, releaseEnvironment:ReleaseEnvironment,
-    releaseChecklist: ReleaseChecklist, esewaReleaseEvents: EsewaReleaseEvents]
+    releaseChecklist: ReleaseChecklist]
 
     static constraints = {
         releaseName nullable: false

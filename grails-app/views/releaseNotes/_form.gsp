@@ -1,4 +1,3 @@
-<%@ page import="dash.TicketType; dash.TicketPriority; dash.EsewaRelease" %>
 %{--<%@ page import="dash.TicketType; dash.TicketPriority; dash.EsewaRelease; dash.ReleaseNotes" %>
 <div class="fieldcontain ${hasErrors(bean: releaseNotesDetails, field: 'esewaRelease', 'error')} required">
 	<label for="esewaRelease">
@@ -27,8 +26,8 @@
 
 </div>--}%
 
-<div class="form-group">
-    <div class="form-inline phone-number-area">
+%{--<div class="form-group">
+    <div class="form-inline phone-number-area">--}%
 %{--        <div class="form-group mx-sm-3">
             <label for="esewaRelease">
                 <g:message code="releaseNotes.esewaRelease.label" default="Release Version"/>
@@ -37,16 +36,12 @@
             <g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionKey="id"
                       optionValue="releaseVersion" value="${releaseNotesDetails?.esewaRelease?.id}"/>
         </div>--}%
-        <div class="fieldcontain ${hasErrors(bean: releaseNotesDetails, field: 'releaseNotesDescription', 'error')} required">
-            <label for="releaseNotesDescription" class="col-sm-2 col-form-label">
-                <g:message code="releaseChecklist.releaseNotesDescription.label" default="Description : " />
-                <span class="required-indicator">*</span>
-            </label>
-
-        <g:textArea  wrap="hard" name="releaseNotesDescription" rows="5" cols="100" value="${releaseNotesDetails?.releaseNotesDescription}" />
-
-
-    </div>
+        <div class="form-group">
+            <label> <g:message code="releaseNotes.description" default="Description : " /> * </label>
+            <g:textArea  name="releaseNotesDescription" class="form-control" rows="5" cols="100" value="${releaseNotes?.releaseNotesDescription}" />
+        </div>
+%{--
+    </div>--}rel
 
 %{--        <div class="form-group mx-sm-3">
             <label for="ticketPriority" class="col-sm-2 col-form-label"
@@ -73,8 +68,4 @@
 %{--        <g:else>--}%
 %{--            <button type="button" class="add-new-list btn btn-primary "><i class="fas fa-plus-circle"></i></button>--}%
 %{--        </g:else>--}%
-
-    </div>
-</div>
-
 

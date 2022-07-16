@@ -26,7 +26,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:releaseChecklistInstance, action:'save']" >
+			<g:form url="[resource:releaseChecklist, action:'save']" >
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

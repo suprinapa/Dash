@@ -1,3 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main">
+</head>
+
+<body>
+<div class="nav" role="navigation">
+    <g:set var="entityName" value="${message(code: 'releaseNotes.label', default: 'Release Notes')}"/>
+    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <g:link controller="releaseNotes" action="create" class="btn btn-success"><g:message code="default.edit.label"
+                                                                                         args="[entityName]"/></g:link>
+</div>
+<br>
+
+<div class="card">
+    <div class="card-header">
+        <h4 style=font-family:aria-atomic,ui-serif><g:message code="default.edit.label" args="[entityName]"/></h4>
+    </div>
+
+    <div class="card-body">
+        <g:form controller="releaseNotes" action="update">
+            <g:hiddenField name="id" value="${releaseNotes.id}"/>
+            <g:render template="form"/>
+            <div class="form-action-panel">
+                <g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
+                <g:link controller="releaseNotes" action="index" class="btn btn-secondary"><g:message
+                        code="cancel"/></g:link>
+            </div>
+        </g:form>
+    </div>
+</div>
+</body>
+</html>
+
+%{--
 <%@ page import="org.springframework.validation.FieldError; dash.ReleaseNotes" %>
 <!DOCTYPE html>
 <html>
@@ -39,3 +75,18 @@
 		</div>
 	</body>
 </html>
+
+--}%
+%{--		<g:form url="[resource: releaseNotes, action: 'update']" method="PUT">
+		--}%%{-- action will check version before we update the instance to avoid conflicts with changes by another user--}%%{--
+			<g:hiddenField name="version" value="${releaseNotes?.version}"/>
+			<fieldset class="form">
+				<g:render template="form"/>
+			</fieldset>
+
+			<div class="form-action-panel">
+				<g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
+				<g:link controller="releaseNotes" action="index" class="btn btn-secondary"><g:message
+						code="cancel"/></g:link>
+			</div>
+		</g:form>--}%

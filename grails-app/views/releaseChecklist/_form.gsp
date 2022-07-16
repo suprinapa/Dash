@@ -1,4 +1,9 @@
-<%@ page import="dash.EsewaRelease; dash.ReleaseChecklist" %>
+<div class="form-group">
+	<label> <g:message code="releaseChecklist.description" default="Description : " /> * </label>
+	<g:textArea  name="releaseChecklistDescription" class="form-control" rows="5" cols="100" value="${releaseChecklist?.releaseChecklistDescription}" />
+</div>
+
+%{--<%@ page import="dash.EsewaRelease; dash.ReleaseChecklist" %>
 
 
 <div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'description', 'error')} required">
@@ -7,7 +12,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textArea  name="description" rows="5" cols="100" value="${releaseChecklistInstance?.releaseCheckListDescription}"/>
-</div>
+</div>--}%
 
 %{--<div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'remarks', 'error')} required">
 	<label for="remarks">

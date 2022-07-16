@@ -23,6 +23,10 @@ class EsewaReleaseEventsService {
         return EsewaReleaseEvents.get(id)
     }
 
+    def getByRelease(EsewaRelease esewaRelease) {
+        return EsewaReleaseEvents.findAllByEsewaRelease(esewaRelease)
+    }
+
     def update(EsewaReleaseEvents esewaReleaseEvents, GrailsParameterMap params) {
         esewaReleaseEvents.properties = params
         esewaReleaseEvents.save(flush: true, failOnError: true)

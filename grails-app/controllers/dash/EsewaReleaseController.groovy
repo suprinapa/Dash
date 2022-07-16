@@ -5,6 +5,8 @@ import grails.transaction.Transactional
 @Transactional
 class EsewaReleaseController {
     EsewaReleaseService esewaReleaseService
+    EsewaReleaseEventsService esewaReleaseEventsService
+    EsewaEventsService esewaEventsService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
@@ -57,10 +59,11 @@ class EsewaReleaseController {
 
     def show(Integer id) {
         def response = esewaReleaseService.getById(id)
+        def release = esewaReleaseEventsService.getByRelease(response)
         if (!response) {
             redirect(controller: "esewaRelease", action: "index")
         } else {
-            [esewaRelease: response]
+            [esewaRelease: response, esewaEvents: release.esewaEvents]
         }
     }
 
