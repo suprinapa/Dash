@@ -11,7 +11,7 @@ class ReleaseNotesController {
          if (params.offset == null) {
              params << [offset: 0]
          }
-         [releaseNotesList: ReleaseNotes.list(max: params.int('max'), offset: params.offset), releaseNotesCount: EsewaComponents.count()]
+         [releaseNotesList: ReleaseNotes.list(max: params.int('max'), offset: params.offset), releaseNotesCount: ReleaseNotes.count()]
     }
 
     def show(Integer id) {
@@ -30,9 +30,10 @@ class ReleaseNotesController {
     @Transactional
     def save() {
         releaseNotesService.saveData(params)
+        redirect(controller: "releaseNotes", action: "index")
      }
 
-    def edit(Integer id) {
+        def edit(Integer id) {
         if (flash.redirectParams) {
             [releaseNotes: flash.redirectParams]
         } else {

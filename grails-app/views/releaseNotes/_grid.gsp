@@ -15,9 +15,11 @@
     </tbody>
 </table>
 </div>
-%{--<div class="pagination__custom">
+%{--
+<div class="pagination__custom">
     <util:remotePaginate  action="search" total="${releaseNotesCount}"
                           update="gridList"
                           params="${params}"/>
-</div>--}%
+</div>
+--}%
 

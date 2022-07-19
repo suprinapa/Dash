@@ -13,22 +13,24 @@
     <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
-<a href="#list-releaseEnvirmonment" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <div class="nav" role="navigation">
     <g:link controller="releaseEnvironment" action="create" class="btn btn-success"><g:message code="default.create.label" args="[entityName]"/></g:link>
 </div>
 <br>
-
-<div id="list-releaseEnvirmonment" role="main">
-    <h2><g:message code="default.list.label" args="[entityName]" /></h2>
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
+<div class="card">
+<div class="card-header">
+    <div id="list-releaseEnvirmonment" role="main">
+        <h2><g:message code="default.list.label" args="[entityName]" /></h2>
+        <g:if test="${flash.message}">
+            <div class="message" role="status">${flash.message}</div>
+        </g:if>
+    </div>
 </div>
-
-
-<div id="gridList">
-    <g:render template="grid"/>
+<div class="card-body">
+    <div id="gridList">
+        <g:render template="grid"/>
+    </div>
+</div>
 </div>
 </body>
 </html>

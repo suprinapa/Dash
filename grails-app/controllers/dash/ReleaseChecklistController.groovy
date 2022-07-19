@@ -28,6 +28,7 @@ class ReleaseChecklistController {
     @Transactional
     def save() {
         releaseChecklistService.saveData(params)
+        redirect(controller: "releaseChecklist", action: "index")
     }
 
     def edit(Integer id) {

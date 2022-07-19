@@ -6,7 +6,7 @@
 
         <util:remoteSortableColumn property="releaseVersion" params="${pageScope.variables}" update="gridList" action="search" title="${message(code: 'esewaRelease.releaseVersion.label', default: 'Release Version')}" />
 
-        <th><g:message code="esewaRelease.parentRelease.label" default="Parent Release" /></th>
+        <th><g:message code="esewaRelease.parentRelease.label" default="Previous Release" /></th>
 
         <util:remoteSortableColumn property="createdDate" params="${pageScope.variables}" update="gridList" action="search" title="${message(code: 'esewaRelease.createdDate.label', default: 'Created Date')}" />
 

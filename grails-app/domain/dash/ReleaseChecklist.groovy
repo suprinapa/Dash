@@ -10,7 +10,7 @@ class ReleaseChecklist {
     static belongsTo = [esewaRelease: EsewaRelease]
 
     static constraints = {
-        releaseCheckListDescription nullable: false , blank: false
+        releaseCheckListDescription nullable: true
  /*       remarks nullable: true , blank: true
         ticketNumber nullable: true , blank: false*/
     }

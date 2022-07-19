@@ -1,3 +1,11 @@
+function deleteItem() {
+    if (confirm("Are you sure?")) {
+        // your deletion code
+    }
+    return false;
+}
+/*
+
 jQuery(document).ready(function () {
 
     jQuery('.delete-confirmation').confirm({
@@ -59,4 +67,4 @@ jQuery(document).ready(function () {
 
     });
 
-});
+});*/

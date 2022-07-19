@@ -1,13 +1,13 @@
-%{--<%@ page import="dash.TicketType; dash.TicketPriority; dash.EsewaRelease; dash.ReleaseNotes" %>
-<div class="fieldcontain ${hasErrors(bean: releaseNotesDetails, field: 'esewaRelease', 'error')} required">
+<%@ page import="dash.TicketType; dash.TicketPriority; dash.EsewaRelease; dash.ReleaseNotes" %>
+<div class="fieldcontain ${hasErrors(bean: releaseNotes, field: 'esewaRelease', 'error')} required">
 	<label for="esewaRelease">
-		<g:message code="releaseNotes.esewaRelease.label" default="Esewa Release" />
+		<g:message code="releaseNotes.esewaRelease.label" default="Esewa Release : " />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionKey="id" optionValue="releaseVersion" value="${releaseNotesDetails?.esewaRelease?.id}"/>
+	<g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionKey="id" optionValue="releaseVersion" value="${releaseNotes?.esewaRelease?.id}"/>
 
 </div>
-
+%{--
 <div class="fieldcontain ${hasErrors(bean: releaseNotesDetails, field: 'ticketPriority', 'error')} required">
 	<label for="ticketPriority">
 		<g:message code="releaseNotes.ticketPriority.label" default="Ticket Priority" />

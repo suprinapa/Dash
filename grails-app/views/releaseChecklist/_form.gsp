@@ -1,20 +1,13 @@
-<div class="form-group">
-	<label> <g:message code="releaseChecklist.description" default="Description : " /> * </label>
-	<g:textArea  name="releaseChecklistDescription" class="form-control" rows="5" cols="100" value="${releaseChecklist?.releaseChecklistDescription}" />
-</div>
-
-%{--<%@ page import="dash.EsewaRelease; dash.ReleaseChecklist" %>
-
-
-<div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'description', 'error')} required">
+%{--<div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'description', 'error')} required">
 	<label for="description">
 		<g:message code="releaseChecklist.description.label" default="Description" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textArea  name="description" rows="5" cols="100" value="${releaseChecklistInstance?.releaseCheckListDescription}"/>
-</div>--}%
+</div>
 
-%{--<div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'remarks', 'error')} required">
+
+<div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'remarks', 'error')} required">
 	<label for="remarks">
 		<g:message code="releaseChecklist.remarks.label" default="Remarks" />
 		<span class="required-indicator">*</span>
@@ -32,23 +25,28 @@
 
 </div>--}%
 
-%{--<div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'esewaRelease', 'error')} required">
+<%@ page import="dash.EsewaRelease; dash.ReleaseChecklist" %>
+<div class="fieldcontain ${hasErrors(bean: releaseChecklist, field: 'esewaRelease', 'error')} required">
 	<label for="esewaRelease">
-		<g:message code="releaseChecklist.esewaRelease.label" default="Esewa Release" />
+		<g:message code="releaseChecklist.esewaRelease.label" default="Esewa Release : " />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionValue="releaseVersion" optionKey="id" required=""
-			  value="${releaseChecklistInstance?.esewaRelease?.id}" noSelection="['':'-Choose Release Version-']"/>
-</div>--}%
+	<g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionValue="releaseVersion" optionKey="id"
+			  value="${releaseChecklist?.esewaRelease?.id}" noSelection="['':'-Choose Release Version-']"/>
+</div>
 
-%{--
-<div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'type', 'error')} required">
+<div class="form-group">
+	<label> <g:message code="releaseChecklist.description" default="Description : " /> * </label>
+	<g:textArea  name="releaseCheckListDescription" class="form-control" rows="5" cols="100" value="${releaseChecklist?.releaseCheckListDescription}" />
+</div>
+%{--<div class="fieldcontain ${hasErrors(bean: releaseChecklistInstance, field: 'type', 'error')} required">
 	<label for="type">
 		<g:message code="releaseChecklist.type.label" default="Type" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="type" required="" value="${releaseChecklistInstance?.type}"/>
 
-</div>
---}%
+</div>--}%
+
+
 

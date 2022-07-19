@@ -6,7 +6,6 @@ import grails.transaction.Transactional
 class EsewaReleaseController {
     EsewaReleaseService esewaReleaseService
     EsewaReleaseEventsService esewaReleaseEventsService
-    EsewaEventsService esewaEventsService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
@@ -14,7 +13,13 @@ class EsewaReleaseController {
         if (params.offset == null) {
             params << [offset: 0]
         }
-        [esewaReleaseInstanceList: EsewaRelease.list(max: params.int('max'), offset: params.offset), esewaReleaseInstanceCount: EsewaRelease.count()]
+        def c = EsewaRelease.createCriteria()
+        def results = c.list(max: params.int('max'), offset: params.offset) {
+            and {
+              order('createdDate', 'desc')
+            }
+        }
+        [esewaReleaseInstanceList: results, esewaReleaseInstanceCount: EsewaRelease.count()]
     }
 
     def searchByDate() {
@@ -50,8 +55,15 @@ class EsewaReleaseController {
                 }.count()
             }
         } else {
+            def c = EsewaRelease.createCriteria()
+            def results = c.list(max: params.int('max'), offset: params.offset) {
+                and {
+                    order('createdDate', 'desc')
+
+                }
+            }
 //            params << [sort: 'colName']
-            esewaReleaseList = EsewaRelease.list(params)
+            esewaReleaseList = results
             esewaReleaseCount = EsewaRelease.count()
         }
         render(template: 'grid', model: [esewaReleaseInstanceList: esewaReleaseList, esewaReleaseInstanceCount: esewaReleaseCount, searchText: searchText])
@@ -63,7 +75,7 @@ class EsewaReleaseController {
         if (!response) {
             redirect(controller: "esewaRelease", action: "index")
         } else {
-            [esewaRelease: response, esewaEvents: release.esewaEvents]
+            [esewaRelease: response, esewaEvents: release.esewaEvents, approvedBy:release.approvedBy]
         }
     }
 
@@ -97,7 +109,7 @@ class EsewaReleaseController {
            redirect(controller: "esewaRelease", action: "index")
         } else {
             esewaReleaseService.update(response, params)
-            redirect(controller: "esewaRelease", action: "index")
+            redirect(controller: "esewaRelease", action: "show")
         }
     }
 

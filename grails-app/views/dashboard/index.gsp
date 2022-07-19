@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h1>ESEWA DASHBOARD</h1>
+<h1>eSEWA DASHBOARD</h1>
 ${countOfInProgress}
 
 ${countOfUnReleased}

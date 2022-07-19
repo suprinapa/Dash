@@ -65,16 +65,26 @@
               noSelection="['': '-Choose Enviroment-']"/>
 </div>
 
-<div class="form-group row ${hasErrors(bean: esewaRelease, field: 'esewaReleaseEvents', 'error')} ">
-    <label for="esewaReleaseEvents" class="col-sm-2 col-form-label">
-        <g:message code="esewaRelease.esewaReleaseEvents.label" default="Release Events : "/>
-    </label>
-    %{--  	<g:set var="listOfEsewaReleaseEventsRelease" value="${EsewaReleaseEvents.list()}" />--}%
-    <g:select name="esewaReleaseEvents" from="${EsewaEvents.list()}" optionKey="id" optionValue="eventName"
-              multiple="true"
-              value="${eventName}" noSelection="['': '-Choose Events-']"/>
+<div class="card">
+    <div class="card-body">
+        <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'esewaReleaseEvents', 'error')} ">
+            <label for="esewaReleaseEvents" class="col-sm-2 col-form-label">
+                <g:message code="esewaRelease.esewaReleaseEvents.label" default="Release Events : "/>
+            </label>
+            %{--    	<g:set var="listOfEsewaReleaseEventsRelease" value="${EsewaReleaseEvents.list()}" />--}%
+            <g:select name="esewaReleaseEvents" from="${EsewaEvents.list()}" optionKey="id" optionValue="eventName"
+                      multiple="true"
+                      value="${eventName}" noSelection="['': '-Choose Events-']"/>
+        </div>
+        <div class="form-group row">
+            <label for="ApprovedBy" class="col-sm-2 col-form-label">
+                <g:message code="approvedBy" default="Approved By : "/>
+            </label>
+            <g:textField name="ApprovedBy" value="${approvedBy}"/>
+        </div>
+    </div>
 </div>
-
+<br>
 <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'releaseStatus', 'error')} required">
     <label for="releaseStatus" class="col-sm-2 col-form-label">
         <g:message code="esewaRelease.releaseStatus.label" default="Release Status : "/>

@@ -11,19 +11,12 @@
 	<div class="card-body">
 		<g:form controller="releaseNotes" action="save" enctype="multipart/form-data">
 			<g:render template="form"/>
+			<div class="form-action-panel">
+				<g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Save')}" />
+				<g:link controller="releaseNotes" action="index" class="btn btn-secondary"><g:message code="cancel"/></g:link>
+			</div>
 		</g:form>
-	</div>
-	<br>
-	<div class="form-action-panel">
-		<g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Save')}" />
-		<g:link controller="releaseNotes" action="index" class="btn btn-secondary"><g:message code="cancel"/></g:link>
 	</div>
 </div>
 </body>
 </html>
-
-
-%{--<g:each in="${releaseNotes}" var="releaseNotesDetails">
-			<g:render template="form" model="[releaseNotesDetails: releaseNotesDetails]"/>
-		</g:each>
-<g:render template="form"/>--}%

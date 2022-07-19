@@ -7,12 +7,9 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 class ReleaseNotesService {
 
      def saveData (GrailsParameterMap params) {
-        ReleaseNotes releaseNotes = new ReleaseNotes(params)
-        def response = AppUtil.saveResponse(false, releaseNotes)
-        if (releaseNotes.validate()) {
-            releaseNotes.save(flush: true)
-        }
-        return response
+         ReleaseNotes releaseNotes = new ReleaseNotes(params)
+
+         return releaseNotes.save(flush: true, failOnError: true)
     }
 
     def update(ReleaseNotes releaseNotes, GrailsParameterMap params){
