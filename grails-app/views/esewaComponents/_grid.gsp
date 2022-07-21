@@ -18,6 +18,10 @@
     </tbody>
 </table>
 </div>
+
+<div class="pagination">
+    <g:paginate total="${esewaComponentsInstanceCount ?: 0}" />
+</div>
 %{--update (required) - The id of the div/span which contains the tag to render the template, which displays the list.
  total (required) - The total number of results to paginate
  action (required) - The name of the action to use in the link

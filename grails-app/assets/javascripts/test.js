@@ -1,9 +1,16 @@
-function deleteItem() {
-    if (confirm("Are you sure?")) {
-        // your deletion code
-    }
-    return false;
-}
+jQuery(document).ready(function ()
+{
+    jQuery('.deleteConfirm').confirm({
+        title: 'Delete Confirmation',
+        content:'Are you sure?',
+    })
+});
+
+$(function() {
+    $("#item").click(function() {
+        $("#submenu").slideToggle(500);
+    });
+});
 /*
 
 jQuery(document).ready(function () {

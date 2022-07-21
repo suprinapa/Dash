@@ -59,10 +59,9 @@ class EsewaReleaseController {
             def results = c.list(max: params.int('max'), offset: params.offset) {
                 and {
                     order('createdDate', 'desc')
-
                 }
             }
-//            params << [sort: 'colName']
+//              params << [sort: 'colName']
             esewaReleaseList = results
             esewaReleaseCount = EsewaRelease.count()
         }

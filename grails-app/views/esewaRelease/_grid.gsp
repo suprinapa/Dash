@@ -1,22 +1,22 @@
 <div class="card-body">
-<table class="table table-bordered ">
+<table class="table table-bordered  table-striped table-responsive-sm ">
     <thead class="thead-dark ">
     <tr>
-        <util:remoteSortableColumn property="releaseName" params="${pageScope.variables}" action="search" update="gridList" title="${message(code: 'esewaRelease.releaseName.label', default: 'Release Name')}" />
+        <util:remoteSortableColumn style="color: white" property="releaseName" params="${pageScope.variables}" action="search" update="gridList" title="${message(code: 'esewaRelease.releaseName.label', default: 'Release Name')}" />
 
-        <util:remoteSortableColumn property="releaseVersion" params="${pageScope.variables}" update="gridList" action="search" title="${message(code: 'esewaRelease.releaseVersion.label', default: 'Release Version')}" />
+        <util:remoteSortableColumn style="color: white" property="releaseVersion" params="${pageScope.variables}" update="gridList" action="search" title="${message(code: 'esewaRelease.releaseVersion.label', default: 'Release Version')}" />
 
-        <th><g:message code="esewaRelease.parentRelease.label" default="Previous Release" /></th>
+        <th><g:message  style="color: white" code=" parentRelease.label" default="Previous Release" /></th>
 
-        <util:remoteSortableColumn property="createdDate" params="${pageScope.variables}" update="gridList" action="search" title="${message(code: 'esewaRelease.createdDate.label', default: 'Created Date')}" />
+        <util:remoteSortableColumn style="color: white" property="createdDate" params="${pageScope.variables}" update="gridList" action="search" title="${message(code: 'esewaRelease.createdDate.label', default: 'Created Date')}" />
 
-        <util:remoteSortableColumn property="startDate" params="${pageScope.variables}"  update="gridList" action="search" title="${message(code: 'esewaRelease.startDate.label', default: 'Start Date')}" />
+        <util:remoteSortableColumn style="color: white" property="startDate" params="${pageScope.variables}"  update="gridList" action="search" title="${message(code: 'esewaRelease.startDate.label', default: 'Start Date')}" />
 
-        <util:remoteSortableColumn property="endDate" params="${pageScope.variables}" update="gridList" action="search" title="${message(code: 'esewaRelease.endDate.label', default: 'End Date')}" />
+        <util:remoteSortableColumn style="color: white" property="endDate" params="${pageScope.variables}" update="gridList" action="search" title="${message(code: 'esewaRelease.endDate.label', default: 'End Date')}" />
 
-        <util:remoteSortableColumn property="releaseStatus" params="${pageScope.variables}" update="gridList"  action="search" title="${message(code: 'esewaRelease.releaseStatus.label', default: 'Release Status')}" />
+        <util:remoteSortableColumn style="color: white" property="releaseStatus" params="${pageScope.variables}" update="gridList"  action="search" title="${message(code: 'esewaRelease.releaseStatus.label', default: 'Release Status')}" />
 
-        <util:remoteSortableColumn property="releaseType"  params="${pageScope.variables}" update="gridList"  action="search" title="${message(code: 'esewaRelease.releaseTyppe.label', default: 'Release Type')}" />
+        <util:remoteSortableColumn style="color: white" property="releaseType"  params="${pageScope.variables}" update="gridList"  action="search" title="${message(code: 'esewaRelease.releaseTyppe.label', default: 'Release Type')}" />
     </tr>
     </thead>
     <tbody>

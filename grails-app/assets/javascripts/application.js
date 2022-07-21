@@ -8,6 +8,7 @@
 //= require jquery-3.3.1.min
 //= require bootstrap
 //= require popper.min
+//= require bootstrap.bundle
 //= require jquery-confirm.min
 //= require message.box
 //= require ajax

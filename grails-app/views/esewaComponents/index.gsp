@@ -8,9 +8,6 @@
 </head>
 
 <body>
-<a href="#list-esewaComponents" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
-                                                                      default="Skip to content&hellip;"/></a>
-
 <div class="nav" role="navigation">
     <g:link controller="esewaComponents" action="create" class="btn btn-success"><g:message code="default.create.label" args="[entityName]"/></g:link>
 </div>

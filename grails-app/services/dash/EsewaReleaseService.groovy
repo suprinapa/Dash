@@ -10,6 +10,7 @@ class EsewaReleaseService {
         def esewaComponents = EsewaComponents.findAllByIdInList(params.esewaComponents*.toLong())
         def releaseEnvironments = ReleaseEnvironment.findAllByIdInList(params.releaseEnvironment*.toLong())
         def esewaEvents = EsewaEvents.findAllByIdInList(params.esewaReleaseEvents*.toLong())
+        params.createdDate = new Date()
         def esewaRelease = new EsewaRelease(params)
         esewaComponents.forEach({ e -> esewaRelease.addToEsewaComponents(e) })
         releaseEnvironments.forEach({ f -> esewaRelease.addToReleaseEnvironment(f) })
@@ -24,13 +25,13 @@ class EsewaReleaseService {
             esewaReleaseEvents.save(flush: true, failOnError: true)
         })
         ReleaseNotes releaseNotes = new ReleaseNotes()
-        if(releaseNotes!= null) {
+        if(params.releaseNotesDescription!= null && params.releaseNotesDescription != "") {
             releaseNotes.releaseNotesDescription = params.releaseNotesDescription
             releaseNotes.setEsewaRelease(saveRelease)
             releaseNotes.save(flush: true, failOnError: true)
         }
         ReleaseChecklist releaseChecklist = new ReleaseChecklist()
-        if(releaseChecklist!= null) {
+        if(params.releaseCheckListDescription!= null && params.releaseCheckListDescription != "") {
             releaseChecklist.releaseCheckListDescription = params.releaseCheckListDescription
             releaseChecklist.setEsewaRelease(saveRelease)
             releaseChecklist.save(flush: true, failOnError: true)
@@ -52,7 +53,7 @@ class EsewaReleaseService {
             EsewaReleaseEvents esewaReleaseEvents = new EsewaReleaseEvents()
             esewaReleaseEvents.setEsewaRelease(esewaRelease);
             esewaReleaseEvents.setCreatedDate(new Date())
-            esewaReleaseEvents.setApprovedBy(params.approvedBy)
+            esewaReleaseEvents.setApprovedBy(params.ApprovedBy)
             esewaReleaseEvents.setApprovedDate(new Date())
             esewaReleaseEvents.setEsewaEvents(e)
             esewaReleaseEvents.save(flush: true, failOnError: true)

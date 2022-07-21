@@ -14,6 +14,8 @@
                                                                                          args="[entityName]"/></g:link>
 </div>
 
+%{--
+
 <div class="nav" role="navigation">
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -45,21 +47,24 @@
             </ul>
         </div>
     </nav>
-</div>
-<div id="show-esewaRelease" class="card-body" role="main">
-    <h2><g:message code="default.show.label" args="[entityName]"/></h2>
+</div>--}%
+<br>
+<div class="card">
+<div class="card-header" >
+    <h5><g:message code="default.show.label" args="[entityName]"/></h5>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
+</div>
     <ol class="list-inline">
-
         <g:if test="${esewaRelease?.releaseVersion}">
             <li class="list-group-item">
                 <span id="releaseVersion-label" class="badge"><g:message code="esewaRelease.releaseVersion.label"
                                                                          default="Release Version : "/></span>
 
-                <span class="property-value" aria-labelledby="releaseVersion-label"><g:fieldValue
-                        bean="${esewaRelease}" field="releaseVersion"/></span>
+                <span class="property-value" aria-labelledby="releaseVersion-label">
+                    <g:fieldValue
+                            bean="${esewaRelease}" field="releaseVersion"/></span>
 
             </li>
         </g:if>
@@ -116,7 +121,8 @@
 
                 <g:each in="${esewaRelease.esewaComponents}" var="e">
                     <span class="list-group" aria-labelledby="esewaComponents-label"><g:link
-                            controller="esewaComponents" action="show" id="${e.id}">${e?.componentName?.encodeAsHTML()}</g:link></span>
+                            controller="esewaComponents" action="show"
+                            id="${e.id}">${e?.componentName?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
             </li>
@@ -171,7 +177,8 @@
 
                 <g:each in="${esewaRelease.releaseNotes}" var="r">
                     <span class="list-group" aria-labelledby="releaseNotes-label">
-                        <g:link controller="releaseNotes" action="show" id="${r.id}">${r?.releaseNotesDescription?.encodeAsHTML()}</g:link></span>
+                        <g:link controller="releaseNotes" action="show"
+                                id="${r.id}">${r?.releaseNotesDescription?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
             </li>
@@ -188,24 +195,23 @@
             </li>
         </g:if>
 
-       <g:if test="${esewaRelease?.releaseType}">
-        <li class="list-group-item">
-            <span class="badge"><g:message code="esewaRelease.releaseType.label"
-                                                                    default="Release Type : "/></span>
-
-            <span ><g:fieldValue bean="${esewaRelease}" field="releaseType"/></span>
-        </li>
+        <g:if test="${esewaRelease?.releaseType}">
+            <li class="list-group-item">
+                <span class="badge"><g:message code="esewaRelease.releaseType.label"
+                                               default="Release Type : "/></span>
+                <span><g:fieldValue bean="${esewaRelease}" field="releaseType"/></span>
+            </li>
         </g:if>
     </ol>
-    <g:form url="[resource: esewaRelease, action: 'delete']" method="DELETE">
-        <fieldset class="buttons">
-            <g:link class="btn btn-secondary" action="edit" id="${esewaRelease.id}"><g:message
-                    code="default.button.edit.label" default="Edit"/><i class="fas fa-edit"></i></g:link>
-            <g:actionSubmit class="btn btn-danger" action="delete" id="${esewaRelease.id}"
-                            value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
-            <g:link controller="esewaRelease" action="index" class="btn btn-success"><g:message code="back"/></g:link>
-        </fieldset>
-    </g:form>
 </div>
+<g:form url="[resource: esewaRelease, action: 'delete']" method="DELETE">
+    <fieldset class="buttons">
+        <g:link class="btn btn-secondary" action="edit" id="${esewaRelease.id}"><g:message
+                code="default.button.edit.label" default="Edit"/><i class="fas fa-edit"></i></g:link>
+        <g:actionSubmit class="btn btn-danger deleteConfirm" action="delete" id="${esewaRelease.id}"
+                        value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>
+        <g:link controller="esewaRelease" action="index" class="btn btn-success"><g:message code="back"/></g:link>
+    </fieldset>
+</g:form>
 </body>
 </html>
