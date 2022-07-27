@@ -18,6 +18,5 @@ class EsewaReleaseEvents {
         createdDate column: 'createdDate'
         approvedDate column: 'approvedDate'
         approvedBy column: 'approvedBy'
-
     }
 }

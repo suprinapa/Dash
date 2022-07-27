@@ -13,6 +13,7 @@ class EsewaEvents {
         table 'EsewaEvents'
         version false
         eventName column: 'eventName'
+        esewaReleaseEvents cascade: 'all-delete-orphan'
     }
 
 }

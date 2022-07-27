@@ -110,7 +110,7 @@
                 <label for="ApprovedBy" class="badge">
                     <g:message code="approvedBy" default="Approved By : "/>
                 </label>
-                <g:textField name="ApprovedBy" required="" class="form-control" id="ApprovedBy" type="text"
+                <g:textField name="ApprovedBy" class="form-control" id="ApprovedBy" type="text"
                              placeholder="Enter Approved By" value="${ApprovedBy}"/>
             </div>
         </div>
@@ -128,7 +128,6 @@
                   required="" value="${esewaRelease?.releaseStatus?.name()}" noSelection="['': '-Choose Status-']"/>
     </div>
 </div>
-
 %{--
 <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'Add releaseNotes', 'error')} required">
     <div class="col-sm-12">
@@ -144,8 +143,9 @@
 
     </div>
 </div>
+--}%
 
-<div class="form-group row ${hasErrors(bean: esewaRelease, field: 'Add Checklist', 'error')} required">
+%{--<div class="form-group row ${hasErrors(bean: esewaRelease, field: 'Add Checklist', 'error')} required">
     <div class="col-sm-12">
         <label for="releaseCheckListDescription" class="badge">
             <g:message code="esewaRelease.releaseChecklist.label" default="Release CheckList Description: "/>
@@ -153,8 +153,7 @@
         <g:textArea class="form-control" id="releaseNotesDescription" name="releaseCheckListDescription" rows="5"
                     value="${releaseChecklist?.releaseCheckListDescription}"/>
     </div>
-</div>
---}%
+</div>--}%
 
 <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'releaseType', 'error')} required">
     <div class="col-sm-12">

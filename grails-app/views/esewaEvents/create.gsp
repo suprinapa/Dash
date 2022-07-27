@@ -1,3 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main">
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+        <h4 style=font-family:aria-atomic,ui-serif><g:message code="default.create.label" args="['Events']"/></h4>
+        <g:if test="${flash.message}">
+            <div class="message" role="status">${flash.message}</div>
+        </g:if>
+    </div>
+
+    <div class="card-body">
+
+        <g:form controller="esewaEvents" action="saveData">
+            <fieldset class="form">
+                <g:render template="form"/>
+            </fieldset>
+            <fieldset class="buttons">
+                <g:submitButton name="create" class="btn btn-success"
+                                value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+                <g:link controller="esewaEvents" action="index" class="btn btn-secondary"><g:message
+                        code="cancel"/></g:link>
+            </fieldset>
+        </g:form>
+    </div>
+</div>
+</body>
+</html>
+
+
+%{--
 <%@ page import="org.springframework.validation.FieldError" %>
 <!DOCTYPE html>
 <html>
@@ -39,3 +73,4 @@
 </div>
 </body>
 </html>
+--}%

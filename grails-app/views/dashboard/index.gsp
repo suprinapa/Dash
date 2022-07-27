@@ -5,13 +5,13 @@
 </head>
 <body>
 
-<h1>eSEWA DASHBOARD</h1>
-${countOfInProgress}
+<h1>eSewa DASHBOARD</h1>
+%{--${countOfInProgress}
 
 ${countOfUnReleased}
 
 ${countOfReleased}
 
-${response}
+${response}--}%
 </body>
 </html>

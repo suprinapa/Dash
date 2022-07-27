@@ -203,7 +203,26 @@
             </li>
         </g:if>
     </ol>
-</div>
+ %{--   <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <p>Are you sure?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>--}%
 <g:form url="[resource: esewaRelease, action: 'delete']" method="DELETE">
     <fieldset class="buttons">
         <g:link class="btn btn-secondary" action="edit" id="${esewaRelease.id}"><g:message
@@ -213,5 +232,6 @@
         <g:link controller="esewaRelease" action="index" class="btn btn-success"><g:message code="back"/></g:link>
     </fieldset>
 </g:form>
+</div>
 </body>
 </html>

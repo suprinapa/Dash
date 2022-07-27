@@ -13,7 +13,7 @@
 
 <div class="nav pb-2" role="navigation">
     <g:set var="entityName" value="${message(code: 'esewaComponents.label', default: 'Esewa Components')}"/>
-    <g:link controller="esewaRelease" action="create" class="btn btn-success"><g:message code="default.create.label"
+    <g:link controller="esewaComponents" action="create" class="btn btn-success"><g:message code="default.create.label"
                                                                                          args="[entityName]"/></g:link>
 </div>
 <br>
@@ -50,10 +50,10 @@
     <fieldset class="buttons">
         <g:link class="btn btn-secondary" action="edit" resource="${esewaComponents}"><g:message
                 code="default.button.edit.label" default="Edit"/></g:link>
-        <g:actionSubmit class="btn btn-danger" action="delete"
-                        value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>
+%{--        <g:actionSubmit class="btn btn-danger deleteConfirm" action="delete"
+                        value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>--}%
         <g:link controller="esewaComponents" action="index" class="btn btn-success"><g:message
-                code="Back"/></g:link>
+                code="back"/></g:link>
     </fieldset>
 </g:form>
 </html>

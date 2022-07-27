@@ -16,7 +16,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h4 style=font-family:aria-atomic,ui-serif><g:message code="default.edit.label" args="[entityName]"/></h4>
+        <h4><g:message code="default.edit.label" args="[entityName]"/></h4>
     </div>
 
     <div class="card-body">

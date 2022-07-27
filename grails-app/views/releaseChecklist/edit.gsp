@@ -23,8 +23,8 @@
 			<g:hiddenField name="id" value="${releaseChecklist.id}"/>
 			<g:render template="form"/>
 			<div class="form-action-panel">
-				<g:submitButton class="btn btn-primary" name="update" value="${g.message(code: "update")}"/>
-				<g:link controller="releaseChecklist" action="index" class="btn btn-primary"><g:message code="cancel"/></g:link>
+				<g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
+				<g:link controller="releaseChecklist" action="index" class="btn btn-secondary"><g:message code="cancel"/></g:link>
 			</div>
 		</g:form>
 	</div>

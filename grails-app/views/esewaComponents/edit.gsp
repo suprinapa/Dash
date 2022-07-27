@@ -1,3 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="layout" content="main">
+</head>
+
+<body>
+<div class="nav" role="navigation">
+	<g:set var="entityName" value="${message(code: 'esewa.Components', default: 'Esewa Components')}"/>
+	<title><g:message code="default.list.label" args="[entityName]"/></title>
+	<g:link controller="esewaComponents" action="create" class="btn btn-success"><g:message code="default.edit.label"
+																						 args="[entityName]"/></g:link>
+</div>
+<br>
+
+<div class="card">
+	<div class="card-header">
+		<h4 style=font-family:aria-atomic,ui-serif><g:message code="default.edit.label" args="[entityName]"/></h4>
+	</div>
+
+	<div class="card-body">
+		<g:form controller="esewaComponents" action="update">
+			<g:hiddenField name="id" value="${esewaComponents.id}"/>
+			<g:render template="form"/>
+			<div class="form-action-panel">
+				<g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
+				<g:link controller="esewaComponents" action="index" class="btn btn-secondary"><g:message
+						code="cancel"/></g:link>
+			</div>
+		</g:form>
+	</div>
+</div>
+</body>
+</html>
+%{--
 <%@ page import="dash.EsewaComponents" %>
 <!DOCTYPE html>
 <html>
@@ -29,3 +64,4 @@
 		</div>
 	</body>
 </html>
+--}%

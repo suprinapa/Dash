@@ -48,7 +48,7 @@
     <fieldset class="buttons">
         <g:link class="btn btn-secondary" action="edit" resource="${releaseNotes}"><g:message
                 code="default.button.edit.label" default="Edit"/></g:link>
-        <g:actionSubmit class="btn btn-danger" action="delete"
+        <g:actionSubmit class="btn btn-danger deleteConfirm" action="delete"
                         value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>
         <g:link controller="releaseNotes" action="index" class="btn btn-success"><g:message
                 code="Back"/></g:link>

@@ -2,7 +2,8 @@ package dash
 
 class Author {
     String name
-    static hasMany = [authorBooks: AuthorBooks ]
+    static hasMany = [book : Book]
     static constraints = {
+
     }
 }

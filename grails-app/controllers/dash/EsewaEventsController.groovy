@@ -5,8 +5,11 @@ class EsewaEventsController {
     EsewaEventsService esewaEventsService
 
     def index() {
-        def esewaEventsList = EsewaEvents.list(params)
-        [esewaEventsList: esewaEventsList]
+        params.max = params.max ? params.int('max') : 10
+        if (params.offset == null) {
+            params << [offset: 0]
+        }
+        [esewaEventsList: EsewaEvents.list(max: params.int('max'), offset: params.offset), esewaEventsCount: EsewaEvents.count()]
     }
 
     def saveData() {

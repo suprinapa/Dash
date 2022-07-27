@@ -1,9 +1,7 @@
-jQuery(document).ready(function ()
-{
-    jQuery('.deleteConfirm').confirm({
-        title: 'Delete Confirmation',
-        content:'Are you sure?',
-    })
+$(function() {
+    $('.deleteConfirm').click(function(){
+        return confirm('Are you sure?'); // answer is a boolean
+    });
 });
 
 $(function() {
@@ -11,6 +9,9 @@ $(function() {
         $("#submenu").slideToggle(500);
     });
 });
+/*$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+})*/
 /*
 
 jQuery(document).ready(function () {
@@ -74,4 +75,5 @@ jQuery(document).ready(function () {
 
     });
 
-});*/
+});*!/
+*/

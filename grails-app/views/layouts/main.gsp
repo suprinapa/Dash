@@ -22,7 +22,6 @@
 <div class="container-fluid">
 	<div class="row">
 		<nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
-			<g:set var="entityName" value="${message(code: 'esewaRelease.label', default: 'EsewaRelease')}"/>
 			<ul class="list-group">
 				<li class="list-group-item"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li class="list-group-item"><g:link controller="esewaRelease" action="index">eSewa Releases</g:link></a></li>
@@ -31,17 +30,15 @@
 				<div id="item">Release Domains</div>
 				<div id="submenu">
 					<g:link controller="releaseEnvironment" action="index"><g:message
-							code="release.Environment" args="[entityName]"/></g:link>
+							code="release.Environment" /></g:link>
 					<g:link controller="esewaComponents" action="index"><g:message
-							code="esewa.Components" args="[entityName]"/></g:link>
+							code="esewa.Components" /></g:link>
 					<g:link controller="releaseNotes" action="index"><g:message
-							code="releaseNotes.label" args="[entityName]"/></g:link>
+							code="releaseNotes.label" /></g:link>
 					<g:link  controller="releaseChecklist" action="index"><g:message
-							code="releaseChecklist.label" args="[entityName]"/></g:link>
+							code="releaseChecklist.label" /></g:link>
 					<g:link  controller="esewaEvents" action="index"><g:message
-							code="esewa.Events" args="[entityName]"/></g:link>
-					<g:link controller="esewaReleaseEvents" action="index"><g:message
-							code="esewaReleaseEvents.label" args="[entityName]"/></g:link>
+							code="esewa.Events" /></g:link>
 				</div>
 			</div>
 			<br>

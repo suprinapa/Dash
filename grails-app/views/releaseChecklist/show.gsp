@@ -49,10 +49,10 @@
 	<fieldset class="buttons">
 		<g:link class="btn btn-secondary" action="edit" resource="${releaseChecklist}"><g:message
 				code="default.button.edit.label" default="Edit"/></g:link>
-		<g:actionSubmit class="btn btn-danger" action="delete"
+		<g:actionSubmit class="btn btn-danger deleteConfirm" action="delete"
 						value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>
 		<g:link controller="releaseChecklist" action="index" class="btn btn-success"><g:message
-				code="Back"/></g:link>
+				code="back"/></g:link>
 	</fieldset>
 </g:form>
 </html>

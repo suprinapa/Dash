@@ -82,7 +82,7 @@ class EsewaReleaseController {
         [esewaRelease: flash.redirectParams]
     }
 
-    @Transactional
+
     def save() {
         esewaReleaseService.saveData(params)
         redirect(controller: "esewaRelease", action: "index")
@@ -101,7 +101,6 @@ class EsewaReleaseController {
         }
     }
 
-    @Transactional
     def update() {
         def response = esewaReleaseService.getById(params.id)
        if (!response) {
@@ -112,7 +111,6 @@ class EsewaReleaseController {
         }
     }
 
-    @Transactional
     def delete(Integer id) {
         def response = esewaReleaseService.getById(id)
         if (!response) {

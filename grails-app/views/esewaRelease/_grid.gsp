@@ -1,5 +1,5 @@
 <div class="card-body">
-<table class="table table-bordered  table-striped table-responsive-sm ">
+<table class="table table-bordered  table-striped table-responsive-sm table-hover">
     <thead class="thead-dark ">
     <tr>
         <util:remoteSortableColumn style="color: white" property="releaseName" params="${pageScope.variables}" action="search" update="gridList" title="${message(code: 'esewaRelease.releaseName.label', default: 'Release Name')}" />

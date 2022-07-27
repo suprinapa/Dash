@@ -25,7 +25,7 @@ class ReleaseChecklistController {
         [releaseChecklist: flash.redirectParams]
     }
 
-    @Transactional
+
     def save() {
         releaseChecklistService.saveData(params)
         redirect(controller: "releaseChecklist", action: "index")
@@ -44,7 +44,7 @@ class ReleaseChecklistController {
         }
     }
 
-    @Transactional
+
     def update() {
         def response = releaseChecklistService.getById(params.id)
         if (!response) {
@@ -55,7 +55,7 @@ class ReleaseChecklistController {
         }
     }
     
-    @Transactional
+
     def delete(Integer id) {
         def response = releaseChecklistService.getById(id)
         if (!response) {

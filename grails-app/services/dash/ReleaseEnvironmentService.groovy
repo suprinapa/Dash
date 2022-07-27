@@ -6,7 +6,7 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 @Transactional
 class ReleaseEnvironmentService {
 
-    def saveList(GrailsParameterMap params) {
+/*    def saveList(GrailsParameterMap params) {
         params.max = params.max ?: 10
         List<ReleaseEnvironment> rList = ReleaseEnvironment.createCriteria().list(params) {
             if (params?.colName && params?.colValue) {
@@ -14,7 +14,7 @@ class ReleaseEnvironmentService {
             }
         } as List<ReleaseEnvironment>
         return rList
-    }
+    }*/
 
     def saveData(GrailsParameterMap params) {
         ReleaseEnvironment releaseEnvironment = new ReleaseEnvironment(params)

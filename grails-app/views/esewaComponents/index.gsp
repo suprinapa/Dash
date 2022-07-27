@@ -13,16 +13,19 @@
 </div>
 <br>
 
-<div id="list-esewaComponents" class="content scaffold-list" role="main">
-    <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+<div class="card">
+    <div class="card-header">
+    <h4><g:message code="default.list.label" args="[entityName]"/></h4>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-
+    </div>
+<div class="card-body">
 
     <div id="gridList">
         <g:render template="grid"/>
     </div>
+</div>
 </div>
 </body>
 </html>

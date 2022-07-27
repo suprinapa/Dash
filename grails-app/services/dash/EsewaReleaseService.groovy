@@ -3,7 +3,6 @@ package dash
 import grails.transaction.Transactional
 import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
-@Transactional
 /*(isolation = I)*/
 class EsewaReleaseService {
     def saveData(GrailsParameterMap params) {
@@ -64,6 +63,10 @@ class EsewaReleaseService {
 
     Boolean delete(EsewaRelease esewaRelease) {
         try {
+            def esewaEvents = EsewaReleaseEvents.findAllByEsewaRelease(esewaRelease)
+            if(esewaEvents != null) {
+                esewaEvents*.delete(flush: true)
+            }
             esewaRelease.delete(flush: true)
         } catch (Exception e) {
             println(e.getMessage())

@@ -54,11 +54,10 @@
     </div>
 </div>
 
-<div class="form-group row ${hasErrors(bean: esewaRelease, field: 'endDate', 'error')} required">
+<div class="form-group row ${hasErrors(bean: esewaRelease, field: 'endDate', 'error')} ">
     <div class="col-sm-12">
         <label for="endDate" class="badge">
             <g:message code="esewaRelease.endDate.label" default="End Date : "/>
-            <span class="required-indicator">*</span>
         </label>
 
         <div class="date-wrap">
@@ -68,6 +67,7 @@
 </div>
 
 
+%{--
 <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'esewaComponents', 'error')} ">
     <div class="col-sm-12">
         <label for="esewaComponents" class="badge">
@@ -79,9 +79,10 @@
                   noSelection="['': '-Choose Component-']"/>
     </div>
 </div>
+--}%
 
 
-<div class="form-group row ${hasErrors(bean: esewaRelease, field: 'releaseEnvironment', 'error')} ">
+%{--<div class="form-group row ${hasErrors(bean: esewaRelease, field: 'releaseEnvironment', 'error')} ">
     <div class="col-sm-12">
         <label for="releaseEnvironment" class="badge">
             <g:message code="esewaRelease.releaseEnvironment.label" default="Release Environments : "/>
@@ -91,9 +92,9 @@
                   optionValue="esewaEnvironment" value="${esewaRelease?.releaseEnvironment}"
                   noSelection="['': '-Choose Enviroment-']"/>
     </div>
-</div>
+</div>--}%
 
-<div class="card">
+%{--<div class="card">
     <div class="card-body">
         <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'esewaReleaseEvents', 'error')} ">
             <div class="col-sm-12">
@@ -106,26 +107,25 @@
                           value="${eventName}" noSelection="['': '-Choose Events-']"/>
             </div>
 
-            <div class="col-sm-12">
-                <label for="ApprovedBy" class="badge">
+            <div class="col-sm-12" >
+                <label for="ApprovedBy" class="badge" >
                     <g:message code="approvedBy" default="Approved By : "/>
                 </label>
-                <g:textField name="ApprovedBy" required="" class="form-control" id="ApprovedBy" type="text"
+                <g:textField name="ApprovedBy"  class="form-control" id="ApprovedBy" type="text"
                              placeholder="Enter Approved By" value="${ApprovedBy}"/>
             </div>
         </div>
     </div>
-</div>
+</div>--}%
 
 <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'releaseStatus', 'error')} required">
     <div class="col-sm-12">
         <label for="releaseStatus" class="badge">
             <g:message code="esewaRelease.releaseStatus.label" default="Release Status : "/>
-            <span class="required-indicator">*</span>
         </label>
         <g:select class="form-control" name="releaseStatus" from="${ReleaseStatus?.values()}"
                   keys="${ReleaseStatus.values()*.name()}"
-                  required="" value="${esewaRelease?.releaseStatus?.name()}" noSelection="['': '-Choose Status-']"/>
+                  required="" value="${esewaRelease?.releaseStatus?.name()}"/>
     </div>
 </div>
 
@@ -136,9 +136,10 @@
         </label>
         <g:textArea class="form-control" id="releaseNotesDescription" rows="5" name="releaseNotesDescription"
                     value="${releaseNotes?.releaseNotesDescription}"/>
-        %{--    <div class="details-panel">
+%{--    <div class="details-panel">
                 <g:include controller="releaseNotes" action="create" id="${esewaRelease?.id}"/>
             </div>--}%
+
     </div>
 </div>
 
@@ -156,7 +157,7 @@
     <div class="col-sm-12">
         <label for="releaseType" class="badge">
             <g:message code="esewaRelease.releaseType.label" default="Release Type : "/>
-            <span class="required-indicator">*</span>
+            <span class="required-indicator" style="color:red">*</span>
         </label>
         <g:select class="form-control" name="releaseType" from="${ReleaseType?.values()}"
                   keys="${ReleaseType.values()*.name()}" required=""

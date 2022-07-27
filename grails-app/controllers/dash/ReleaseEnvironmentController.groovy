@@ -5,8 +5,17 @@ class ReleaseEnvironmentController {
     ReleaseEnvironmentService releaseEnvironmentService
 
     def index(){
-        def releaseEnvironmentList = releaseEnvironmentService.saveList(params)
-        [releaseEnvironmentList:releaseEnvironmentList]
+        params.max = params.max ? params.int('max') : 10
+        if (params.offset == null) {
+            params << [offset: 0]
+        }
+        def c = ReleaseEnvironment.createCriteria()
+        def results = c.list(max: params.int('max'), offset: params.offset) {
+            and {
+                order('esewaEnvironment', 'desc')
+            }
+        }
+        [releaseEnvironmentInstanceList: results, releaseEnvironmentInstanceCount: ReleaseEnvironment.count()]
     }
     def show(Integer id) {
         def response = releaseEnvironmentService.getById(id)
