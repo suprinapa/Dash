@@ -26,6 +26,15 @@ class ReleaseEnvironmentController {
         }
     }
 
+    def findEnvironmentByEsewaRelease(Integer id) {
+        def response = releaseEnvironmentService.findEnvironmentByEsewaRelease(id)
+        if (!response){
+            redirect(controller: "releaseEnvironment", action: "index")
+        }else{
+            [releaseEnvironment: response]
+        }
+    }
+
     def saveData(){
         releaseEnvironmentService.saveData(params)
         redirect(controller: "releaseEnvironment", action: "index")

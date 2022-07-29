@@ -15,5 +15,4 @@ class EsewaEvents {
         eventName column: 'eventName'
         esewaReleaseEvents cascade: 'all-delete-orphan'
     }
-
 }

@@ -12,8 +12,8 @@
 </head>
 <body>
 <div> <g:set var="entityName" value="${message(code: 'releaseEnvironment.label', default: 'Environment')}"/>
-<g:link controller="releaseEnvironment" action="create" class="btn btn-success"><g:message code="default.create.label"
-                                                                                        args="[entityName]"/></g:link>
+<g:link controller="releaseEnvironment" action="create" id="${params.id}" class="btn btn-success"><g:message code="default.add.label"
+                                                                                           args="[entityName]"/></g:link>
 </div>
 <br>
 
@@ -48,8 +48,8 @@
     <fieldset class="buttons">
         <g:link class="btn btn-secondary" action="edit" resource="${releaseEnvironment}"><g:message
                 code="default.button.edit.label" default="Edit"/></g:link>
-%{--        <g:actionSubmit class="deleteConfirm btn btn-danger" action="delete"--}%
-%{--                        value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>--}%
+        %{--        <g:actionSubmit class="deleteConfirm btn btn-danger" action="delete"--}%
+        %{--                        value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>--}%
         <g:link controller="releaseEnvironment" action="index" class="btn btn-success"><g:message code="back"/></g:link>
     </fieldset>
 </g:form>

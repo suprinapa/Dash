@@ -12,7 +12,7 @@
 			<g:form controller="esewaRelease" action="save" enctype="multipart/form-data">
 				<g:render template="form"/>
 				<div class="form-action-panel">
-					<g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Save')}" />
+					<g:submitButton name="create"  class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Save')}" />
 					<g:link controller="esewaRelease" action="index" class="btn btn-secondary"><g:message code="cancel"/></g:link>
 				</div>
 			</g:form>

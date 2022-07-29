@@ -22,7 +22,22 @@ class EsewaEventsController {
     }
 
     def show(Integer id) {
-        def response = esewaEventsService.getById(id)
+        def response = esewaEventsService.findEventsByEsewaRelease(id)
+        if (!response){
+            redirect(controller: "esewaEvents", action: "index")
+        }else{
+            [esewaEvents: response]
+        }
+//        def response = esewaEventsService.getById(id)
+//        if (!response){
+//            redirect(controller: "esewaEvents", action: "index")
+//        }else{
+//            [esewaEvents: response]
+//        }
+    }
+
+    def findEsewaEventsByEsewaRelease(Integer id) {
+        def response = esewaEventsService.findEventsByEsewaRelease(id)
         if (!response){
             redirect(controller: "esewaEvents", action: "index")
         }else{

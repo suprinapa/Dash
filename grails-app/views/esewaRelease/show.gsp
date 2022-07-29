@@ -14,40 +14,41 @@
                                                                                          args="[entityName]"/></g:link>
 </div>
 
-%{--
-
 <div class="nav" role="navigation">
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <g:link class="navbar-brand" controller="releaseEnvironment" action="index"><g:message
-                            code="release.Environment" args="[entityName]"/></g:link>
+
+
+            <li class="nav-item">
+                <g:link class="navbar-brand" controller="releaseEnvironment" action="findEnvironmentByEsewaRelease" id="${esewaRelease.id}">
+                             Release Environment</g:link>
+
                 </li>
                 <li class="nav-item">
-                    <g:link class="navbar-brand" controller="esewaComponents" action="index"><g:message
-                            code="esewa.Components" args="[entityName]"/></g:link>
+                    <g:link class="navbar-brand" controller="esewaComponents" action="findComponentsByEsewaRelease" id="${esewaRelease.id}"><g:message
+                            code="esewa.Components"/></g:link>
                 </li>
                 <li class="nav-item">
-                    <g:link class="navbar-brand" controller="releaseNotes" action="index"><g:message
-                            code="releaseNotes.label" args="[entityName]"/></g:link>
+                    <g:link class="navbar-brand" controller="releaseNotes" action="show" id="${esewaRelease.releaseNotes.id}"><g:message
+                            code="releaseNotes.label"/></g:link>
                 </li>
                 <li class="nav-item">
-                    <g:link class="navbar-brand" controller="releaseChecklist" action="index"><g:message
-                            code="releaseChecklist.label" args="[entityName]"/></g:link>
+                    <g:link class="navbar-brand" controller="releaseChecklist" action="show" id="${esewaRelease.releaseChecklist.id}"><g:message
+                            code="releaseChecklist.label"/></g:link>
                 </li>
                 <li class="nav-item">
-                    <g:link class="navbar-brand" controller="esewaEvents" action="index"><g:message
-                            code="esewa.Events" args="[entityName]"/></g:link>
+                    <g:link class="navbar-brand" controller="esewaEvents" action="show" id="${esewaRelease.id}" ><g:message
+                            code="esewa.Events"/></g:link>
                 </li>
                 <li class="nav-item">
                     <g:link class="navbar-brand" controller="esewaReleaseEvents" action="index"><g:message
-                            code="esewaReleaseEvents.label" args="[entityName]"/></g:link>
+                            code="esewaReleaseEvents.label" /></g:link>
                 </li>
             </ul>
         </div>
     </nav>
-</div>--}%
+</div>
 <br>
 <div class="card">
 <div class="card-header" >
@@ -88,7 +89,6 @@
 
                 <span class="property-value" aria-labelledby="createdDate-label"><g:formatDate format="MMMM dd, yyyy"
                                                                                                date="${esewaRelease?.createdDate}"/></span>
-
             </li>
         </g:if>
 
@@ -114,7 +114,7 @@
             </li>
         </g:if>
 
-        <g:if test="${esewaRelease?.esewaComponents}">
+     %{--   <g:if test="${esewaRelease?.esewaComponents}">
             <li class="list-group-item">
                 <span id="esewaComponents-label" class="badge"><g:message code="esewaRelease.esewaComponents.label"
                                                                           default="eSsewa Components : "/></span>
@@ -126,7 +126,7 @@
                 </g:each>
 
             </li>
-        </g:if>
+        </g:if>--}%
 
         <g:if test="${esewaEvents}">
             <li class="list-group-item">

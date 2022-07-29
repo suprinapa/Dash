@@ -21,7 +21,7 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+		<nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar sidebar_custom">
 			<ul class="list-group">
 				<li class="list-group-item"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li class="list-group-item"><g:link controller="esewaRelease" action="index">eSewa Releases</g:link></a></li>

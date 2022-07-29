@@ -213,9 +213,15 @@
           <root url="jar://$USER_HOME$/.ideaLibSources/grails-datastore-gorm-hibernate-core-3.1.5.RELEASE-sources.jar!/" />
           <root url="jar://$USER_HOME$/.ideaLibSources/grails-datastore-gorm-hibernate4-3.1.5.RELEASE-sources.jar!/" />
           <root url="jar://$USER_HOME$/.ideaLibSources/spring-beans-4.1.8.RELEASE-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.ideaLibSources/spring-tx-4.1.8.RELEASE-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="popper.js" level="application" />
+    <orderEntry type="library" name="@popperjs" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-3.3.1.slim" level="application" />
+    <orderEntry type="library" name="jquery-3.1.1" level="application" />
   </component>
 </module>

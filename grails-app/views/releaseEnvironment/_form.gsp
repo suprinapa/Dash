@@ -6,6 +6,7 @@
         <span class="required-indicator">*</span>
     </label>
     <g:textField name="esewaEnvironment" required="" value="${releaseEnvironment?.esewaEnvironment}"/>
+    <g:hiddenField name="releaseId" value="${params.id}"/>
 
 </div>
 %{--<div class="form-group">

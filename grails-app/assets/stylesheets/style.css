@@ -344,3 +344,8 @@ body {
     background: #1c242b url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoKCSB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KCjxwb2x5Z29uIGlkPSJjaGVjay1tYXJrLTctaWNvbiIgcG9pbnRzPSI1MCwyNDcuNzg3IDc3LjA5LDIxOS44MzMgMjA5Ljg1OSwyOTkuMjIyIDQzOC43ODcsODEuMjQ1IDQ2MiwxMDQuNSAyMTkuODYzLDQzMC43NTUgIiBmaWxsPSIjRkZGIi8+Cgo8L3N2Zz4=") no-repeat center 55px;
     background-size: 20px 20px;
 }
+.sidebar_custom {
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    background: #333;
+}
