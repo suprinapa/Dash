@@ -13,10 +13,46 @@
 
 <div>
     <g:set var="entityName" value="${message(code: 'esewaComponents.label', default: 'Esewa Components')}"/>
-    <g:link controller="esewaComponents" action="create" id="${params.id}" class="btn btn-success"><g:message code="default.add.label"
+    <g:link controller="esewaComponents" action="create" id="${params.id}"  class="btn btn-success"><g:message code="default.add.label"
                                                                                             args="[entityName]"/></g:link>
 </div>
 <br>
+
+<div class="nav" role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+
+                <li class="nav-item">
+                    <g:link class="navbar-brand" controller="releaseEnvironment" action="findEnvironmentByEsewaRelease" id="${esewaRelease.id}">
+                        Release Environment</g:link>
+
+                </li>
+%{--                <li class="nav-item">--}%
+%{--                    <g:link class="navbar-brand" controller="esewaComponents" action="findComponentsByEsewaRelease" id="${esewaRelease.id}"><g:message--}%
+%{--                            code="esewa.Components"/></g:link>--}%
+%{--                </li>--}%
+                <li class="nav-item">
+                    <g:link class="navbar-brand" controller="releaseNotes" action="findReleaseNotesByRelease" id="${esewaRelease.id}"><g:message
+                            code="releaseNotes.label"/></g:link>
+                </li>
+                <li class="nav-item">
+                    <g:link class="navbar-brand" controller="releaseChecklist" action="findReleaseChecklistByRelease" id="${esewaRelease.id}"><g:message
+                            code="releaseChecklist.label"/></g:link>
+                </li>
+                <li class="nav-item">
+                    <g:link class="navbar-brand" controller="esewaEvents" action="findReleaseByEvents" id="${esewaRelease.id}" ><g:message
+                            code="esewa.Events"/></g:link>
+                </li>
+                %{--  <li class="nav-item">
+                      <g:link class="navbar-brand" controller="esewaReleaseEvents" action="index"><g:message
+                              code="esewaReleaseEvents.label" /></g:link>
+                  </li>--}%
+            </ul>
+        </div>
+    </nav>
+</div>
 
 <div class="card">
 
@@ -45,14 +81,14 @@
     </div>
 </div>
 <br>
-<g:form url="[resource: esewaComponents, action: 'delete']" method="DELETE">
+%{--<g:form url="[resource: esewaComponents, action: 'delete']" method="DELETE">
     <fieldset class="buttons">
-%{--        <g:link class="btn btn-secondary" action="edit" resource="${esewaComponents}"><g:message--}%
-%{--                code="default.button.edit.label" default="Edit"/></g:link>--}%
-        %{--        <g:actionSubmit class="btn btn-danger deleteConfirm" action="delete"
-                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>--}%
+--}%%{--        <g:link class="btn btn-secondary" action="edit" resource="${esewaComponents}"><g:message--}%%{--
+--}%%{--                code="default.button.edit.label" default="Edit"/></g:link>--}%%{--
+        --}%%{--        <g:actionSubmit class="btn btn-danger deleteConfirm" action="delete"
+                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>--}%%{--
         <g:link controller="esewaComponents" action="index" class="btn btn-success"><g:message
                 code="back"/></g:link>
     </fieldset>
-</g:form>
+</g:form>--}%
 </html>

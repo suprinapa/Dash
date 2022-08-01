@@ -3,7 +3,6 @@ package dash
 class EsewaComponentsController {
 
     EsewaComponentsService esewaComponentsService
-    EsewaReleaseService esewaReleaseService
 
     def index() {
         params.max = params.max ? params.int('max') : 10
@@ -34,7 +33,7 @@ class EsewaComponentsController {
     def findComponentsByEsewaRelease(Integer id) {
         def response = esewaComponentsService.findComponentsByEsewaRelease(id)
         if (!response){
-            redirect(controller: "esewaComponents", action: "index")
+            flash.message = "Add Component!"
         }else{
             [esewaComponents: response]
         }

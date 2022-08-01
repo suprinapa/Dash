@@ -29,7 +29,7 @@ class ReleaseEnvironmentController {
     def findEnvironmentByEsewaRelease(Integer id) {
         def response = releaseEnvironmentService.findEnvironmentByEsewaRelease(id)
         if (!response){
-            redirect(controller: "releaseEnvironment", action: "index")
+           flash.message = "Add Environment!"
         }else{
             [releaseEnvironment: response]
         }

@@ -37,9 +37,9 @@
     <div class="card-header">
          <div id="list-esewaRelease" class="content scaffold-list" role="main">
             <h3><g:message code="default.list.label" args="[entityName]"/></h3>
-            <g:if test="${flash.message}">
+       %{--     <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
-            </g:if>
+            </g:if>--}%
         </div>
     </div>
     <div class="card-body">

@@ -1,10 +1,12 @@
 package dash
 
 import grails.transaction.Transactional
+import org.grails.datastore.mapping.query.Query.In
 
 @Transactional
 class EsewaReleaseEventsController {
 EsewaReleaseEventsService esewaReleaseEventsService
+
       def index() {
           params.max = params.max ? params.int('max') : 10
           if (params.offset == null) {

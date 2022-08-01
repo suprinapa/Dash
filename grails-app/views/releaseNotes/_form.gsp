@@ -1,11 +1,16 @@
-<%@ page import="dash.TicketType; dash.TicketPriority; dash.EsewaRelease; dash.ReleaseNotes" %>
-<div class="fieldcontain ${hasErrors(bean: releaseNotes, field: 'esewaRelease', 'error')} required">
-	<label for="esewaRelease">
-		<g:message code="releaseNotes.esewaRelease.label" default="Esewa Release : " />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionKey="id" optionValue="releaseVersion" value="${releaseNotes?.esewaRelease?.id}"/>
+%{--<%@ page import="dash.TicketType; dash.TicketPriority; dash.EsewaRelease; dash.ReleaseNotes" %>--}%
+%{--<div class="fieldcontain ${hasErrors(bean: releaseNotes, field: 'esewaRelease', 'error')} required">--}%
+%{--	<label for="esewaRelease">--}%
+%{--		<g:message code="releaseNotes.esewaRelease.label" default="Esewa Release : " />--}%
+%{--		<span class="required-indicator">*</span>--}%
+%{--	</label>--}%
+%{--	<g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionKey="id" optionValue="releaseVersion" value="${releaseNotes?.esewaRelease?.id}"/>--}%
 
+%{--</div>--}%
+<div class="form-group">
+	<label> <g:message code="releaseNotes.description" default="Description : " /> * </label>
+	<g:textArea  name="releaseNotesDescription" class="form-control" rows="5" cols="100" value="${releaseNotes?.releaseNotesDescription}" />
+	<g:hiddenField name="releaseId" value="${params.id}"/>
 </div>
 %{--
 <div class="fieldcontain ${hasErrors(bean: releaseNotesDetails, field: 'ticketPriority', 'error')} required">
@@ -36,10 +41,7 @@
             <g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionKey="id"
                       optionValue="releaseVersion" value="${releaseNotesDetails?.esewaRelease?.id}"/>
         </div>--}%
-        <div class="form-group">
-            <label> <g:message code="releaseNotes.description" default="Description : " /> * </label>
-            <g:textArea  name="releaseNotesDescription" class="form-control" rows="5" cols="100" value="${releaseNotes?.releaseNotesDescription}" />
-        </div>
+
 %{--
     </div>--}rel
 

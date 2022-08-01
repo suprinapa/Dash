@@ -6,14 +6,14 @@
 	<title><g:message code="default.create.label" args="[entityName]" /></title>
 </head>
 <body>
-<div id="create-esewaComponents" class="content scaffold-create" role="main">
+<div role="main">
 	<h3><g:message code="default.create.label" args="[entityName]"/></h3>
-	<g:if test="${flash.message}">
-		<div class="message" role="status">${flash.message}</div>
-	</g:if>
-	<g:form controller="releaseChecklist" action="save" >
+%{--	<g:if test="${flash.message}">--}%
+%{--		<div class="message" role="status">${flash.message}</div>--}%
+%{--	</g:if>--}%
+	<g:form controller="releaseChecklist" action="add" >
 		<fieldset class="form">
-			<g:render template="form"/>
+			<g:render template="addForm"/>
 		</fieldset>
 		<fieldset class="buttons">
 			<g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />

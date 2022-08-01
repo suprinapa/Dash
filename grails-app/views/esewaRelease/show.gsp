@@ -20,7 +20,7 @@
             <ul class="navbar-nav mr-auto">
 
 
-            <li class="nav-item">
+                <li class="nav-item">
                 <g:link class="navbar-brand" controller="releaseEnvironment" action="findEnvironmentByEsewaRelease" id="${esewaRelease.id}">
                              Release Environment</g:link>
 
@@ -30,21 +30,21 @@
                             code="esewa.Components"/></g:link>
                 </li>
                 <li class="nav-item">
-                    <g:link class="navbar-brand" controller="releaseNotes" action="show" id="${esewaRelease.releaseNotes.id}"><g:message
+                    <g:link class="navbar-brand" controller="releaseNotes" action="findReleaseNotesByRelease" id="${esewaRelease.id}"><g:message
                             code="releaseNotes.label"/></g:link>
                 </li>
                 <li class="nav-item">
-                    <g:link class="navbar-brand" controller="releaseChecklist" action="show" id="${esewaRelease.releaseChecklist.id}"><g:message
+                    <g:link class="navbar-brand" controller="releaseChecklist" action="findReleaseChecklistByRelease" id="${esewaRelease.id}"><g:message
                             code="releaseChecklist.label"/></g:link>
                 </li>
                 <li class="nav-item">
-                    <g:link class="navbar-brand" controller="esewaEvents" action="show" id="${esewaRelease.id}" ><g:message
+                    <g:link class="navbar-brand" controller="esewaEvents" action="findReleaseByEvents" id="${esewaRelease.id}" ><g:message
                             code="esewa.Events"/></g:link>
                 </li>
-                <li class="nav-item">
+              %{--  <li class="nav-item">
                     <g:link class="navbar-brand" controller="esewaReleaseEvents" action="index"><g:message
                             code="esewaReleaseEvents.label" /></g:link>
-                </li>
+                </li>--}%
             </ul>
         </div>
     </nav>
@@ -53,9 +53,7 @@
 <div class="card">
 <div class="card-header" >
     <h5><g:message code="default.show.label" args="[entityName]"/></h5>
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
+
 </div>
     <ol class="list-inline">
         <g:if test="${esewaRelease?.releaseVersion}">
@@ -66,7 +64,6 @@
                 <span class="property-value" aria-labelledby="releaseVersion-label">
                     <g:fieldValue
                             bean="${esewaRelease}" field="releaseVersion"/></span>
-
             </li>
         </g:if>
 

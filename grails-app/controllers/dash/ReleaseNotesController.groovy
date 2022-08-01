@@ -23,6 +23,15 @@ class ReleaseNotesController {
         }
     }
 
+    def findReleaseNotesByRelease(Integer id) {
+        def response = releaseNotesService.findReleaseNotesByRelease(id)
+        if (!response) {
+            flash.message = "Add Release Notes"
+        } else {
+            [releaseNotes: response]
+        }
+    }
+
     def create() {
         [releaseNotes: flash.redirectParams]
     }

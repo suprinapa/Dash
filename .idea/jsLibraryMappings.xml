@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{@popperjs, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
-    <file url="file://$PROJECT_DIR$/target/work/plugins/asset-pipeline-2.5.7" libraries="{@popperjs, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
-    <file url="file://$PROJECT_DIR$/target/work/plugins/cache-1.1.8" libraries="{@popperjs, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
-    <file url="file://$PROJECT_DIR$/target/work/plugins/database-migration-1.4.0" libraries="{@popperjs, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
-    <file url="file://$PROJECT_DIR$/target/work/plugins/hibernate4-4.3.10" libraries="{@popperjs, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
-    <file url="file://$PROJECT_DIR$/target/work/plugins/jquery-1.11.1" libraries="{@popperjs, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
-    <file url="file://$PROJECT_DIR$/target/work/plugins/remote-pagination-0.4.7" libraries="{@popperjs, bootstrap, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
-    <file url="file://$PROJECT_DIR$/target/work/plugins/scaffolding-2.1.2" libraries="{@popperjs, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
-    <file url="file://$PROJECT_DIR$/target/work/plugins/tomcat-7.0.55.3" libraries="{@popperjs, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
-    <file url="file://$PROJECT_DIR$/target/work/plugins/webxml-1.4.1" libraries="{@popperjs, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$" libraries="{@popperjs, all, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/target/work/plugins/asset-pipeline-2.5.7" libraries="{@popperjs, all, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/target/work/plugins/cache-1.1.8" libraries="{@popperjs, all, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/target/work/plugins/database-migration-1.4.0" libraries="{@popperjs, all, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/target/work/plugins/hibernate4-4.3.10" libraries="{@popperjs, all, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/target/work/plugins/jquery-1.11.1" libraries="{@popperjs, all, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/target/work/plugins/remote-pagination-0.4.7" libraries="{@popperjs, all, bootstrap, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/target/work/plugins/scaffolding-2.1.2" libraries="{@popperjs, all, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/target/work/plugins/tomcat-7.0.55.3" libraries="{@popperjs, all, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/target/work/plugins/webxml-1.4.1" libraries="{@popperjs, all, bootstrap, jquery, jquery-3.1.1, jquery-3.3.1.slim, popper.js}" />
   </component>
 </project>

@@ -16,7 +16,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="approvedBy" required="" value="${esewaReleaseEvents?.approvedBy}"/>
-
 </div>
 
 <div class="form-group ${hasErrors(bean: esewaReleaseEvents, field: 'createdDate', 'error')} required">

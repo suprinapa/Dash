@@ -5,11 +5,13 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
 @Transactional
 class ReleaseNotesService {
+    EsewaReleaseService esewaReleaseService
 
      def saveData (GrailsParameterMap params) {
          ReleaseNotes releaseNotes = new ReleaseNotes(params)
-
-         return releaseNotes.save(flush: true, failOnError: true)
+         def releaseId = esewaReleaseService.getById(params.releaseId)
+         def release = releaseNotes.setEsewaRelease(releaseId)
+         return releaseNotes.save(release)
     }
 
     def update(ReleaseNotes releaseNotes, GrailsParameterMap params){
@@ -30,4 +32,10 @@ class ReleaseNotesService {
         return true
     }
 
+    def findReleaseNotesByRelease(id){
+        def release = esewaReleaseService.getById(id)
+        return release.releaseNotes
+    }
 }
+
+

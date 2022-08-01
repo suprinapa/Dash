@@ -4,7 +4,7 @@ import grails.transaction.Transactional
 import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
 @Transactional
-class EsewaReleaseEventsService {
+class   EsewaReleaseEventsService {
 /*    def saveList(GrailsParameterMap params) {
         EsewaReleaseEvents esewaReleaseEvents = new EsewaReleaseEvents(params)
         def response = AppUtil.saveResponse(false, esewaReleaseEvents)
@@ -26,7 +26,6 @@ class EsewaReleaseEventsService {
     def getByRelease(EsewaRelease esewaRelease) {
         return EsewaReleaseEvents.findAllByEsewaRelease(esewaRelease)
     }
-
     def update(EsewaReleaseEvents esewaReleaseEvents, GrailsParameterMap params) {
         esewaReleaseEvents.properties = params
         esewaReleaseEvents.save(flush: true, failOnError: true)

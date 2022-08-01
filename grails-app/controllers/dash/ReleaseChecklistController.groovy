@@ -1,6 +1,5 @@
 package dash
 
-import grails.transaction.Transactional
 class ReleaseChecklistController {
     ReleaseChecklistService releaseChecklistService
 
@@ -15,7 +14,18 @@ class ReleaseChecklistController {
     def show(Integer id) {
         def response = releaseChecklistService.getById(id)
         if (!response) {
+//            flash.message = "No CheckList present!"
             redirect(controller: "releaseChecklist", action: "index")
+        } else {
+            [releaseChecklist: response]
+        }
+    }
+
+    def findReleaseChecklistByRelease(Integer id) {
+        def response = releaseChecklistService.findReleaseChecklistByRelease(id)
+        if (!response) {
+            flash.message = "No CheckList present!"
+//            redirect(controller: "releaseChecklist", action: "index")
         } else {
             [releaseChecklist: response]
         }
@@ -25,13 +35,18 @@ class ReleaseChecklistController {
         [releaseChecklist: flash.redirectParams]
     }
 
+    def add(){
+        releaseChecklistService.addData(params)
+        redirect(controller: "releaseChecklist", action: "index")
+    }
+
 
     def save() {
         releaseChecklistService.saveData(params)
         redirect(controller: "releaseChecklist", action: "index")
     }
 
-    def edit(Integer id) {
+        def edit(Integer id) {
         if (flash.redirectParams) {
             [releaseChecklist: flash.redirectParams]
         } else {

@@ -44,14 +44,14 @@
     </div>
 </div>
 <br>
-<g:form url="[resource: releaseEnvironment, action: 'delete']" method="DELETE">
-    <fieldset class="buttons">
-        <g:link class="btn btn-secondary" action="edit" resource="${releaseEnvironment}"><g:message
-                code="default.button.edit.label" default="Edit"/></g:link>
-        %{--        <g:actionSubmit class="deleteConfirm btn btn-danger" action="delete"--}%
-        %{--                        value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>--}%
-        <g:link controller="releaseEnvironment" action="index" class="btn btn-success"><g:message code="back"/></g:link>
-    </fieldset>
-</g:form>
+%{--<g:form url="[resource: releaseEnvironment, action: 'delete']" method="DELETE">--}%
+%{--    <fieldset class="buttons">--}%
+%{--        <g:link class="btn btn-secondary" action="edit" resource="${releaseEnvironment}"><g:message--}%
+%{--                code="default.button.edit.label" default="Edit"/></g:link>--}%
+%{--        --}%%{--        <g:actionSubmit class="deleteConfirm btn btn-danger" action="delete"--}%
+%{--        --}%%{--                        value="${message(code: 'default.button.delete.label', default: 'Delete')}"/>--}%
+%{--        <g:link controller="releaseEnvironment" action="index" class="btn btn-success"><g:message code="back"/></g:link>--}%
+%{--    </fieldset>--}%
+%{--</g:form>--}%
 </body>
 </html>

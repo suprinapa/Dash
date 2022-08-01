@@ -33,6 +33,7 @@
 	</label>
 	<g:select id="esewaRelease" name="esewaRelease.id" from="${EsewaRelease.list()}" optionValue="releaseVersion" optionKey="id"
 			  value="${releaseChecklist?.esewaRelease?.id}" noSelection="['':'-Choose Release Version-']"/>
+	<g:hiddenField name="releaseId" value="${params.id}"/>
 </div>
 
 <div class="form-group">

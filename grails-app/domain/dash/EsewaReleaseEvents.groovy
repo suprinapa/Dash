@@ -20,8 +20,8 @@ class EsewaReleaseEvents {
         approvedBy column: 'approvedBy'
     }
 
-    static EsewaReleaseEvents getByEsewaReleaseId(long esewaReleaseId) {
+  /*  static EsewaReleaseEvents getByEsewaReleaseId(long esewaReleaseId) {
         find'from EsewaReleaseEvents where esewaRelease.id=:esewaReleaseId'
         [esewaReleaseId:esewaReleaseId]
-    }
+    }*/
 }

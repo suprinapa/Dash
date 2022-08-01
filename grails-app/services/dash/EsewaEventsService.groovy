@@ -4,13 +4,20 @@ import grails.transaction.Transactional
 import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
 @Transactional
+
 class EsewaEventsService {
-EsewaReleaseService esewaReleaseService
-
-
+    EsewaReleaseService esewaReleaseService
     def saveData(GrailsParameterMap params) {
         EsewaEvents esewaEvents = new EsewaEvents(params)
-        return esewaEvents.save(flush: true, failOnError: true)
+        def saveEvents = esewaEvents.save(flush: true, failOnError: true)
+        def esewaRelease  = esewaReleaseService.getById(params.releaseId)
+        EsewaReleaseEvents esewaReleaseEvents = new EsewaReleaseEvents()
+        esewaReleaseEvents.setEsewaRelease(esewaRelease);
+        esewaReleaseEvents.setCreatedDate(new Date())
+        esewaReleaseEvents.setApprovedBy(params.approvedBy)
+        esewaReleaseEvents.setApprovedDate(new Date())
+        esewaReleaseEvents.setEsewaEvents(saveEvents)
+        esewaReleaseEvents.save(flush: true, failOnError: true)
     }
 
     def getById(Serializable id) {
@@ -31,9 +38,11 @@ EsewaReleaseService esewaReleaseService
         return true
     }
 
-    def findEventsByEsewaRelease(id) {
+
+
+ /*   def findEventsByEsewaRelease(id) {
         def esewaRelease = esewaReleaseService.findEventsByEsewaRelease(id)
         return esewaRelease.esewaEvents
 //       return EsewaComponents.get(esewaRelease.id)
-    }
+    }*/
 }
