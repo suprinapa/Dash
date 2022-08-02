@@ -82,7 +82,8 @@ class EsewaEventsController {
             if (!response) {
                 flash.message = "No Events created!"
             } else {
-                [esewaEvents: release.esewaEvents,esewaRelease: response,approvedBy:release.approvedBy]
+//                [esewaEvents: release.esewaEvents,esewaRelease: response,approvedBy:release.approvedBy]
+                [esewaEvents: release,esewaRelease: response]
             }
     }
 }

@@ -11,11 +11,13 @@
     <meta name="layout" content="main">
 </head>
 
-<div class="nav pb-2" role="navigation">
+<div>
     <g:set var="entityName" value="${message(code: 'esewa.Events', default: 'Events')}"/>
     <g:link controller="esewaEvents" action="create" id ="${params.id}" class="btn btn-success"><g:message code="default.add.label"
                                                                                         args="[entityName]"/></g:link>
 </div>
+<br>
+<g:render template="navigation"/>
 <br>
 
 <div class="card">
@@ -39,13 +41,13 @@
 
                <tbody>
                 <tr>
-               <td <g:each in = "${esewaEvents}" class ="list-group">
+               <td <g:each in = "${esewaEvents.esewaEvents}" class ="list-group">
                     <p>${it.eventName}</p></g:each>
 
-               <td <g:each in = "${esewaEvents.esewaReleaseEvents}" class ="list-group">
+               <td <g:each in = "${esewaEvents}" class ="list-group">
                     <p>${it.approvedBy}</p></g:each>
 
-                <td <g:each in = "${esewaEvents.esewaReleaseEvents}" class ="list-group">
+                <td <g:each in = "${esewaEvents}" class ="list-group">
                     <p>${it.approvedDate}</p></g:each>
                 </tr>
                 </tbody>

@@ -12,11 +12,13 @@
     <meta name="layout" content="main">
 </head>
 
-<div class="nav pb-2" role="navigation">
+<div>
     <g:set var="entityName" value="${message(code: 'releaseChecklist.label', default: 'Release CheckList')}"/>
     <g:link controller="releaseChecklist" action="create" id="${params.id}" class="btn btn-success"><g:message code="default.add.label"
                                                                                              args="[entityName]"/></g:link>
 </div>
+<br>
+<g:render template="navigation"/>
 <br>
 
 <div class="card">
@@ -35,8 +37,9 @@
                     <span class="badge"><g:message code="releaseChecklist.description.label"
                                                    default="Description : "/></span>
 
-                    <span><g:fieldValue
-                            bean="${releaseChecklist}" field="releaseCheckListDescription"/></span>
+                    <g:each in = "${releaseChecklist}" class ="list-group">
+                        <p>${it.releaseCheckListDescription}</p></g:each>
+
                 </li>
             </g:if>
         </ol>

@@ -16,6 +16,8 @@
                                                                                            args="[entityName]"/></g:link>
 </div>
 <br>
+<g:render template="navigation"/>
+<br>
 
 <div class="card">
 
@@ -33,12 +35,12 @@
             <g:if test="${releaseEnvironment?.esewaEnvironment}">
                 <li class="list-group-item">
                     <span id="esewaEnvironment-label" class="badge"><g:message code="releaseEnvironment.esewaEnvironment.label"
-                                                                               default="Environment"/></span>
+                                                                               default="Environment : "/></span>
 
-                    <span class="property-value" aria-labelledby="esewaEnvironment-label"><g:fieldValue
-                            bean="${releaseEnvironment}" field="esewaEnvironment"/></span>
 
-                </li>
+                    <span class="property-value" aria-labelledby="esewaEnvironment-label"><g:each in = "${releaseEnvironment}" class ="list-group">
+                        <p>${it.esewaEnvironment}</p></g:each></span>
+            </li>
             </g:if>
         </ol>
     </div>

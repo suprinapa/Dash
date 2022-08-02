@@ -40,5 +40,9 @@ class   EsewaReleaseEventsService {
         }
         return true
     }
+
+    def  getEventsByEsewaReleaseAndEsewaEvents(EsewaRelease esewaRelease, EsewaEvents esewaEvents) {
+        return EsewaReleaseEvents.findByEsewaReleaseAndEsewaEvents(esewaRelease, esewaEvents)
+    }
 }
 

@@ -7,17 +7,25 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
 class EsewaEventsService {
     EsewaReleaseService esewaReleaseService
+    EsewaReleaseEventsService esewaReleaseEventsService
+
     def saveData(GrailsParameterMap params) {
-        EsewaEvents esewaEvents = new EsewaEvents(params)
-        def saveEvents = esewaEvents.save(flush: true, failOnError: true)
+        List<EsewaEvents> esewaEvents = EsewaEvents.findAllByIdInList(params.esewaReleaseEvents*.toLong())
         def esewaRelease  = esewaReleaseService.getById(params.releaseId)
-        EsewaReleaseEvents esewaReleaseEvents = new EsewaReleaseEvents()
-        esewaReleaseEvents.setEsewaRelease(esewaRelease);
-        esewaReleaseEvents.setCreatedDate(new Date())
-        esewaReleaseEvents.setApprovedBy(params.approvedBy)
-        esewaReleaseEvents.setApprovedDate(new Date())
-        esewaReleaseEvents.setEsewaEvents(saveEvents)
-        esewaReleaseEvents.save(flush: true, failOnError: true)
+
+        esewaEvents.forEach({f->
+            def release = esewaReleaseEventsService.getEventsByEsewaReleaseAndEsewaEvents(esewaRelease, f)
+            if (!release) {
+                EsewaReleaseEvents esewaReleaseEvents = new EsewaReleaseEvents()
+                esewaReleaseEvents.setEsewaRelease(esewaRelease);
+                esewaReleaseEvents.setCreatedDate(new Date())
+                esewaReleaseEvents.setApprovedBy(params.approvedBy)
+                esewaReleaseEvents.setApprovedDate(new Date())
+                esewaReleaseEvents.setEsewaEvents(f)
+                esewaReleaseEvents.save(flush: true, failOnError: true)
+            }
+        })
+//        esewaEvents.save(flush: true, failOnError: true)
     }
 
     def getById(Serializable id) {

@@ -8,11 +8,12 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 class EsewaComponentsService {
     EsewaReleaseService esewaReleaseService
     def saveData(GrailsParameterMap params) {
-        EsewaComponents esewaComponents = new EsewaComponents(params)
-        def esewaComponent = esewaComponents.save(flush: true, failOnError: true)
+        List<EsewaComponents> esewaComponents = EsewaComponents.findAllByIdInList(params.esewaComponents*.toLong())
        def esewaRelease  = esewaReleaseService.getById(params.releaseId)
-        def release = esewaComponent.addToEsewaRelease(esewaRelease as EsewaRelease)
-        return release.save(flush: true, failOnError: true)
+              esewaComponents.forEach({ e ->
+            def release = e.addToEsewaRelease(esewaRelease as EsewaRelease)
+            return release.save(flush: true, failOnError: true)
+        })
     }
 
     def getById(Serializable id) {

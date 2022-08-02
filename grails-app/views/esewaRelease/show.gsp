@@ -9,11 +9,11 @@
 
 <body>
 
-<div class="nav pb-2" role="navigation">
+<div>
     <g:link controller="esewaRelease" action="create" class="btn btn-success"><g:message code="default.create.label"
                                                                                          args="[entityName]"/></g:link>
 </div>
-
+<br>
 <div class="nav" role="navigation">
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
