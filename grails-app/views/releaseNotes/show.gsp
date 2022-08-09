@@ -21,13 +21,11 @@
 <div class="card">
 
     <div class="card-header">
-        <h4 style=font-family:aria-atomic,ui-serif><g:message code="default.show.label" args="[entityName]"/></h4>
+        <h4><g:message code="default.show.label" args="[entityName]"/></h4>
     </div>
 
     <div class="card-body">
-        <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-        </g:if>
+
 
         <ol class="property-list releaseNotes">
 

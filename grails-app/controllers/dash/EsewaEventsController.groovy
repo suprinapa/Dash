@@ -16,7 +16,7 @@ class EsewaEventsController {
 
     def saveData() {
         esewaEventsService.saveData(params)
-        redirect(controller: "esewaEvents", action: "index")
+        redirect(controller: "esewaEvents", action: "findReleaseByEvents", id:params.releaseId  )
     }
 
     def create() {
@@ -79,7 +79,7 @@ class EsewaEventsController {
     def findReleaseByEvents(Integer id){
             def response = esewaReleaseService.getById(id)
             def release = esewaReleaseEventsService.getByRelease(response)
-            if (!response) {
+            if (!release) {
                 flash.message = "No Events created!"
             } else {
 //                [esewaEvents: release.esewaEvents,esewaRelease: response,approvedBy:release.approvedBy]

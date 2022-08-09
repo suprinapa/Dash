@@ -23,12 +23,12 @@
 <div class="card">
 
     <div class="card-header">
-        <h4><g:message code="default.show.label" args="[entityName]"/></h4>
+        <h4><g:message code="default.show.label" args="[flash.args]"/></h4>
     </div>
 
     <div class="card-body">
         <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+            <div class="message" role="status"><g:message code="default.add.label" args="[entityName]"/></div>
         </g:if>
 
         <ol>
@@ -38,7 +38,8 @@
                     <span id="description-label" class="badge"><g:message code="releaseNotes.description.label"
                                                                           default="Description : "/></span>
 
-                                <span class="property-value" aria-labelledby="esewaEnvironment-label"><g:each in = "${releaseNotes}" class ="list-group">
+                    <span class="property-value" aria-labelledby="esewaEnvironment-label">
+                        <g:each in = "${releaseNotes}" class ="list-group">
                         <p>${it.releaseNotesDescription}</p></g:each></span>
                 </li>
             </g:if>

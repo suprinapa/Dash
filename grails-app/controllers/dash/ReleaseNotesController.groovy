@@ -5,6 +5,7 @@ import grails.transaction.Transactional
 class ReleaseNotesController {
 
     ReleaseNotesService releaseNotesService
+    EsewaReleaseService esewaReleaseService
 
      def index() {
          params.max = params.max ? params.int('max') : 10
@@ -25,9 +26,12 @@ class ReleaseNotesController {
 
     def findReleaseNotesByRelease(Integer id) {
         def response = releaseNotesService.findReleaseNotesByRelease(id)
+        def esewaRelease = esewaReleaseService.getById(params.id)
         if (!response) {
-            flash.message = "Add Release Notes"
+            flash.message = (g.message(code: "default.add.label"))
+            flash.args = esewaRelease.releaseVersion
         } else {
+            flash.args = esewaRelease.releaseVersion
             [releaseNotes: response]
         }
     }
@@ -39,7 +43,7 @@ class ReleaseNotesController {
     @Transactional
     def save() {
         releaseNotesService.saveData(params)
-        redirect(controller: "releaseNotes", action: "index")
+        redirect(controller: "releaseNotes", action: "findReleaseNotesByRelease", id:params.id)
      }
 
         def edit(Integer id) {

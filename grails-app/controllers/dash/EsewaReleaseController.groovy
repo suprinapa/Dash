@@ -22,14 +22,14 @@ class EsewaReleaseController {
         [esewaReleaseInstanceList: results, esewaReleaseInstanceCount: EsewaRelease.count()]
     }
 
-    def searchByDate() {
+    /*def searchByDate() {
         def criteria = EsewaRelease.createCriteria()
         //fetching data based on the criteria
         List<EsewaRelease> dateList = criteria.list {
             ge("startDate", 2022 - 06 - 16)
         } as List<EsewaRelease>
         [dateList: dateList]
-    }
+    }*/
 
     def search() {
         def searchText = params.searchText
@@ -61,7 +61,6 @@ class EsewaReleaseController {
                     order('createdDate', 'desc')
                 }
             }
-//              params << [sort: 'colName']
             esewaReleaseList = results
             esewaReleaseCount = EsewaRelease.count()
         }
@@ -72,7 +71,7 @@ class EsewaReleaseController {
         def response = esewaReleaseService.getById(id)
         def release = esewaReleaseEventsService.getByRelease(response)
         if (!response) {
-            redirect(controller: "esewaRelease", action: "index")
+           // redirect(controller: "esewaRelease", action: "index")
         } else {
             [esewaRelease: response, esewaEvents: release.esewaEvents, approvedBy:release.approvedBy]
         }
@@ -91,24 +90,25 @@ class EsewaReleaseController {
     def edit(Integer id) {
         if (flash.redirectParams) {
             [esewaRelease: flash.redirectParams]
-        } else {
+        }
             def response = esewaReleaseService.getById(id)
             if (!response) {
-                redirect(controller: "esewaRelease", action: "index")
+//                redirect(controller: "esewaRelease", action: "index")
             } else {
                 [esewaRelease: response]
             }
         }
-    }
+
 
     def update() {
         def response = esewaReleaseService.getById(params.id)
        if (!response) {
-           redirect(controller: "esewaRelease", action: "index")
+       redirect(controller: "esewaRelease", action: "index")
         } else {
-            esewaReleaseService.update(response, params)
-            redirect(controller: "esewaRelease", action: "show")
-        }
+           esewaReleaseService.update(response, params)
+           redirect(controller: "esewaRelease", action: "show", id:params.id)
+           
+      }
     }
 
     def delete(Integer id) {

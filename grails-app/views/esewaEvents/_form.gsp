@@ -12,6 +12,13 @@
 %{--    <g:textField name="eventName" required="" value="${esewaEvents?.eventName}"/>--}%
     <g:hiddenField name="releaseId" value="${params.id}"/>
 </div>
+<div class="form-group ${hasErrors(bean: esewaEvents, field: 'initiatedBy', 'error')} required">
+    <label for="initiatedBy" class="col-sm-2 col-form-label">
+        <g:message code="esewaReleaseEvents.initiatedBy.label" default="Initiated By" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="initiatedBy" required="" value="${initiatedBy}"/>
+</div>
 
 <div class="form-group ${hasErrors(bean: esewaEvents, field: 'approvedBy', 'error')} required">
     <label for="approvedBy" class="col-sm-2 col-form-label">

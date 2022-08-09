@@ -4,6 +4,10 @@ class UIHelperTagLib {
 
     static namespace = "UIHelper"
 
+    def appBaseURL = { attrs, body ->
+        out << AppUtil.baseURL();
+    }
+
 
   /*  def esewaActionMenu = { attrs, body ->
         out << '<li class="nav-item dropdown show">'

@@ -3,6 +3,7 @@ package dash
 class EsewaEvents {
 
     String eventName
+    String initiatedBy
 
     static hasMany = [esewaReleaseEvents: EsewaReleaseEvents]
 

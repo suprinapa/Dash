@@ -3,6 +3,7 @@ package dash
 class EsewaComponentsController {
 
     EsewaComponentsService esewaComponentsService
+    EsewaReleaseService esewaReleaseService
 
     def index() {
         params.max = params.max ? params.int('max') : 10
@@ -14,10 +15,10 @@ class EsewaComponentsController {
 
     def saveData() {
         esewaComponentsService.saveData(params)
-        redirect(controller: "esewaComponents", action: "index")
+        redirect(controller: "esewaComponents", action: "findComponentsByEsewaRelease" ,id:params.releaseId)
     }
 
-    def create(Integer id) {
+    def create() {
         [esewaComponents: flash.redirectParams]
     }
 
@@ -31,10 +32,13 @@ class EsewaComponentsController {
     }
 
     def findComponentsByEsewaRelease(Integer id) {
+        def esewaRelease = esewaReleaseService.getById(params.id)
         def response = esewaComponentsService.findComponentsByEsewaRelease(id)
-        if (!response){
-            flash.message = "Add Component!"
+         if (!response){
+            flash.message =  (g.message(code: "default.add.label"))
+            flash.args = esewaRelease.releaseVersion
         }else{
+            flash.args = esewaRelease.releaseVersion
             [esewaComponents: response]
         }
     }

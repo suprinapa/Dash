@@ -10,14 +10,14 @@ class EsewaEventsService {
     EsewaReleaseEventsService esewaReleaseEventsService
 
     def saveData(GrailsParameterMap params) {
-        List<EsewaEvents> esewaEvents = EsewaEvents.findAllByIdInList(params.esewaReleaseEvents*.toLong())
+        def esewaEventsList = EsewaEvents.findAllByIdInList(params.esewaReleaseEvents*.toLong())
         def esewaRelease  = esewaReleaseService.getById(params.releaseId)
-
-        esewaEvents.forEach({f->
+        esewaEventsList.forEach({f->
+            f.setInitiatedBy(params.initiatedBy)
             def release = esewaReleaseEventsService.getEventsByEsewaReleaseAndEsewaEvents(esewaRelease, f)
             if (!release) {
                 EsewaReleaseEvents esewaReleaseEvents = new EsewaReleaseEvents()
-                esewaReleaseEvents.setEsewaRelease(esewaRelease);
+                esewaReleaseEvents.setEsewaRelease(esewaRelease)
                 esewaReleaseEvents.setCreatedDate(new Date())
                 esewaReleaseEvents.setApprovedBy(params.approvedBy)
                 esewaReleaseEvents.setApprovedDate(new Date())
@@ -25,7 +25,6 @@ class EsewaEventsService {
                 esewaReleaseEvents.save(flush: true, failOnError: true)
             }
         })
-//        esewaEvents.save(flush: true, failOnError: true)
     }
 
     def getById(Serializable id) {

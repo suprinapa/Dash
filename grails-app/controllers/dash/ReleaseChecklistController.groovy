@@ -2,6 +2,7 @@ package dash
 
 class ReleaseChecklistController {
     ReleaseChecklistService releaseChecklistService
+    EsewaReleaseService esewaReleaseService
 
     def index() {
         params.max = params.max ? params.int('max') : 10
@@ -23,10 +24,14 @@ class ReleaseChecklistController {
 
     def findReleaseChecklistByRelease(Integer id) {
         def response = releaseChecklistService.findReleaseChecklistByRelease(id)
+        def esewaRelease = esewaReleaseService.getById(params.id)
         if (!response) {
-            flash.message = "No CheckList present!"
+            flash.message = (g.message(code: "default.add.label"))
+            flash.args = esewaRelease.releaseVersion
 //            redirect(controller: "releaseChecklist", action: "index")
         } else {
+
+            flash.args = esewaRelease.releaseVersion
             [releaseChecklist: response]
         }
     }
@@ -37,7 +42,7 @@ class ReleaseChecklistController {
 
     def add(){
         releaseChecklistService.addData(params)
-        redirect(controller: "releaseChecklist", action: "index")
+        redirect(controller: "releaseChecklist", action: "findReleaseChecklistByRelease", id:params.releaseId)
     }
 
 

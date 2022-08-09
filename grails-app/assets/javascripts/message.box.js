@@ -15,7 +15,6 @@ messageBox =  (function () {
     }
 
     return {
-
         showMessage: function(success, message) {
             if(!jQuery(".alert").length) {
                 jQuery(document.body).append(messageHtml);

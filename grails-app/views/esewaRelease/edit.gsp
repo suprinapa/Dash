@@ -9,7 +9,7 @@
 <div class="nav" role="navigation">
     <g:set var="entityName" value="${message(code: 'esewaRelease.label', default: 'EsewaRelease')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
-    <g:link controller="esewaRelease" action="create" class="btn btn-success"><g:message code="default.edit.label"
+    <g:link controller="esewaRelease" action="create" class="btn btn-success"><g:message code="default.create.label"
                                                                                          args="[entityName]"/></g:link>
 </div>
 <br>
@@ -18,30 +18,25 @@
     <div class="card-header">
         <h4><g:message code="default.edit.label" args="[entityName]"/></h4>
     </div>
+<div class="card-body">
 
-    <div class="card-body">
-    %{--    <g:form controller="esewaRelease" action="update">
+    <g:form action="update" id="submit_id" controller="esewaRelease">
+    <g:render template="updateForm" collection="${esewaRelease}"/>
+    </g:form>
+
+    <div class="form-action-panel">
+        <g:submitButton class="btn btn-success" onclick="UpdateConfirm()" id="show-popup-btn"  name="update" value="${g.message(code: "update")}"/>
+    </div>
+    <div id="popup-container">
+        <h4>Are you sure? </h4>
+        <g:form controller="esewaRelease" action="update" method="PUT">
             <g:hiddenField name="id" value="${esewaRelease.id}"/>
-            <g:render template="form"/>
-            <div class="form-action-panel">
-                <g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
-                <g:link  controller="esewaRelease" action="index" class="btn btn-secondary"><g:message code="cancel"/></g:link>
-            </div>
-        </g:form>--}%
-        <g:form url="[resource: esewaRelease, action: 'update']" method="PUT">
-        %{-- action will check version before we update the instance to avoid conflicts with changes by another user--}%
-            <g:hiddenField name="version" value="${esewaRelease?.version}"/>
-            <fieldset class="form">
-                <g:render template="updateForm"/>
-            </fieldset>
-
-            <div class="form-action-panel">
-                <g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
-                <g:link controller="esewaRelease" action="index" class="btn btn-secondary"><g:message
-                        code="cancel"/></g:link>
-            </div>
+%{--            <g:render template="details" collection="${esewaRelease}"/>--}%
+            <g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
+            <span id="popup-close" class="btn btn-danger">No</span>
         </g:form>
     </div>
+</div>
 </div>
 </body>
 </html>

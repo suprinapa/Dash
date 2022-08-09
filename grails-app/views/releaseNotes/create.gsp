@@ -6,7 +6,7 @@
 <body>
 <div class="card">
 	<div class="card-header">
-		<h4 style=font-family:aria-atomic,ui-serif><g:message code="default.create.label" args="['Release Notes']"/></h4>
+		<h4><g:message code="default.create.label" args="['Release Notes']"/></h4>
 	</div>
 	<div class="card-body">
 		<g:form controller="releaseNotes" action="save" enctype="multipart/form-data">

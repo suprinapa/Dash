@@ -13,7 +13,7 @@
 
 <div>
     <g:set var="entityName" value="${message(code: 'esewaComponents.label', default: 'Esewa Components')}"/>
-    <g:link controller="esewaComponents" action="create" id="${params.id}"  class="btn btn-success"><g:message code="default.add.label"
+    <g:link controller="esewaComponents" action="create" id="${params.id as Integer}"  class="btn btn-success"><g:message code="default.add.label"
                                                                                             args="[entityName]"/></g:link>
 </div>
 <br>
@@ -23,12 +23,12 @@
 <div class="card">
 
     <div class="card-header">
-        <h4><g:message code="default.show.label" args="[entityName]"/></h4>
+        <h4><g:message code="default.show.label" args="[flash.args]"/></h4>
     </div>
 
     <div class="card-body">
         <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+            <div class="message" role="status"><g:message code="default.add.label" args="[entityName]"/></div>
         </g:if>
 
         <ol>

@@ -3,6 +3,7 @@ package dash
 class ReleaseEnvironmentController {
 
     ReleaseEnvironmentService releaseEnvironmentService
+    EsewaReleaseService esewaReleaseService
 
     def index(){
         params.max = params.max ? params.int('max') : 10
@@ -27,17 +28,20 @@ class ReleaseEnvironmentController {
     }
 
     def findEnvironmentByEsewaRelease(Integer id) {
+        def esewaRelease = esewaReleaseService.getById(params.id)
         def response = releaseEnvironmentService.findEnvironmentByEsewaRelease(id)
         if (!response){
-           flash.message = "Add Environment!"
+           flash.message = (g.message(code: "default.add.label"))
+            flash.args = esewaRelease.releaseVersion
         }else{
+           flash.args = esewaRelease.releaseVersion
             [releaseEnvironment: response]
         }
     }
 
     def saveData(){
         releaseEnvironmentService.saveData(params)
-        redirect(controller: "releaseEnvironment", action: "index")
+        redirect(controller: "releaseEnvironment", action: "findEnvironmentByEsewaRelease",id:params.releaseId)
     }
 
     def create() {

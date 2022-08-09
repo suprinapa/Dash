@@ -129,16 +129,16 @@
     </div>
 </div>
 
-<div class="form-group row ${hasErrors(bean: esewaRelease, field: 'Add releaseNotes', 'error')} required">
+%{--<div class="form-group row ${hasErrors(bean: esewaRelease, field: 'Add releaseNotes', 'error')} required">
     <div class="col-sm-12">
         <label for="releaseNotesDescription" class="badge">
             <g:message code="esewaRelease.releaseNotes.label" default="Release Notes Description: "/>
         </label>
         <g:textArea class="form-control" id="releaseNotesDescription" rows="5" name="releaseNotesDescription"
                     value="${releaseNotes?.releaseNotesDescription}"/>
-%{--    <div class="details-panel">
+--}%%{--    <div class="details-panel">
                 <g:include controller="releaseNotes" action="create" id="${esewaRelease?.id}"/>
-            </div>--}%
+            </div>--}%%{--
 
     </div>
 </div>
@@ -151,7 +151,7 @@
         <g:textArea class="form-control" id="releaseNotesDescription" name="releaseCheckListDescription" rows="5"
                     value="${releaseChecklist?.releaseCheckListDescription}"/>
     </div>
-</div>
+</div>--}%
 
 <div class="form-group row ${hasErrors(bean: esewaRelease, field: 'releaseType', 'error')} required">
     <div class="col-sm-12">

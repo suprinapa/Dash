@@ -1,62 +1,7 @@
 <%@ page import="dash.EsewaRelease" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="layout" content="main">
-    <g:set var="entityName" value="${message(code: 'esewaRelease.label', default: 'EsewaRelease')}"/>
-    <title><g:message code="default.show.label" args="[entityName]"/></title>
-</head>
 
-<body>
-
-
-
-<div>
-    <g:link controller="esewaRelease" action="create" class="btn btn-success"><g:message code="default.create.label"
-                                                                                         args="[entityName]"/></g:link>
-</div>
-<br>
-<div class="nav" role="navigation">
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-
-
-                <li class="nav-item">
-                <g:link class="navbar-brand" controller="releaseEnvironment" action="findEnvironmentByEsewaRelease" id="${esewaRelease.id}">
-                             Release Environment</g:link>
-
-                </li>
-                <li class="nav-item">
-                    <g:link class="navbar-brand" controller="esewaComponents" action="findComponentsByEsewaRelease" id="${esewaRelease.id}"><g:message
-                            code="esewa.Components"/></g:link>
-                </li>
-                <li class="nav-item">
-                    <g:link class="navbar-brand" controller="releaseNotes" action="findReleaseNotesByRelease" id="${esewaRelease.id}"><g:message
-                            code="releaseNotes.label"/></g:link>
-                </li>
-                <li class="nav-item">
-                    <g:link class="navbar-brand" controller="releaseChecklist" action="findReleaseChecklistByRelease" id="${esewaRelease.id}"><g:message
-                            code="releaseChecklist.label"/></g:link>
-                </li>
-                <li class="nav-item">
-                    <g:link class="navbar-brand" controller="esewaEvents" action="findReleaseByEvents" id="${esewaRelease.id}" ><g:message
-                            code="esewa.Events"/></g:link>
-                </li>
-              %{--  <li class="nav-item">
-                    <g:link class="navbar-brand" controller="esewaReleaseEvents" action="index"><g:message
-                            code="esewaReleaseEvents.label" /></g:link>
-                </li>--}%
-            </ul>
-        </div>
-    </nav>
-</div>
-<br>
 <div class="card">
-<div class="card-header" >
-    <h5><g:message code="default.show.label" args="[entityName]"/></h5>
 
-</div>
     <ol class="list-inline">
         <g:if test="${esewaRelease?.releaseVersion}">
             <li class="list-group-item">
@@ -78,16 +23,6 @@
                                                                                            action="show"
                                                                                            id="${esewaRelease?.parentRelease?.id}">${esewaRelease?.parentRelease?.releaseName?.encodeAsHTML()}</g:link></span>
 
-            </li>
-        </g:if>
-
-        <g:if test="${esewaRelease?.createdDate}">
-            <li class="list-group-item">
-                <span id="createdDate-label" class="badge"><g:message code="esewaRelease.createdDate.label"
-                                                                      default="Created Date : "/></span>
-
-                <span class="property-value" aria-labelledby="createdDate-label"><g:formatDate format="MMMM dd, yyyy"
-                                                                                               date="${esewaRelease?.createdDate}"/></span>
             </li>
         </g:if>
 
@@ -113,19 +48,19 @@
             </li>
         </g:if>
 
-     %{--   <g:if test="${esewaRelease?.esewaComponents}">
-            <li class="list-group-item">
-                <span id="esewaComponents-label" class="badge"><g:message code="esewaRelease.esewaComponents.label"
-                                                                          default="eSsewa Components : "/></span>
+    %{--   <g:if test="${esewaRelease?.esewaComponents}">
+           <li class="list-group-item">
+               <span id="esewaComponents-label" class="badge"><g:message code="esewaRelease.esewaComponents.label"
+                                                                         default="eSsewa Components : "/></span>
 
-                <g:each in="${esewaRelease.esewaComponents}" var="e">
-                    <span class="list-group" aria-labelledby="esewaComponents-label"><g:link
-                            controller="esewaComponents" action="show"
-                            id="${e.id}">${e?.componentName?.encodeAsHTML()}</g:link></span>
-                </g:each>
+               <g:each in="${esewaRelease.esewaComponents}" var="e">
+                   <span class="list-group" aria-labelledby="esewaComponents-label"><g:link
+                           controller="esewaComponents" action="show"
+                           id="${e.id}">${e?.componentName?.encodeAsHTML()}</g:link></span>
+               </g:each>
 
-            </li>
-        </g:if>--}%
+           </li>
+       </g:if>--}%
 
         <g:if test="${esewaEvents}">
             <li class="list-group-item">
@@ -198,48 +133,8 @@
             <li class="list-group-item">
                 <span class="badge"><g:message code="esewaRelease.releaseType.label"
                                                default="Release Type : "/></span>
-                <span><g:fieldValue bean="${esewaRelease}" field="releaseType"/></span>
+                <span id ="updated_release_type"></span>
             </li>
         </g:if>
     </ol>
- %{--   <div class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <p>Are you sure?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Yes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                </div>
-            </div>
-        </div>
-    </div>--}%
-
-
-    <fieldset class="buttons">
-        <g:link class="btn btn-secondary" action="edit" id="${esewaRelease.id}"><g:message
-                code="default.button.edit.label" default="Edit"/><i class="fas fa-edit"></i></g:link>
-    <g:submitButton class="btn btn-danger" id ="show-popup-btn" onclick="UpdateConfirm()" name="delete" value="${g.message(code: "default.button.delete.label")}"/>
-    <div id="popup-container">
-        <h4>Are you sure? </h4>
-        <div class="form-action-panel">
-            <g:form url="[resource: esewaRelease, action: 'delete']" method="DELETE">
-                <g:actionSubmit class="btn btn-danger" action="delete" id="${esewaRelease.id}"
-                                value="${message(code: 'yes')}"/>
-                <span id="popup-close" class="btn btn-secondary">No</span>
-            </g:form>
-        </div>
-    </div>
-        <g:link controller="esewaRelease" action="index" class="btn btn-success"><g:message code="back"/></g:link>
-    </fieldset>
 </div>
-</body>
-</html>

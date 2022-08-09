@@ -21,6 +21,15 @@
 
     <g:hiddenField name="releaseId" value="${params.id}"/>
 </div>
+<div class="form-group row ${hasErrors(bean: esewaComponents, field: 'componentsInitiatedBy', 'error')} required">
+    <div class="col-sm-12">
+        <label for="componentsInitiatedBy" class="badge">
+            <g:message code="esewaRelease.componentsInitiatedBy.label" default="Initiated By : "/>
+            <span class="required-indicator" style="color: red">*</span></label>
+        <g:textField name="componentsInitiatedBy" required="" class="form-control" id="componentsInitiatedBy" type="text"
+                     placeholder="Enter InitiatedBy" value="${componentsInitiatedBy}"/>
+    </div>
+</div>
 
 
 

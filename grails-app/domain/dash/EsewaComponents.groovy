@@ -3,6 +3,7 @@ package dash
 class EsewaComponents {
 
     String componentName
+    String componentsInitiatedBy
 
     static hasMany = [esewaRelease:EsewaRelease]
     static  belongsTo = [EsewaRelease]

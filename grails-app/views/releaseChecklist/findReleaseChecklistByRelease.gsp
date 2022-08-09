@@ -24,13 +24,14 @@
 <div class="card">
 
     <div class="card-header">
-        <h4><g:message code="default.show.label" args="[entityName]"/></h4>
+        <h4><g:message code="default.show.label" args="[flash.args]"/></h4>
     </div>
 
     <div class="card-body">
         <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+            <div class="message" role="status"><g:message code="default.add.label" args="[entityName]"/></div>
         </g:if>
+
         <ol>
             <g:if test="${releaseChecklist?.releaseCheckListDescription}">
                 <li class="list-group-item">

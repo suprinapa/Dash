@@ -1,6 +1,5 @@
 package dash
 
-import grails.transaction.Transactional
 import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
 /*(isolation = I)*/
@@ -74,8 +73,8 @@ class EsewaReleaseService {
         }
         return true
     }
-
+/*
     def findEventsByEsewaRelease(esewaReleaseId) {
         EsewaReleaseEvents.getByEsewaReleaseId(esewaReleaseId);
-    }
+    }*/
 }
