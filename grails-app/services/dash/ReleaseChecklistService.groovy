@@ -7,14 +7,14 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 class ReleaseChecklistService {
     EsewaReleaseService esewaReleaseService
 
-    def saveData (GrailsParameterMap params) {
-        ReleaseChecklist releaseChecklist = new ReleaseChecklist(params)
-        def response = AppUtil.saveResponse(false, releaseChecklist)
-        if (releaseChecklist.validate()) {
-            releaseChecklist.save(flush: true)
-        }
-        return response
-    }
+//    def saveData (GrailsParameterMap params) {
+//        ReleaseChecklist releaseChecklist = new ReleaseChecklist(params)
+//        def response = AppUtil.saveResponse(false, releaseChecklist)
+//        if (releaseChecklist.validate()) {
+//            releaseChecklist.save(flush: true)
+//        }
+//        return response
+//    }
 
     def addData(GrailsParameterMap params){
         ReleaseChecklist releaseChecklist = new ReleaseChecklist(params)

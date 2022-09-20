@@ -1,6 +1,7 @@
 package dash
 
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
 
 @Transactional
 class EsewaReleaseController {
@@ -16,7 +17,7 @@ class EsewaReleaseController {
         def c = EsewaRelease.createCriteria()
         def results = c.list(max: params.int('max'), offset: params.offset) {
             and {
-              order('createdDate', 'desc')
+                order('createdDate', 'desc')
             }
         }
         [esewaReleaseInstanceList: results, esewaReleaseInstanceCount: EsewaRelease.count()]
@@ -71,7 +72,7 @@ class EsewaReleaseController {
         def response = esewaReleaseService.getById(id)
         def release = esewaReleaseEventsService.getByRelease(response)
         if (!response) {
-           // redirect(controller: "esewaRelease", action: "index")
+            // redirect(controller: "esewaRelease", action: "index")
         } else {
             [esewaRelease: response, esewaEvents: release.esewaEvents, approvedBy:release.approvedBy]
         }
@@ -80,7 +81,6 @@ class EsewaReleaseController {
     def create() {
         [esewaRelease: flash.redirectParams]
     }
-
 
     def save() {
         esewaReleaseService.saveData(params)
@@ -91,24 +91,38 @@ class EsewaReleaseController {
         if (flash.redirectParams) {
             [esewaRelease: flash.redirectParams]
         }
-            def response = esewaReleaseService.getById(id)
-            if (!response) {
+        def response = esewaReleaseService.getById(id)
+        if (!response) {
 //                redirect(controller: "esewaRelease", action: "index")
-            } else {
-                [esewaRelease: response]
-            }
+        } else {
+            [esewaRelease: response]
         }
-
+    }
 
     def update() {
-        def response = esewaReleaseService.getById(params.id)
-       if (!response) {
-       redirect(controller: "esewaRelease", action: "index")
+        def dynamicParams = request.JSON;
+        GrailsParameterMap objparams = new GrailsParameterMap(request);
+        objparams.put("id",dynamicParams.id)
+        objparams.put("releaseName",dynamicParams.releaseName)
+        objparams.put("releaseVersion",dynamicParams.releaseVersion)
+        objparams.put("parentRelease",dynamicParams.parentRelease)
+        objparams.put("startDate",dynamicParams.startDate)
+        objparams.put("startDate_day",dynamicParams.startDate_day)
+        objparams.put("startDate_month",dynamicParams.startDate_month)
+        objparams.put("startDate_year",dynamicParams.startDate_year)
+        objparams.put("endDate",dynamicParams.endDate)
+        objparams.put("endDate_day",dynamicParams.endDate_day)
+        objparams.put("endDate_month",dynamicParams.endDate_month)
+        objparams.put("endDate_year",dynamicParams.endDate_year)
+        objparams.put("releaseType",dynamicParams.releaseType)
+        def response = esewaReleaseService.getById(objparams.id)
+        if (!response) {
+            redirect(controller: "esewaRelease", action: "index")
         } else {
-           esewaReleaseService.update(response, params)
-           redirect(controller: "esewaRelease", action: "show", id:params.id)
-           
-      }
+            esewaReleaseService.update(response, objparams)
+            redirect(controller: "esewaRelease", action: "index", id:objparams.id)
+
+        }
     }
 
     def delete(Integer id) {

@@ -1,3 +1,5 @@
+
+%{--
 <%@ page import="dash.EsewaRelease" %>
 
 <div class="card">
@@ -48,7 +50,8 @@
             </li>
         </g:if>
 
-    %{--   <g:if test="${esewaRelease?.esewaComponents}">
+    --}%
+%{--   <g:if test="${esewaRelease?.esewaComponents}">
            <li class="list-group-item">
                <span id="esewaComponents-label" class="badge"><g:message code="esewaRelease.esewaComponents.label"
                                                                          default="eSsewa Components : "/></span>
@@ -60,7 +63,8 @@
                </g:each>
 
            </li>
-       </g:if>--}%
+       </g:if>--}%%{--
+
 
         <g:if test="${esewaEvents}">
             <li class="list-group-item">
@@ -133,8 +137,8 @@
             <li class="list-group-item">
                 <span class="badge"><g:message code="esewaRelease.releaseType.label"
                                                default="Release Type : "/></span>
-                <span id ="updated_release_type"></span>
+                <span><g:fieldValue bean="${esewaRelease}" id ="updated_release_type" field="releaseType"/></span>
             </li>
         </g:if>
     </ol>
-</div>
+</div>--}%

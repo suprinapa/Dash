@@ -46,10 +46,10 @@ class ReleaseChecklistController {
     }
 
 
-    def save() {
-        releaseChecklistService.saveData(params)
-        redirect(controller: "releaseChecklist", action: "index")
-    }
+//    def save() {
+//        releaseChecklistService.saveData(params)
+//        redirect(controller: "releaseChecklist", action: "index")
+//    }
 
         def edit(Integer id) {
         if (flash.redirectParams) {

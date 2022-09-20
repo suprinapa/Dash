@@ -18,7 +18,7 @@
 		<h4><g:message code="default.list.label" args="[entityName]"/></h4>
 %{--		<g:if test="${flash.message}">--}%
 %{--			<div class="message" role="status">${flash.message}</div>--}%
-		</g:if>
+%{--		</g:if>--}%
 	</div>
 	<div class="card-body">
 		<div id="gridList">

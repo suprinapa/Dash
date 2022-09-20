@@ -18,25 +18,27 @@
     <div class="card-header">
         <h4><g:message code="default.edit.label" args="[entityName]"/></h4>
     </div>
-<div class="card-body">
+    <div class="card-body">
 
-    <g:form action="update" id="submit_id" controller="esewaRelease">
-    <g:render template="updateForm" collection="${esewaRelease}"/>
-    </g:form>
-
-    <div class="form-action-panel">
-        <g:submitButton class="btn btn-success" onclick="UpdateConfirm()" id="show-popup-btn"  name="update" value="${g.message(code: "update")}"/>
-    </div>
-    <div id="popup-container">
-        <h4>Are you sure? </h4>
-        <g:form controller="esewaRelease" action="update" method="PUT">
-            <g:hiddenField name="id" value="${esewaRelease.id}"/>
-%{--            <g:render template="details" collection="${esewaRelease}"/>--}%
-            <g:submitButton class="btn btn-success" name="update" value="${g.message(code: "update")}"/>
-            <span id="popup-close" class="btn btn-danger">No</span>
+        <g:form action="update" controller="esewaRelease" elementId="submit_id"   >
+            <g:hiddenField name="id" value="${esewaRelease.id}" id ="id"/>
+            <g:render template="updateForm" collection="${esewaRelease}"/>
         </g:form>
+
+        <div class="form-action-panel">
+            <g:submitButton class="btn btn-success" id="show-popup-btn" name="update" value="${g.message(code: "update")}"/>
+        </div>
+        <div id="popup-container">
+            <h4>Are you sure? </h4>
+            <g:form controller="esewaRelease" action="update" method="PUT">
+                <g:hiddenField name="id" value="${esewaRelease.id}"/>
+            %{--            <g:render template="details" collection="${esewaRelease}"/>--}%
+
+                <button  class="btn btn-success" type="button" onclick="submitConfirmForm();" name="update">${g.message(code: "update")}</button>
+                <span id="popup-close" class="btn btn-danger">No</span>
+            </g:form>
+        </div>
     </div>
-</div>
 </div>
 </body>
 </html>

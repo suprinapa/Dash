@@ -159,7 +159,7 @@
             <span class="required-indicator">*</span>
         </label>
         <g:select class="form-control" name="releaseType" from="${ReleaseType?.values()}"
-                   id ="release_type" keys="${ReleaseType.values()*.name()}" required=""
+                  id ="release_type" keys="${ReleaseType.values()*.name()}" required=""
                   value="${esewaRelease?.releaseType?.name()}" noSelection="['': '-Choose Type-']"/>
     </div>
 </div>

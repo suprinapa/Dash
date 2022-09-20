@@ -26,26 +26,54 @@ $(function updateBox(){
 // });
 
 
-function UpdateConfirm(){
-        $("#show-popup-btn").click(function(){
+$(function () {
+    $("#show-popup-btn").click(function () {
         $("#popup-container").show();
     })
-    $("#popup-close").click(function(){
+    $("#popup-close").click(function () {
         $("#popup-container").hide();
     });
-  /*  //$('#updated_release_type').empty();
 
-    var updated_release_type = $('#release_type').val();
-    // $('#updated_release_type').val(updated_release_type);
-     $('#updated_release_type').html(updated_release_type);*/
+    /*  //$('#updated_release_type').empty();
+
+      var updated_release_type = $('#release_type').val();
+      // $('#updated_release_type').val(updated_release_type);
+       $('#updated_release_type').html(updated_release_type);*/
 
 
     // var updated_release_name = $this.val();
     // $('#updated_relase_name').val(updated_release_name);
-}
-    $("#clickConfirm").click(function () {
-        $("#submit_id").submit();
+});
+$("#clickConfirm").click(function () {
+
+});
+
+function submitConfirmForm(){
+    console.log('test123');
+    // $("#submit_id").submit();
+    var subForm = $('#submit_id');
+    var frmData = new FormData(document.forms.namedItem("submit_id"));
+    frmData.append('_method', 'PATCH');
+    var oData = {};
+    frmData.forEach(function(value, key){
+        oData[key] = value;
     });
+
+    var urlTemp = subForm.attr('action');
+    //for some reason submit_id was added to post url so we tricked and removed it
+    var url =urlTemp.replace("submit_id","");
+    $.ajax({
+        url:url,
+        type:'PUT',
+        data: JSON.stringify(oData),
+        contentType: "application/json" ,
+        success:function (res) {
+            console.log(res);
+            window.location.reload();
+        }
+    });
+    return false;
+}
 /*
 $(function () {
     $('.updateConfirm').click(function () {

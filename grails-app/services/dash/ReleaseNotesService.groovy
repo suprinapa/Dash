@@ -11,7 +11,8 @@ class ReleaseNotesService {
          ReleaseNotes releaseNotes = new ReleaseNotes(params)
          def releaseId = esewaReleaseService.getById(params.releaseId)
          def release = releaseNotes.setEsewaRelease(releaseId)
-         return releaseNotes.save(release)
+         def saveNotes = releaseNotes.save(release)
+         return  saveNotes.save(flush: true)
     }
 
     def update(ReleaseNotes releaseNotes, GrailsParameterMap params){
